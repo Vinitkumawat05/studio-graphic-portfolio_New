@@ -1,152 +1,244 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../components/Footer';
 import DesignerAI from '../components/DesignerAI';
 import { motion } from 'motion/react';
-import { Mail, Linkedin, Instagram, Twitter, MessageSquare } from 'lucide-react';
+import { Mail, Linkedin, Instagram, Twitter, ExternalLink } from 'lucide-react';
 
 const ContactPage: React.FC = () => {
-  // Scroll to top on component mount
+  const [formData, setFormData] = useState({
+    name: '',
+    organization: '',
+    email: '',
+    phone: '',
+    socialLink: '',
+    budget: '',
+    services: [] as string[],
+    message: ''
+  });
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const sectionReveal = {
-    initial: { opacity: 0, y: 40 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.15 },
-    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleServiceToggle = (service: string) => {
+    setFormData(prev => ({
+      ...prev,
+      services: prev.services.includes(service)
+        ? prev.services.filter(s => s !== service)
+        : [...prev.services, service]
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    // Reset form
+    setFormData({ 
+      name: '', 
+      organization: '',
+      email: '', 
+      phone: '',
+      socialLink: '',
+      budget: '',
+      services: [],
+      message: '' 
+    });
   };
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black overflow-x-hidden">
-      <main className="px-6 md:px-12 lg:px-20 max-w-[2200px] mx-auto pt-32">
-        {/* Header Section */}
-        <section className="mb-32">
+      <main className="px-6 md:px-12 lg:px-20 max-w-[2200px] mx-auto pt-40 pb-32">
+        {/* Two Column Layout */}
+        <div className="grid md:grid-cols-2 gap-16 lg:gap-32">
+          {/* Left Side - Contact Info */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-16"
           >
-            <p className="text-lime-400 text-[10px] font-black tracking-[0.6em] uppercase mb-8">Get in Touch</p>
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] uppercase mb-12">
-              LET'S CREATE<br />
-              <span className="text-white/20">SOMETHING GREAT.</span>
-            </h1>
-            <p className="text-lg text-white/60 max-w-2xl">
-              Have a project in mind? Let's discuss how we can bring your vision to life. I'm always excited to collaborate on innovative designs and creative solutions.
-            </p>
-          </motion.div>
-        </section>
-
-        {/* Contact Section */}
-        <section className="mb-32 grid md:grid-cols-2 gap-16">
-          {/* Contact Info */}
-          <motion.div {...sectionReveal} className="space-y-12">
+            {/* Heading */}
             <div>
-              <h3 className="text-[10px] font-black tracking-[0.6em] text-lime-400 uppercase mb-6">Email</h3>
-              <a 
-                href="mailto:hello@studio.design"
-                className="text-3xl md:text-4xl font-black hover:text-lime-400 transition-colors"
-              >
-                hello@studio.design
-              </a>
-            </div>
-
-            <div>
-              <h3 className="text-[10px] font-black tracking-[0.6em] text-lime-400 uppercase mb-6">Phone</h3>
-              <a 
-                href="tel:+1234567890"
-                className="text-2xl md:text-3xl font-black hover:text-lime-400 transition-colors"
-              >
-                +1 (234) 567-8900
-              </a>
-            </div>
-
-            <div>
-              <h3 className="text-[10px] font-black tracking-[0.6em] text-lime-400 uppercase mb-6">Location</h3>
-              <p className="text-xl md:text-2xl font-black">
-                San Francisco, CA
+              <span className="inline-block w-2 h-2 bg-white rounded-full mb-4"></span>
+              <h1 className="text-5xl md:text-6xl font-normal leading-tight mb-8">
+                Get in Touch.
+              </h1>
+              <p className="text-base text-white/60 leading-relaxed max-w-sm">
+                We know every project is unique, and you might have some questions before getting started.
               </p>
             </div>
-          </motion.div>
 
-          {/* Social Links */}
-          <motion.div {...sectionReveal} className="space-y-8">
+            {/* Email */}
             <div>
-              <h3 className="text-[10px] font-black tracking-[0.6em] text-lime-400 uppercase mb-8">Follow Along</h3>
-              <div className="space-y-4">
-                <a 
-                  href="#"
-                  className="group flex items-center gap-4 text-lg font-black hover:text-lime-400 transition-colors"
-                >
-                  <Instagram className="w-5 h-5" />
-                  <span>Instagram</span>
-                </a>
-                <a 
-                  href="#"
-                  className="group flex items-center gap-4 text-lg font-black hover:text-lime-400 transition-colors"
-                >
-                  <Linkedin className="w-5 h-5" />
-                  <span>LinkedIn</span>
-                </a>
-                <a 
-                  href="#"
-                  className="group flex items-center gap-4 text-lg font-black hover:text-lime-400 transition-colors"
-                >
-                  <Twitter className="w-5 h-5" />
-                  <span>Twitter (X)</span>
-                </a>
-                <a 
-                  href="#"
-                  className="group flex items-center gap-4 text-lg font-black hover:text-lime-400 transition-colors"
-                >
-                  <MessageSquare className="w-5 h-5" />
-                  <span>Dribbble</span>
-                </a>
-              </div>
+              <a 
+                href="mailto:vinit@studio.design"
+                className="group text-2xl md:text-3xl font-normal hover:text-white/80 transition-colors block"
+              >
+                vinit@studio.design
+              </a>
+              <p className="text-sm text-white/40 mt-2">Email</p>
             </div>
-          </motion.div>
-        </section>
 
-        {/* Contact Form Section */}
-        <section className="mb-32 max-w-2xl">
-          <motion.div {...sectionReveal}>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-12">Send Me a Message</h2>
+            {/* Phone */}
+            <div>
+              <a 
+                href="tel:+918299999999"
+                className="group text-base font-normal hover:text-white/80 transition-colors block"
+              >
+                +91 (829) 999-9999
+              </a>
+              <p className="text-sm text-white/40 mt-2">Phone</p>
+            </div>
+
+            {/* Address */}
+            <div>
+              <p className="text-base font-normal block">
+                Mumbai, India
+              </p>
+              <p className="text-sm text-white/40 mt-2">Location</p>
+            </div>
+
+           
             
-            <form className="space-y-8">
-              <div>
-                <label className="block text-sm font-black tracking-widest text-white/40 uppercase mb-3">Name</label>
-                <input 
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-lime-400 transition-colors"
-                />
+          </motion.div>
+
+          {/* Right Side - Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          >
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Name and Organization - Two Columns */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <input 
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Your Name"
+                    required
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:outline-none focus:border-white transition-colors"
+                  />
+                </div>
+                <div>
+                  <input 
+                    type="text"
+                    name="organization"
+                    value={formData.organization}
+                    onChange={handleInputChange}
+                    placeholder="Your Organization Name"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:outline-none focus:border-white transition-colors"
+                  />
+                </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-black tracking-widest text-white/40 uppercase mb-3">Email</label>
-                <input 
-                  type="email"
-                  placeholder="your.email@example.com"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-lime-400 transition-colors"
-                />
+              {/* Email and Phone - Two Columns */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <input 
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="you@gmail.com"
+                    required
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:outline-none focus:border-white transition-colors"
+                  />
+                </div>
+                <div>
+                  <input 
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="Phone Number"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:outline-none focus:border-white transition-colors"
+                  />
+                </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-black tracking-widest text-white/40 uppercase mb-3">Project Details</label>
+              {/* Social Link and Budget - Two Columns */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <input 
+                    type="text"
+                    name="socialLink"
+                    value={formData.socialLink}
+                    onChange={handleInputChange}
+                    placeholder="Your Social Link (Optional)"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:outline-none focus:border-white transition-colors"
+                  />
+                </div>
+                <div>
+                  <select 
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleInputChange}
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-white transition-colors appearance-none cursor-pointer"
+                  >
+                    <option value="" className="bg-black text-white">Select a Budget</option>
+                    <option value="under-5k" className="bg-black text-white">Under ₹5000</option>
+                    <option value="5k-10k" className="bg-black text-white">₹5,000 - ₹10,000</option>
+                    <option value="10k-25k" className="bg-black text-white">₹10,000 - ₹25,000</option>
+                    <option value="25k-50k" className="bg-black text-white">₹25,000 - ₹50,000</option>
+                    <option value="50k+" className="bg-black text-white">50,000+</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Services Section */}
+              <div className="pt-6 border-t border-white/10">
+                <h3 className="text-white text-lg font-medium mb-6">What services are you interested in?</h3>
+                <div className="space-y-4">
+                  {['Logo design', 'Brand identity development', 'Packaging design', 'Brand consultation', 'Website Design & Development'].map((service) => (
+                    <label key={service} className="flex items-center gap-3 cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        checked={formData.services.includes(service)}
+                        onChange={() => handleServiceToggle(service)}
+                        className="w-5 h-5 rounded border border-white/20 bg-white/5 cursor-pointer accent-white"
+                      />
+                      <span className="text-white/80 group-hover:text-white transition-colors">{service}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Message Section */}
+              <div className="pt-6 border-t border-white/10">
+                <h3 className="text-white text-lg font-medium mb-6">Tell us more about your project</h3>
                 <textarea 
-                  placeholder="Tell me about your project..."
-                  rows={6}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-lime-400 transition-colors resize-none"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Message"
+                  rows={5}
+                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:outline-none focus:border-white transition-colors resize-none"
                 ></textarea>
               </div>
 
-              <button className="group flex items-center gap-4 px-10 py-5 rounded-full bg-lime-400 text-black font-black tracking-widest uppercase hover:shadow-[0_10px_30px_rgba(163,230,53,0.3)] transition-all">
-                <span>Send Message</span>
-              </button>
+              {/* Submit Button */}
+              <div className="pt-8">
+                <button 
+                  type="submit"
+                  className="w-full py-4 px-6 bg-black border border-white/20 hover:bg-white hover:text-black text-white font-medium text-sm uppercase tracking-widest rounded-lg transition-all duration-300"
+                >
+                  Send Message
+                </button>
+              </div>
             </form>
           </motion.div>
-        </section>
+        </div>
       </main>
       <Footer />
       <DesignerAI />

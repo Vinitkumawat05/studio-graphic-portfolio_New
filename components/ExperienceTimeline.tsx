@@ -3,46 +3,31 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useSpring, useTransform, useInView } from 'motion/react';
 
 interface ExperienceItem {
-  year: string;
   yearNum: string;
   role: string;
-  company: string;
   description: string;
-  stats: string[];
 }
 
 const experienceData: ExperienceItem[] = [
   {
-    year: "2023 — PRES",
     yearNum: "2023",
-    role: "Lead Visual Designer",
-    company: "Studio VANTAGE",
-    description: "Orchestrating the visual language for Fortune 500 tech companies, focusing on high-fidelity motion systems and scalable brand identities.",
-    stats: ["+140% Growth", "Team Lead", "Core Strategy"]
+    role: "Discover",
+    description: "Before we design anything, we understand everything. Your audience, your market, your ambition. We ask the hard questions so the answers write themselves."
   },
   {
-    year: "2021 — 2023",
     yearNum: "2021",
-    role: "Senior Product Designer",
-    company: "Ether Lab",
-    description: "Led the design of decentralized finance protocols and experimental interface systems. Implemented a 40% improvement in user onboarding efficiency.",
-    stats: ["Web3 Expert", "UI Systems", "Protocol Design"]
+    role: "Define",
+    description: "Raw insight becomes a sharp creative direction. We build the strategy that gives every design decision a purpose — not just a reason."
   },
   {
-    year: "2019 — 2021",
     yearNum: "2019",
-    role: "Graphic Designer",
-    company: "Minimalist Co.",
-    description: "Developed identity systems for emerging startups in the sustainability sector. Specialized in typographic research and print-to-digital transitions.",
-    stats: ["Brand Audit", "Logo Design", "Typography"]
+    role: "Design",
+    description: "This is where intention meets execution. Bold visuals. Purposeful layouts. Typography that communicates before you even read it."
   },
   {
-    year: "2018 — 2019",
     yearNum: "2018",
-    role: "Design Intern",
-    company: "Pixel & Ink",
-    description: "Assisted in the production of high-end commercial campaigns and brand guidelines for international retail giants.",
-    stats: ["Production", "Layouts", "Research"]
+    role: "Deliver",
+    description: " Pixel-perfect. Production-ready. Handed off clean — because your brand deserves nothing less than seamless."
   }
 ];
 
@@ -53,18 +38,6 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
 
   return (
     <div ref={ref} className="relative flex items-center justify-center min-h-[50vh] py-16">
-      {/* Background Kinetic Year */}
-      <motion.div 
-        initial={{ opacity: 0, x: isEven ? 100 : -100 }}
-        whileInView={{ opacity: 0.03, x: isEven ? -50 : 50 }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0"
-      >
-        <span className="text-[20rem] md:text-[35rem] font-black italic tracking-tighter leading-none">
-          {item.yearNum}
-        </span>
-      </motion.div>
-
       {/* Center Node - Precisely Aligned to Line */}
       <div className="absolute left-8 md:left-1/2 -translate-x-1/2 z-30 flex items-center justify-center">
         <motion.div 
@@ -96,30 +69,19 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
           className={`w-full md:w-[45%] pl-20 md:pl-0 ${isEven ? 'md:text-right md:pr-20' : 'md:text-left md:pl-20'}`}
         >
           <div className={`flex flex-col ${isEven ? 'md:items-end' : 'md:items-start'}`}>
-            <span className={`text-[10px] font-black tracking-[0.4em] mb-4 transition-colors duration-500 ${isInView ? 'text-lime-400' : 'text-white/20'}`}>
-              LOG_ENTRY // 00{index + 1}
+            <span className={`text-[17px] font-black, normal tracking-[0px] mb-4 transition-colors duration-500 ${isInView ? 'text-lime-400' : 'text-white/20'}`}>
+              Chapter // 00{index + 1}
             </span>
             
             <div className="relative mb-6">
-              <h3 className="text-3xl md:text-5xl font-black tracking-tighter text-white mb-2 leading-none uppercase">
+              <h3 className="text-3xl md:text-5xl font-black, normal tracking-[-1px] text-white mb-2 leading-none sentancecase">
                 {item.role}
               </h3>
-              <p className="text-white/40 font-black text-xs tracking-widest uppercase">
-                at <span className="text-white">{item.company}</span> — {item.year}
-              </p>
             </div>
 
-            <p className="text-white/30 text-base md:text-lg leading-relaxed mb-8 max-w-md">
+            <p className="text-white/30 font-[17px] md:text-lg leading-[0px] mb-8 max-w-md">
               {item.description}
             </p>
-
-            <div className={`flex flex-wrap gap-2 ${isEven ? 'justify-end' : 'justify-start'}`}>
-              {item.stats.map(stat => (
-                <span key={stat} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[8px] font-black uppercase tracking-widest text-white/40">
-                  {stat}
-                </span>
-              ))}
-            </div>
           </div>
         </motion.div>
 
@@ -149,19 +111,13 @@ const ExperienceTimeline: React.FC = () => {
   return (
     <section id="experience" ref={containerRef} className="py-40 relative overflow-hidden">
       <div className="mb-40 text-center relative z-10">
-        <motion.p 
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-lime-400 text-[10px] font-black tracking-[0.6em] uppercase mb-6"
-        >
-          Operational Timeline
-        </motion.p>
+        {/*  */}
         <motion.h2 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="text-6xl md:text-9xl font-black tracking-tighter leading-none"
+          className="text-6xl md:text-[80px] font-black, normal tracking-[-1px] leading-[4px] sentancecase"
         >
-          THE JOURNEY<span className="text-white/10">.</span>
+          How great design happens<span className="text-white/10">.</span>
         </motion.h2>
       </div>
 

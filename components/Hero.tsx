@@ -1,94 +1,45 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 
 const Hero: React.FC = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const shapes = [
-    { id: 1, type: 'circle' },
-    { id: 2, type: 'diamond' },
-    { id: 3, type: 'triangle' },
-    { id: 4, type: 'pentagon' },
+  // Floating cards with animation data
+  const cards = [
+    { id: 1, delay: 0, duration: 4, x: '60%', y: '15%', width: 'w-32 h-40', rotate: -12 },
+    { id: 2, delay: 0.2, duration: 5, x: '75%', y: '25%', width: 'w-40 h-48', rotate: 8 },
+    { id: 3, delay: 0.4, duration: 4.5, x: '68%', y: '55%', width: 'w-36 h-44', rotate: -5, border: true },
   ];
-
-  const renderShape = (type: string) => {
-    switch (type) {
-      case 'circle':
-        return <circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" strokeWidth="2" />;
-      case 'diamond':
-        return <path d="M20 5 L35 20 L20 35 L5 20 Z" fill="none" stroke="currentColor" strokeWidth="2" />;
-      case 'triangle':
-        return <path d="M20 5 L35 35 L5 35 Z" fill="none" stroke="currentColor" strokeWidth="2" />;
-      case 'pentagon':
-        return (
-          <path d="M20 5 L35 15 L30 35 L10 35 L5 15 Z" fill="none" stroke="currentColor" strokeWidth="2" />
-        );
-      default:
-        return <circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" strokeWidth="2" />;
-    }
-  };
 
   return (
     <div className="min-h-screen flex flex-col justify-center py-20 relative overflow-hidden text-left select-none">
-      {/* Right Shapes Container - Two tilted rectangles separated */}
-      <div className="absolute right-0 top-1/3 hidden lg:flex gap-8 pr-20 items-center justify-center">
-        {/* Left Rectangle - Shapes move up */}
-        <div 
-          className="w-40 h-[500px] border-2 border-white flex flex-col items-center justify-center overflow-hidden"
-          style={{ transform: 'rotate(-8deg)' }}
-        >
+      {/* Animated Floating Shapes - Right Side */}
+      <div className="absolute right-0 top-0 w-1/2 h-full hidden lg:block pointer-events-none">
+        {cards.map((card) => (
           <motion.div
-            className="flex flex-col gap-12 py-8"
+            key={card.id}
+            className={`absolute ${card.width} rounded-3xl ${card.border ? 'border-2 border-blue-500' : 'bg-gray-800/40'} backdrop-blur-sm`}
             style={{
-              transform: `translateY(${scrollY * 0.3}px)`,
+              left: card.x,
+              top: card.y,
+              rotate: card.rotate,
             }}
-          >
-            {shapes.map((shape) => (
-              <div
-                key={`left-${shape.id}`}
-                className="w-24 h-24 flex items-center justify-center text-lime-400"
-              >
-                <svg width="56" height="56" viewBox="0 0 40 40">
-                  {renderShape(shape.type)}
-                </svg>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Right Rectangle - Shapes move down */}
-        <div 
-          className="w-40 h-[500px] border-2 border-white flex flex-col items-center justify-center overflow-hidden"
-          style={{ transform: 'rotate(8deg)' }}
-        >
-          <motion.div
-            className="flex flex-col gap-12 py-8"
-            style={{
-              transform: `translateY(-${scrollY * 0.3}px)`,
+            animate={{
+              y: [0, -40, 0],
+              x: [-10, 10, -10],
+              opacity: [1, 1, 1],
+              rotate: [card.rotate, card.rotate + 5, card.rotate],
             }}
-          >
-            {shapes.map((shape) => (
-              <div
-                key={`right-${shape.id}`}
-                className="w-24 h-24 flex items-center justify-center text-lime-400"
-              >
-                <svg width="56" height="56" viewBox="0 0 40 40">
-                  {renderShape(shape.type)}
-                </svg>
-              </div>
-            ))}
-          </motion.div>
-        </div>
+            transition={{
+              duration: card.duration,
+              repeat: Infinity,
+              delay: card.delay,
+              ease: 'easeInOut',
+            }}
+          />
+        ))}
       </div>
 
       <div className="z-10 w-full relative px-0">
@@ -99,23 +50,44 @@ const Hero: React.FC = () => {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           className="relative"
         >
-          <h1 className="text-[10vw] md:text-[8vw] font-black tracking-tighter leading-[0.8] uppercase max-w-4xl">
-            finding the<br />
-            <span className="text-lime-400">masterpiece</span>
+          <h1 className="text-[80px] font-normal tracking-[-1px] leading-[91px] max-w-4xl">
+            Design,<br />
+            <span className="text-lime-400">Reimagined.</span>
           </h1>
         </motion.div>
 
         {/* Narrative */}
-        <div className="mt-16 max-w-2xl space-y-12">
+        <div className="mt-4 max-w-2xl space-y-12">
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 1.2 }}
-            className="text-white/40 text-base md:text-lg leading-relaxed font-medium tracking-tight"
+            className="text-white/40 text-base md:text-lg leading-[24px] font-[17px] tracking-[0px]"
           >
-            A specialized design unit crafting <span className="text-white">high-fidelity brand systems</span> and digital landmarks for the visionaries of tomorrow.
+            <span className="text-white">We don't follow trends, We set them.</span> The studio behind brands that don't just look good they feel inevitable. 
           </motion.p>
         </div>
+
+        {/* Buttons */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 1 }}
+          className="flex gap-4 mt-12 flex-wrap  "
+        >
+          <button 
+            onClick={() => navigate('/work')}
+            className="px-6 md:px-8 py-3 border border-white/40 text-white hover:bg-white/5 transition-all duration-300 rounded-full font-medium"
+          >
+            Explore Work
+          </button>
+          <button 
+            onClick={() => navigate('/contact')}
+            className="px-6 md:px-8 py-3 bg-white text-black hover:bg-white/90 transition-all duration-300 rounded-full font-medium"
+          >
+            Start the Project
+          </button>
+        </motion.div>
       </div>
     </div>
   );

@@ -49,11 +49,11 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ projects }) => {
               <div className="absolute inset-0 p-10 flex flex-col justify-between">
                 <div className="flex justify-between items-start">
                   <div className="flex flex-col gap-2">
-                    <span className="w-fit px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[9px] font-black tracking-widest uppercase">
+                    <span className="w-fit px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[17px] font-black, normal tracking-[0px] sentancecase">
                       {project.category}
                     </span>
                     {project.hasAccent && (
-                      <span className="w-fit px-4 py-1.5 rounded-full bg-lime-400 text-black text-[9px] font-black tracking-widest uppercase">
+                      <span className="w-fit px-4 py-1.5 rounded-full bg-lime-400 text-black text-[17px] font-black, normal tracking-[0px] sentancecase">
                         Spotlight
                       </span>
                     )}
@@ -65,10 +65,10 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ projects }) => {
                 </div>
 
                 <div className="space-y-3">
-                  <p className="text-[10px] font-black tracking-[0.4em] text-lime-400 uppercase opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                    Archive No. 00{project.id}
+                  <p className="text-[17px] font-black, normal tracking-[0px] text-lime-400 sentancecase opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100 tracking-[0px]">
+                    Project No. 00{project.id}
                   </p>
-                  <h3 className="text-2xl md:text-4xl font-black tracking-tighter leading-none group-hover:translate-x-2 transition-transform duration-500">
+                  <h3 className="text-2xl md:text-4xl font-black, normal tracking-[-1px] leading-[4px] ">
                     {project.title}
                   </h3>
                   <div className="w-0 h-[1px] bg-white group-hover:w-full transition-all duration-700 opacity-20"></div>

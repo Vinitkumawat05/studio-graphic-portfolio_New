@@ -27,8 +27,8 @@ const WorkDetailPage: React.FC = () => {
   const allProjects: Record<string, WorkDetail> = {
     '1': {
       id: '1',
-      title: 'LIGHTSPEED',
-      category: 'Branding',
+      title: 'Nova',
+      category: 'Brand Indentity',
       imageUrl: 'https://images.unsplash.com/photo-1635405074683-96d6921a2a2c?auto=format&fit=crop&q=80&w=1200',
       size: 'large',
       description: 'How Lightspeed transformed their online retail experience by launching a mobile-optimized website and simplifying checkout workflows, increasing conversion rates by 55% and boosting customer satisfaction across devices.',
@@ -138,9 +138,21 @@ const WorkDetailPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black overflow-x-hidden">
-      <main className="px-6 md:px-12 lg:px-20 max-w-[2200px] mx-auto pt-32 md:pt-40">
+      <main className="px-6 md:px-12 lg:px-20 max-w-[2200px] mx-auto pt-[30px]">
+        {/* Hero Image - Full Width */}
+        <motion.div
+          {...sectionReveal}
+          className="rounded-[30px] overflow-hidden w-full h-[400px] md:h-[670px] mb-20"
+        >
+          <img
+            src={currentProject.imageUrl}
+            alt={currentProject.title}
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+
         {/* Introduction Section with 001 */}
-        <section className="mb-32 grid md:grid-cols-2 gap-12 md:gap-24 items-center">
+        <section className="mb-32 grid md:grid-cols-3 gap-12 md:gap-24 pt-20 md:pt-32">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -149,128 +161,46 @@ const WorkDetailPage: React.FC = () => {
             <div className="mb-12 flex items-center gap-4">
               <div className="h-12 w-1 bg-lime-400 rounded-full"></div>
               <div>
-                <p className="text-lime-400 text-[12px] font-black tracking-[0.3em] uppercase">001</p>
-                <p className="text-white/40 text-[12px] font-black tracking-widest uppercase">Introduction</p>
+                <p className="text-lime-400 text-[17px] font-black, normal tracking-[0px] sentancecase">001</p>
+                <p className="text-white/40 text-[17px] font-black, normal tracking-widest sentancecase">Introduction</p>
               </div>
             </div>
             
             <div className="space-y-8">
               <div className="border-b border-white/10 pb-6">
-                <p className="text-white/40 text-[11px] font-black tracking-[0.3em] uppercase mb-3">Client</p>
-                <p className="text-2xl md:text-3xl font-black">{currentProject.title}</p>
+                <p className="text-white/40 text-[17px] font-black, normal tracking-[0px] sentancecase mb-3">Client</p>
+                <p className="text-2xl md:text-3xl font-black, normal">{currentProject.title}</p>
               </div>
               
               <div className="border-b border-white/10 pb-6">
-                <p className="text-white/40 text-[11px] font-black tracking-[0.3em] uppercase mb-3">Timeline</p>
-                <p className="text-2xl md:text-3xl font-black">6 months</p>
+                <p className="text-white/40 text-[17px] font-black, normal tracking-[0px] sentancecase mb-3">Timeline</p>
+                <p className="text-2xl md:text-3xl font-black, normal">6 months</p>
               </div>
               
               <div className="pb-6">
-                <p className="text-white/40 text-[11px] font-black tracking-[0.3em] uppercase mb-3">Year</p>
-                <p className="text-2xl md:text-3xl font-black">2024</p>
+                <p className="text-white/40 text-[17px] font-black, normal tracking-[0px] sentancecase mb-3">Year</p>
+                <p className="text-2xl md:text-3xl font-black, normal">2024</p>
               </div>
             </div>
-
-            <div className="mt-12 pt-8 border-t border-white/10">
-              <p className="text-lg md:text-xl text-white/70 leading-relaxed">
-                {currentProject.description}
-              </p>
-            </div>
           </motion.div>
 
-          {/* Hero Image on the right */}
-          <motion.div
-            {...sectionReveal}
-            className="rounded-[30px] overflow-hidden aspect-square md:aspect-auto md:h-96 lg:h-[500px]"
-          >
-            <img
-              src={currentProject.imageUrl}
-              alt={currentProject.title}
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-        </section>
-
-        {/* Header Section */}
-        <section className="mb-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="md:col-span-2"
           >
-            <p className="text-lime-400 text-[10px] font-black tracking-[0.6em] uppercase mb-8">Project Overview</p>
-            <h1 className="text-5xl md:text-6xl font-black tracking-tighter leading-[0.9] uppercase mb-8">
-              Project Details
-            </h1>
+            <p className="text-lg md:text-xl text-white/70 leading-relaxed">
+              {currentProject.description}
+            </p>
           </motion.div>
         </section>
 
-        {/* Challenges Section */}
-        <section className="mb-24 grid md:grid-cols-2 gap-16">
-          <motion.div {...sectionReveal}>
-            <div className="md:sticky md:top-32">
-              <p className="text-lime-400 text-[10px] font-black tracking-[0.6em] uppercase mb-6">002</p>
-              <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-8">Challenges</h2>
-              <p className="text-lg text-white/60 leading-relaxed">
-                {currentProject.challenges}
-              </p>
-            </div>
-          </motion.div>
-          <motion.div {...sectionReveal}>
-            <img
-              src={currentProject.images[1] || currentProject.imageUrl}
-              alt="Challenges visualization"
-              className="rounded-[40px] w-full h-96 object-cover"
-            />
-          </motion.div>
-        </section>
-
-        {/* Solution Section */}
-        <section className="mb-24 grid md:grid-cols-2 gap-16">
-          <motion.div {...sectionReveal}>
-            <img
-              src={currentProject.images[2] || currentProject.imageUrl}
-              alt="Solution visualization"
-              className="rounded-[40px] w-full h-96 object-cover"
-            />
-          </motion.div>
-          <motion.div {...sectionReveal}>
-            <div className="md:sticky md:top-32">
-              <p className="text-lime-400 text-[10px] font-black tracking-[0.6em] uppercase mb-6">003</p>
-              <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-8">Solution</h2>
-              <p className="text-lg text-white/60 leading-relaxed">
-                {currentProject.solution}
-              </p>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* Results Section */}
-        <motion.section {...sectionReveal} className="mb-32">
-          <p className="text-lime-400 text-[10px] font-black tracking-[0.6em] uppercase mb-6">004</p>
-          <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-12">Results</h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {currentProject.results.map((result, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="p-8 rounded-[20px] bg-white/5 border border-white/10 hover:border-lime-400 transition-all"
-              >
-                <p className="text-2xl md:text-3xl font-black text-lime-400 mb-3">{idx + 1}.</p>
-                <p className="text-lg font-black leading-relaxed">{result}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
 
         {/* Related Works Section */}
         <motion.section {...sectionReveal} className="mb-32">
-          <p className="text-lime-400 text-[10px] font-black tracking-[0.6em] uppercase mb-8">Other Works</p>
-          <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-16">More Projects</h2>
+          <p className="text-lime-400 text-[17px] font-black, normal tracking-[0px] sentancecase mb-8">Other Works</p>
+          <h2 className="text-5xl md:text-6xl font-black, normal tracking-[0px] mb-16">More Projects</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {relatedProjects.map((project, idx) => (

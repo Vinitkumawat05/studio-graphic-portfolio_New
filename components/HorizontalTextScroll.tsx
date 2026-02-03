@@ -73,6 +73,7 @@ const HorizontalTextScroll: React.FC = () => {
         .Horizontal {
           overflow: hidden;
           height: 100vh;
+          width: 100vw;
           display: flex;
           align-items: center;
           background-color: #000;

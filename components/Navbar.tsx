@@ -28,11 +28,13 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navItems = [
-    { label: 'WORK', href: '/work' },
-    { label: 'CONTACT', href: '/contact' },
+    { label: 'Work', href: '/work' },
+    { label: 'Contact', href: '/contact' },
   ];
 
   const isActive = (href: string) => location.pathname === href;
+
+  const isWorkDetailPage = /^\/work\/\d+$/.test(location.pathname);
 
   return (
     <nav 
@@ -47,8 +49,10 @@ const Navbar: React.FC = () => {
       <div 
         className={`flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] mx-auto ${
           isScrolled 
-            ? "bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full px-4 md:px-10 py-3 gap-8 md:gap-14 shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-100" 
-            : "bg-transparent border-b border-transparent px-6 md:px-12 lg:px-20 py-10 w-full max-w-[1800px] scale-100"
+            ? "bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full px-4 md:px-5 py-3 gap-8 md:gap-14 shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-100" 
+            : isWorkDetailPage
+              ? "bg-transparent border-b border-transparent pt-[41.070px] pr-[100px] pb-[40px] pl-[100px] w-full max-w-[1800px] scale-100"
+              : "bg-transparent border-b border-transparent px-6 md:px-12 lg:px-20 py-10 w-full max-w-[1800px] scale-100"
         }`}
       >
         {/* Branding */}
@@ -71,7 +75,7 @@ const Navbar: React.FC = () => {
             <Link 
               key={item.label}
               to={item.href}
-              className={`text-[9px] font-bold tracking-[0.25em] transition-all duration-300 ${
+              className={`text-[17px] font-normal tracking-[0px] transition-all duration-300 ${
                 isActive(item.href) 
                   ? 'text-lime-400' 
                   : 'text-white/40 hover:text-white'
@@ -86,13 +90,13 @@ const Navbar: React.FC = () => {
         <div className={`flex items-center gap-4 ${!isScrolled ? 'flex-1 justify-end' : ''}`}>
           <a
             href="mailto:hello@studio.design"
-            className={`transition-all duration-500 px-7 py-2.5 rounded-full text-[9px] font-black tracking-[0.15em] uppercase active:scale-95 ${
+            className={`transition-all duration-500 px-7 py-2.5 rounded-full text-[17px] font-black, normal tracking-[0px] sentancecase active:scale-95 ${
               isScrolled 
                 ? "bg-white text-black hover:bg-lime-400" 
                 : "bg-transparent border border-white/20 text-white hover:bg-white hover:text-black"
             }`}
           >
-            LET'S TALK
+            Let's talk
           </a>
         </div>
       </div>

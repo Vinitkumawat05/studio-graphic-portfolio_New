@@ -16,7 +16,7 @@ const App: React.FC = () => {
   const projects: Project[] = [
     {
       id: '1',
-      title: 'VANTAGE ARCHIVE',
+      title: 'Vantage archive',
       category: 'Branding',
       imageUrl: 'https://images.unsplash.com/photo-1635405074683-96d6921a2a2c?auto=format&fit=crop&q=80&w=1200',
       size: 'large',
@@ -24,14 +24,14 @@ const App: React.FC = () => {
     },
     {
       id: '2',
-      title: 'MOTION LAB',
+      title: 'Motion lab',
       category: 'UI/UX',
       imageUrl: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800',
       size: 'tall',
     },
     {
       id: '3',
-      title: 'CYBERPUNK IDENTITY',
+      title: 'Cyberpunk identity',
       category: 'Experimental',
       imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200',
       size: 'medium',
@@ -39,7 +39,7 @@ const App: React.FC = () => {
     },
     {
       id: '4',
-      title: 'KINETIC TYPE',
+      title: 'Kinetic type',
       category: 'Motion',
       imageUrl: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&q=80&w=800',
       size: 'medium',
@@ -65,38 +65,24 @@ const App: React.FC = () => {
             className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-32"
           >
             <div className="max-w-xl">
-              <p className="text-lime-400 text-[10px] font-black tracking-[0.6em] uppercase mb-6">Curated Archive</p>
-              <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] uppercase">
-                selected<br />
-                <span className="text-white/20 italic">masterpieces.</span>
+              {/* <p className="text-lime-400 text-[10px] font-black tracking-[0.6em] sentancecase mb-6">Curated Archive</p> */}
+              <h2 className="text-5xl md:text-[48px] font-black, normal tracking-[-1px] leading-[32px] sentancecase w-[590px]">
+                The Work Speaks,We Listen.<br />
+                <span className="text-white md:text-[17px] tracking-[0px] leading-[4px]">Real brands, Real impact, Every project here was built from obsession not templates.</span>
               </h2>
             </div>
             <Link 
               to="/work" 
               className="group flex items-center gap-6 px-10 py-5 rounded-full border border-white/10 hover:border-lime-400 transition-all hover:bg-white hover:text-black"
             >
-              <span className="text-[10px] font-black tracking-widest uppercase">Explore All Works</span>
+              <span className="text-[17px] font-black, normal tracking-[0px] leading-[4px] sentancecase">See Everything</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
           <PortfolioGrid projects={projects} />
         </section>
 
-        {/* Capabilities Marquee - Refined Style */}
-        <div className="py-24 border-y border-white/5 overflow-hidden whitespace-nowrap bg-white/[0.01]">
-           <div className="flex gap-20 animate-[marquee_30s_linear_infinite]">
-             {[...Array(6)].map((_, i) => (
-               <div key={i} className="flex items-center gap-20">
-                 <span className="text-4xl font-black tracking-tighter uppercase text-white/20 hover:text-white transition-colors cursor-default">Brand Strategy</span>
-                 <div className="w-2 h-2 rounded-full bg-lime-400/40"></div>
-                 <span className="text-4xl font-black tracking-tighter uppercase text-white/20 hover:text-white transition-colors cursor-default">Digital Landmarks</span>
-                 <div className="w-2 h-2 rounded-full bg-white/10"></div>
-                 <span className="text-4xl font-black tracking-tighter uppercase text-white/20 hover:text-white transition-colors cursor-default">Motion Systems</span>
-                 <div className="w-2 h-2 rounded-full bg-lime-400/40"></div>
-               </div>
-             ))}
-           </div>
-        </div>
+       
 
         <ExperienceTimeline />
         <FAQ />

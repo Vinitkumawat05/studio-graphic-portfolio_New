@@ -6,6 +6,7 @@ export interface Project {
   imageUrl: string;
   size: 'small' | 'medium' | 'large' | 'tall';
   hasAccent?: boolean;
+  subtitle?: string;
 }
 
 export interface NavItem {

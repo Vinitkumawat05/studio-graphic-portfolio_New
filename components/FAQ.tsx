@@ -10,24 +10,24 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "What is the studio's core design philosophy?",
-    answer: "We believe in 'finding the masterpiece' by stripping away the non-essential. Our approach is rooted in minimalist principles, focusing on high-fidelity execution and emotional resonance through precise visual systems."
+    question: "What do you actually do?",
+    answer: " We design brands, websites, and digital experiences that make people stop and pay attention. From identity systems to full-scale web platforms — if it needs strategy and creativity behind it, that's our space."
   },
   {
-    question: "How long does a typical branding engagement take?",
-    answer: "A comprehensive brand identity project typically spans 6 to 10 weeks. This includes deep discovery, strategic positioning, visual exploration, and final system documentation for various touchpoints."
+    question: "How long does a project take?",
+    answer: "A brand identity? Around 3–5 weeks. A full web design project? 6–10 weeks. Every project gets a clear roadmap upfront — no guesswork, no surprises. Just a timeline you can count on."
   },
   {
-    question: "Do you collaborate with international brands?",
-    answer: "Yes. STUDIO operates as a globally distributed creative team. We have successfully partnered with visionary brands across Europe, North America, and Asia, leveraging digital-first workflows for seamless collaboration."
+    question: "How much does it cost?",
+    answer: " Every project is scoped individually — because cookie-cutter pricing doesn't fit custom work. Reach out, tell us what you're building, and we'll give you a transparent breakdown. No hidden fees. Ever."
   },
   {
-    question: "What is the Archive mentioned in your portfolio?",
-    answer: "The Archive is our living repository of experimental work, kinetic experiments, and past landmarks. It serves as both a portfolio and a testament to our evolution in the digital landscape."
+    question: "Do you work with people outside my country?",
+    answer: "Absolutely. We're built to work globally — fully remote, time-zone flexible. If you've got the vision, we've got the reach."
   },
   {
-    question: "How can we initiate a new project together?",
-    answer: "The process begins with an inquiry. Once we understand your vision, we move into a discovery phase where we define goals, constraints, and the unique masterpiece we'll build together."
+    question: "Why choose you over anyone else?",
+    answer: "Because we don't just make things look good. We make them work. Every project starts with strategy, not guesswork. Your brand isn't a side project here — it's the only project that matters."
   }
 ];
 
@@ -56,13 +56,13 @@ const FAQRow: React.FC<{
         {/* Content Section (Number + Text Column) */}
         <div className="flex items-start gap-8 md:gap-16 flex-1">
           {/* Column 1: Number */}
-          <span className={`text-[10px] font-black tracking-widest mt-2 md:mt-3.5 flex-shrink-0 transition-colors duration-500 ${isOpen ? 'text-lime-400' : 'text-white/20 group-hover:text-white/50'}`}>
+        <span className={`text-3xl font-black, normal tracking-[0px] mt-2 md:mt-3.5 flex-shrink-0 transition-colors duration-500 ${isOpen ? 'text-lime-400' : 'text-white/20 group-hover:text-white/50'}`}>
             0{index + 1}
           </span>
           
           {/* Column 2: Stacked Question & Answer */}
           <div className="flex-1">
-            <h3 className={`text-lg md:text-3xl font-bold tracking-tight transition-all duration-500 ${
+            <h3 className={`text-lg md:text-3xl font-normal tracking-[0px] mt-2 md:mt-3.5 transition-all duration-500 ${
               isOpen ? 'text-white' : 'text-white/30 group-hover:text-white'
             }`}>
               {item.question}
@@ -113,9 +113,9 @@ const FAQ: React.FC = () => {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="text-center"
           >
-            <p className="text-[11px] font-black tracking-[0.5em] text-white/40 uppercase mb-8">STUDIO_INQUIRIES</p>
-            <h2 className="text-6xl md:text-9xl font-black tracking-tighter leading-none">
-              THE ARCHIVE<span className="text-white/20">.</span>
+            <p className="text-[17px] font-black,normal tracking-[0px] text-white/40 sentancecase mb-2">Questions?</p>
+            <h2 className="text-6xl md:text-[80px] font-black, normal tracking-[-1px] leading-none">
+              We've got answers<span className="text-white/20">.</span>
             </h2>
           </motion.div>
         </div>

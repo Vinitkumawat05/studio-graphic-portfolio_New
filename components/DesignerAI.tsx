@@ -55,7 +55,11 @@ const DesignerAI: React.FC = () => {
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      setTimeout(() => {
+        if (scrollRef.current) {
+          scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        }
+      }, 0);
     }
   }, [messages, isLoading, typingMessageId]);
 
@@ -190,10 +194,10 @@ const DesignerAI: React.FC = () => {
                 <Bot className="w-4 h-4 text-white/60" />
               </div>
               <div>
-                <h4 className="text-[10px] font-black tracking-widest uppercase text-white/80">Design Curator</h4>
+                <h4 className="text-[10px] font-black tracking-widest uppercase text-white/80">Vinit Kumawat</h4>
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <div className="w-1 h-1 rounded-full bg-lime-400 animate-pulse"></div>
-                  <p className="text-[8px] text-white/30 font-bold uppercase tracking-widest">Active_Node</p>
+                  <p className="text-[8px] text-white/30 font-bold uppercase tracking-widest">Available Now</p>
                 </div>
               </div>
             </div>
@@ -222,7 +226,7 @@ const DesignerAI: React.FC = () => {
                       {msg.role === MessageRole.USER ? <User className="w-3 h-3 text-white/40" /> : <Bot className="w-3 h-3 text-lime-400" />}
                     </div>
                     <span className="text-[8px] font-black tracking-widest uppercase text-white/20">
-                      {msg.role === MessageRole.USER ? 'User' : 'Curator'}
+                      {msg.role === MessageRole.USER ? 'User' : 'Vinit Kumawat'}
                     </span>
                     <button 
                       onClick={() => handleCopy(msg.text, i)}

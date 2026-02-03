@@ -2,8 +2,8 @@
 import { GoogleGenAI } from "@google/genai";
 import { MessageRole, ChatMessage } from "../types";
 
-// Always use process.env.API_KEY directly for initialization as per SDK guidelines
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize with API key from environment variables
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
 export const getDesignCritique = async (messages: ChatMessage[]) => {
   try {
@@ -49,6 +49,11 @@ export const getDesignCritique = async (messages: ChatMessage[]) => {
     return response.text || "Analyzed. Minimalist execution. Strong hierarchy.";
   } catch (error) {
     console.error("Gemini API Error:", error);
+    console.error("API Key present:", !!import.meta.env.VITE_GEMINI_API_KEY);
+    console.error("API Key value:", import.meta.env.VITE_GEMINI_API_KEY);
+    if (error instanceof Error) {
+      console.error("Error message:", error.message);
+    }
     return "Connection interrupted. Re-evaluating design nodes.";
   }
 };
