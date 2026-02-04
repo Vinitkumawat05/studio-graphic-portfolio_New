@@ -7,10 +7,12 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import DesignerAI from './components/DesignerAI';
 import HorizontalTextScroll from './components/HorizontalTextScroll';
+import SlideInButton from './components/SlideInButton';
+import ServicesSection from './components/ServicesSection';
 import { Project } from './types';
 import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import TestimonialsSection from './components/TestimonialsSection';
 
 const App: React.FC = () => {
   const projects: Project[] = [
@@ -73,10 +75,12 @@ const App: React.FC = () => {
             </div>
             <Link 
               to="/work" 
-              className="group flex items-center gap-6 px-10 py-5 rounded-full border border-white/10 hover:border-lime-400 transition-all hover:bg-white hover:text-black"
+              className="group"
             >
-              <span className="text-[17px] font-black, normal tracking-[0px] leading-[4px] sentancecase">See Everything</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <SlideInButton
+                text="See Everything"
+                variant="secondary"
+              />
             </Link>
           </motion.div>
           <PortfolioGrid projects={projects} />
@@ -85,7 +89,9 @@ const App: React.FC = () => {
        
 
         <ExperienceTimeline />
+        <ServicesSection />
         <FAQ />
+        <TestimonialsSection />
         
         {/* Horizontal Text Scroll Section */}
         <HorizontalTextScroll />

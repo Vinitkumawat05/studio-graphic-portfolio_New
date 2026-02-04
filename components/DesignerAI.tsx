@@ -45,7 +45,6 @@ const DesignerAI: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [typingMessageId, setTypingMessageId] = useState<number | null>(null);
   
-  const scrollRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const chatWindowRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -53,15 +52,31 @@ const DesignerAI: React.FC = () => {
   const inputAreaRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  useEffect(() => {
-    if (scrollRef.current) {
-      setTimeout(() => {
-        if (scrollRef.current) {
-          scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-        }
-      }, 0);
+  // Auto-scroll function
+  const scrollToBottom = () => {
+    if (contentRef.current) {
+      contentRef.current.scrollTo({
+        top: contentRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
     }
-  }, [messages, isLoading, typingMessageId]);
+  };
+
+  // Scroll when messages change, loading state changes, or typing
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isLoading]);
+
+  // Continuous scroll during typewriter animation
+  useEffect(() => {
+    if (typingMessageId !== null) {
+      const intervalId = setInterval(() => {
+        scrollToBottom();
+      }, 100);
+      
+      return () => clearInterval(intervalId);
+    }
+  }, [typingMessageId]);
 
   // Handle textarea auto-height
   useEffect(() => {
@@ -101,6 +116,19 @@ const DesignerAI: React.FC = () => {
         ease: 'power2.out'
       }, '-=0.3');
     }
+  }, [isOpen]);
+
+  // Prevent body scroll when chat is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isOpen]);
 
   const handleToggle = () => {
@@ -288,7 +316,6 @@ const DesignerAI: React.FC = () => {
                 </div>
               </motion.div>
             )}
-            <div ref={scrollRef} />
           </div>
 
           {/* Input Area */}

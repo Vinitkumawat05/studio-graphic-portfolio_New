@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Footer from '../components/Footer';
 import DesignerAI from '../components/DesignerAI';
-import { motion } from 'motion/react';
-import { Mail, Linkedin, Instagram, Twitter, ExternalLink } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Mail, Linkedin, Instagram, Twitter, ExternalLink, Check, Loader2 } from 'lucide-react';
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +15,8 @@ const ContactPage: React.FC = () => {
     services: [] as string[],
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -37,20 +39,61 @@ const ContactPage: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ 
-      name: '', 
-      organization: '',
-      email: '', 
-      phone: '',
-      socialLink: '',
-      budget: '',
-      services: [],
-      message: '' 
-    });
+    setIsSubmitting(true);
+
+    try {
+      // Send form data via Web3Forms API
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '54c96001-5396-446f-91f6-ac180dbb3e6e', // Replace with your Web3Forms access key
+          to_email: 'vinitkumawat05@gmail.com',
+          from_name: formData.name,
+          subject: `New Project Inquiry from ${formData.name}`,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          organization: formData.organization || 'Not provided',
+          social_link: formData.socialLink || 'Not provided',
+          budget: formData.budget || 'Not selected',
+          services: formData.services.length > 0 ? formData.services.join(', ') : 'None selected',
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+
+        // Reset form after showing success
+        setTimeout(() => {
+          setFormData({ 
+            name: '', 
+            organization: '',
+            email: '', 
+            phone: '',
+            socialLink: '',
+            budget: '',
+            services: [],
+            message: '' 
+          });
+          setIsSubmitted(false);
+        }, 3000);
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setIsSubmitting(false);
+      alert('Failed to send message. Please try again or email directly to vinitkumawat05@gmail.com');
+    }
   };
 
   return (
@@ -82,7 +125,7 @@ const ContactPage: React.FC = () => {
                 href="mailto:vinit@studio.design"
                 className="group text-2xl md:text-3xl font-normal hover:text-white/80 transition-colors block"
               >
-                vinit@studio.design
+                vinitkumawat05@gmail.com
               </a>
               <p className="text-sm text-white/40 mt-2">Email</p>
             </div>
@@ -90,10 +133,10 @@ const ContactPage: React.FC = () => {
             {/* Phone */}
             <div>
               <a 
-                href="tel:+918299999999"
+                href="tel:+917862877053"
                 className="group text-base font-normal hover:text-white/80 transition-colors block"
               >
-                +91 (829) 999-9999
+                +91 78628-77053
               </a>
               <p className="text-sm text-white/40 mt-2">Phone</p>
             </div>
@@ -101,7 +144,7 @@ const ContactPage: React.FC = () => {
             {/* Address */}
             <div>
               <p className="text-base font-normal block">
-                Mumbai, India
+                Vadodara, India
               </p>
               <p className="text-sm text-white/40 mt-2">Location</p>
             </div>
@@ -125,7 +168,7 @@ const ContactPage: React.FC = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Your Name"
+                    placeholder="Your Name *"
                     required
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:outline-none focus:border-white transition-colors"
                   />
@@ -150,7 +193,7 @@ const ContactPage: React.FC = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="you@gmail.com"
+                    placeholder="you@gmail.com *"
                     required
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:outline-none focus:border-white transition-colors"
                   />
@@ -161,7 +204,8 @@ const ContactPage: React.FC = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="Phone Number"
+                    placeholder="Phone Number *"
+                    required
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:outline-none focus:border-white transition-colors"
                   />
                 </div>
@@ -221,8 +265,9 @@ const ContactPage: React.FC = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Message"
+                  placeholder="Message *"
                   rows={5}
+                  required
                   className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/40 focus:outline-none focus:border-white transition-colors resize-none"
                 ></textarea>
               </div>
@@ -231,9 +276,28 @@ const ContactPage: React.FC = () => {
               <div className="pt-8">
                 <button 
                   type="submit"
-                  className="w-full py-4 px-6 bg-black border border-white/20 hover:bg-white hover:text-black text-white font-medium text-sm uppercase tracking-widest rounded-lg transition-all duration-300"
+                  disabled={isSubmitting || isSubmitted}
+                  className={`w-full py-4 px-6 border font-medium text-sm uppercase tracking-widest rounded-lg transition-all duration-300 flex items-center justify-center gap-2 ${
+                    isSubmitted 
+                      ? 'bg-lime-400 border-lime-400 text-black' 
+                      : isSubmitting
+                        ? 'bg-white/10 border-white/20 text-white/50 cursor-not-allowed'
+                        : 'bg-black border-white/20 hover:bg-white hover:text-black text-white'
+                  }`}
                 >
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : isSubmitted ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      Message Sent!
+                    </>
+                  ) : (
+                    'Send Message'
+                  )}
                 </button>
               </div>
             </form>

@@ -96,7 +96,7 @@ const WorkPage: React.FC = () => {
                   window.scrollTo(0, 0);
                   navigate(`/work/${project.id}`);
                 }}
-                className="group relative aspect-[4/5] rounded-[40px] overflow-hidden bg-[#070707] border border-white/5 cursor-pointer hover:border-lime-400 transition-colors"
+                className="group relative aspect-[4/5] rounded-[40px] overflow-hidden bg-[#070707] border border-white/5 cursor-pointer  transition-colors"
               >
                 <img 
                   src={project.imageUrl} 

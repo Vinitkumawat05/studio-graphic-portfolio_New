@@ -11,23 +11,23 @@ interface ExperienceItem {
 const experienceData: ExperienceItem[] = [
   {
     yearNum: "2023",
-    role: "Discover",
-    description: "Before we design anything, we understand everything. Your audience, your market, your ambition. We ask the hard questions so the answers write themselves."
+    role: "Discovery & Strategy",
+    description: "We start by understanding your goals, audience, and vision. Through in-depth research and strategy sessions, we lay the foundation for a powerful design."
   },
   {
     yearNum: "2021",
-    role: "Define",
-    description: "Raw insight becomes a sharp creative direction. We build the strategy that gives every design decision a purpose — not just a reason."
+    role: "Concept & Design",
+    description: "With insights in place, we craft initial concepts, exploring bold and creative directions that align with your brand’s identity and objectives."
   },
   {
     yearNum: "2019",
-    role: "Design",
-    description: "This is where intention meets execution. Bold visuals. Purposeful layouts. Typography that communicates before you even read it."
+    role: "Development & Execution",
+    description: "Once the design is perfected, we bring it to life, whether it’s a website, brand identity, or motion graphics, ensuring high performance and flawless execution."
   },
   {
     yearNum: "2018",
-    role: "Deliver",
-    description: " Pixel-perfect. Production-ready. Handed off clean — because your brand deserves nothing less than seamless."
+    role: "Launch & Optimization",
+    description: " We ensure a smooth launch. Plus, we provide ongoing support, optimizations, and guidance to keep your brand at its best."
   }
 ];
 

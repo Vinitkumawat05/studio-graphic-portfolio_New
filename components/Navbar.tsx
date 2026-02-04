@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import SlideInButton from './SlideInButton';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -88,16 +89,11 @@ const Navbar: React.FC = () => {
 
         {/* Action Button */}
         <div className={`flex items-center gap-4 ${!isScrolled ? 'flex-1 justify-end' : ''}`}>
-          <a
+          <SlideInButton
+            text="Let's talk"
             href="mailto:hello@studio.design"
-            className={`transition-all duration-500 px-7 py-2.5 rounded-full text-[17px] font-black, normal tracking-[0px] sentancecase active:scale-95 ${
-              isScrolled 
-                ? "bg-white text-black hover:bg-lime-400" 
-                : "bg-transparent border border-white/20 text-white hover:bg-white hover:text-black"
-            }`}
-          >
-            Let's talk
-          </a>
+            variant="primary"
+          />
         </div>
       </div>
     </nav>

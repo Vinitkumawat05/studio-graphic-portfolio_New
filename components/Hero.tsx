@@ -1,45 +1,72 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
+import SlideInButton from './SlideInButton';
 
 const Hero: React.FC = () => {
   const navigate = useNavigate();
 
-  // Floating cards with animation data
-  const cards = [
-    { id: 1, delay: 0, duration: 4, x: '60%', y: '15%', width: 'w-32 h-40', rotate: -12 },
-    { id: 2, delay: 0.2, duration: 5, x: '75%', y: '25%', width: 'w-40 h-48', rotate: 8 },
-    { id: 3, delay: 0.4, duration: 4.5, x: '68%', y: '55%', width: 'w-36 h-44', rotate: -5, border: true },
+  // Cards for the marquee columns
+  const leftColumnCards = [
+    { id: 1 },
+    { id: 2 },
+    { id: 3 },
+    { id: 4 },
+  ];
+
+  const rightColumnCards = [
+    { id: 1 },
+    { id: 2 },
+    { id: 3 },
+    { id: 4 },
   ];
 
   return (
     <div className="min-h-screen flex flex-col justify-center py-20 relative overflow-hidden text-left select-none">
-      {/* Animated Floating Shapes - Right Side */}
-      <div className="absolute right-0 top-0 w-1/2 h-full hidden lg:block pointer-events-none">
-        {cards.map((card) => (
+      {/* Right Side - Two Vertical Marquee Columns */}
+      <div className="absolute right-0 top-[82px] w-[45%] h-[calc(100%-82px)] hidden lg:flex gap-6 pointer-events-none overflow-hidden py-16">
+        {/* Left Column - Scrolls Up */}
+        <div className="flex-1 relative overflow-hidden">
           <motion.div
-            key={card.id}
-            className={`absolute ${card.width} rounded-3xl ${card.border ? 'border-2 border-blue-500' : 'bg-gray-800/40'} backdrop-blur-sm`}
-            style={{
-              left: card.x,
-              top: card.y,
-              rotate: card.rotate,
-            }}
-            animate={{
-              y: [0, -40, 0],
-              x: [-10, 10, -10],
-              opacity: [1, 1, 1],
-              rotate: [card.rotate, card.rotate + 5, card.rotate],
-            }}
+            className="flex flex-col gap-6"
+            animate={{ y: ['0%', '-50%'] }}
             transition={{
-              duration: card.duration,
+              duration: 20,
               repeat: Infinity,
-              delay: card.delay,
-              ease: 'easeInOut',
+              ease: 'linear',
             }}
-          />
-        ))}
+          >
+            {[...leftColumnCards, ...leftColumnCards].map((card, index) => (
+              <div
+                key={`left-${card.id}-${index}`}
+                className="w-full h-[400px] rounded-2xl border border-white/10"
+                style={{ backgroundColor: '#0B0B0C' }}
+              />
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Right Column - Scrolls Down (opposite direction) */}
+        <div className="flex-1 relative overflow-hidden">
+          <motion.div
+            className="flex flex-col gap-6"
+            animate={{ y: ['-50%', '0%'] }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: 'linear',
+            }}
+          >
+            {[...rightColumnCards, ...rightColumnCards].map((card, index) => (
+              <div
+                key={`right-${card.id}-${index}`}
+                className="w-full h-[450px] rounded-2xl border border-white/10"
+                style={{ backgroundColor: '#0B0B0C' }}
+              />
+            ))}
+          </motion.div>
+        </div>
       </div>
 
       <div className="z-10 w-full relative px-0">
@@ -75,18 +102,16 @@ const Hero: React.FC = () => {
           transition={{ delay: 1.2, duration: 1 }}
           className="flex gap-4 mt-12 flex-wrap  "
         >
-          <button 
+          <SlideInButton
+            text="Explore Work"
             onClick={() => navigate('/work')}
-            className="px-6 md:px-8 py-3 border border-white/40 text-white hover:bg-white/5 transition-all duration-300 rounded-full font-medium"
-          >
-            Explore Work
-          </button>
-          <button 
+            variant="secondary"
+          />
+          <SlideInButton
+            text="Start the Project"
             onClick={() => navigate('/contact')}
-            className="px-6 md:px-8 py-3 bg-white text-black hover:bg-white/90 transition-all duration-300 rounded-full font-medium"
-          >
-            Start the Project
-          </button>
+            variant="primary"
+          />
         </motion.div>
       </div>
     </div>

@@ -223,19 +223,15 @@ const WorkDetailPage: React.FC = () => {
                     className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[1.2s]"
                   />
                   <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
-                    <span className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[9px] font-black tracking-widest uppercase w-fit">
+                    <span className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[17px] font-black, normal tracking-[0px] sentancecase w-fit">
                       {project.category}
                     </span>
                     <div>
-                      <h3 className="text-2xl font-black tracking-tighter leading-tight group-hover:translate-x-2 transition-all">
+                      <h3 className="text-2xl font-black, normal tracking-[-1px] leading-[4px]">
                         {project.title}
                       </h3>
                     </div>
                   </div>
-                </div>
-                <div className="flex items-center gap-2 text-lime-400 opacity-0 group-hover:opacity-100 transition-all">
-                  <span className="text-[10px] font-black tracking-widest uppercase">View Project</span>
-                  <ArrowRight className="w-4 h-4" />
                 </div>
               </motion.div>
             ))}

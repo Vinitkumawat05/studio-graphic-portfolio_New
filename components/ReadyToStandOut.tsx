@@ -2,7 +2,7 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight } from 'lucide-react';
+import SlideInButton from './SlideInButton';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -86,26 +86,24 @@ const ReadyToStandOut: React.FC = () => {
 
       {/* Floating Header Link (Reference style) */}
       <div className="absolute top-12 left-6 md:left-12 z-20">
-        <a 
+        <SlideInButton
+          text="Let's Talk"
           href="mailto:hello@studio.design"
-          className="group flex items-center gap-4 px-6 py-3 rounded-full border border-white/10 hover:border-lime-400 transition-colors bg-black/50 backdrop-blur-sm"
-        >
-          <span className="text-[10px] font-black tracking-[0.3em] uppercase">Let's Talk</span>
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </a>
+          variant="secondary"
+        />
       </div>
 
       {/* Main Content Area */}
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div ref={textLine1Ref} className="overflow-hidden">
           <h2 className="text-[8vw] font-black tracking-tighter leading-none mb-4">
-            So, are you ready
+            So, Are You Ready
           </h2>
         </div>
         
         <div ref={textLine2Ref} className="overflow-hidden">
           <h2 className="text-[10vw] font-black tracking-tighter leading-none italic">
-            to <span className="text-lime-400 not-italic">Stand out?</span>
+            To <span className="text-lime-400 not-italic">Stand Out?</span>
           </h2>
         </div>
 

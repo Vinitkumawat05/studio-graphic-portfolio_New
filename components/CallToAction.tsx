@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
+import SlideInButton from './SlideInButton';
 
 const CallToAction: React.FC = () => {
   return (
@@ -47,22 +47,12 @@ const CallToAction: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            <a 
+            <SlideInButton
+              text="Start a Project"
               href="mailto:hello@studio.design"
-              className="group relative flex items-center justify-center"
-            >
-              {/* Magnetic Button Effect */}
-              <div className="absolute inset-0 bg-lime-400 blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-              
-              <div className="relative px-16 py-8 rounded-full border border-white/20 bg-black group-hover:border-lime-400 group-hover:bg-white group-hover:text-black transition-all duration-500 flex items-center gap-6 overflow-hidden">
-                <span className="text-[12px] font-black tracking-[0.4em] uppercase z-10">
-                  Start a Project
-                </span>
-                <div className="w-10 h-10 rounded-full bg-lime-400/10 group-hover:bg-black/5 flex items-center justify-center transition-colors">
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </a>
+              variant="primary"
+              className="px-16 py-6 text-sm font-bold tracking-widest uppercase"
+            />
           </motion.div>
 
           <motion.p

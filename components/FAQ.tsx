@@ -101,9 +101,7 @@ const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-40 border-t border-white/10 relative">
-      <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-white/10 via-transparent to-transparent hidden lg:block"></div>
-      
+    <section id="faq" className="py-40  relative">
       <div className="grid lg:grid-cols-12 gap-12 mb-24">
         <div className="lg:col-span-12">
           <motion.div 
@@ -133,9 +131,7 @@ const FAQ: React.FC = () => {
         ))}
       </div>
       
-      <div className="mt-32 flex justify-center">
-        <div className="w-20 h-px bg-white/20"></div>
-      </div>
+      
     </section>
   );
 };

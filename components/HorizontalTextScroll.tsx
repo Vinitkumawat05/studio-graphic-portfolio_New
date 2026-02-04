@@ -10,8 +10,7 @@ if (typeof window !== 'undefined') {
 const HorizontalTextScroll: React.FC = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
-  // Converted to lowercase as requested
-  const phrase = "So, Are you ready to stand out?";
+  const phrase = "So, are you ready to Stand out?";
   
   const characters = phrase.split("");
 
@@ -77,6 +76,8 @@ const HorizontalTextScroll: React.FC = () => {
           display: flex;
           align-items: center;
           background-color: #000;
+          margin-left: calc(50% - 50vw);
+          margin-right: calc(50% - 50vw);
         }
 
         .Horizontal__text {
@@ -87,8 +88,6 @@ const HorizontalTextScroll: React.FC = () => {
           gap: 0.5vw; 
           padding-left: 100vw;
           font-family: 'Inter', sans-serif;
-          /* Changed to lowercase as requested */
-          text-transform: lowercase;
           color: #fff;
           letter-spacing: -0.02em;
         }
@@ -100,7 +99,9 @@ const HorizontalTextScroll: React.FC = () => {
         }
 
         .container {
-            width: 100%;
+          width: 100vw;
+          margin-left: calc(50% - 50vw);
+          margin-right: calc(50% - 50vw);
         }
       `}</style>
     </section>
