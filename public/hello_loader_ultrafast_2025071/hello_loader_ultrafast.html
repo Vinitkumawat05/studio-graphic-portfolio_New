@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1440, height=900">
+  <title>Hello Loader - Ultra Fast</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #helloText {
+      font-size: 100px;
+      transition: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="helloText">Hello</div>
+
+  <script>
+    const words = [
+      "Hello",       // English
+      "હેલો",         // Gujarati
+      "नमस्ते",       // Hindi
+      "வணக்கம்",      // Tamil
+      "హలో",          // Telugu
+      "ಹಲೋ",          // Kannada
+      "হ্যালো"         // Bengali
+    ];
+
+    let index = 0;
+    const helloText = document.getElementById('helloText');
+
+    function nextWord() {
+      helloText.textContent = words[index];
+      index = (index + 1) % words.length;
+    }
+
+    nextWord();
+    setInterval(nextWord, 175); // 0.175 seconds per word
+  </script>
+</body>
+</html>

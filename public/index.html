@@ -169,47 +169,6 @@
 </head>
   <body class="noise selection-custom">
     <div class="grid-overlay"></div>
-    
-    <!-- Hello Loader - Shows before React loads -->
-    <div id="hello-loader" style="position: fixed; inset: 0; z-index: 9999; background: black; display: flex; justify-content: center; align-items: center;">
-      <span id="hello-text" style="font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 80px; font-weight: 300; color: white; letter-spacing: -0.02em;">Hello</span>
-    </div>
-    <script>
-      (function() {
-        const words = [
-          "Hello",       // English
-          "હેલો",         // Gujarati
-          "नमस्ते",       // Hindi
-          "வணக்கம்",      // Tamil
-          "హలో",          // Telugu
-          "ಹಲೋ",          // Kannada
-          "হ্যালো"         // Bengali
-        ];
-        
-        let index = 0;
-        const helloText = document.getElementById('hello-text');
-        const helloLoader = document.getElementById('hello-loader');
-        
-        function nextWord() {
-          helloText.textContent = words[index];
-          index = (index + 1) % words.length;
-        }
-        
-        nextWord();
-        const wordInterval = setInterval(nextWord, 175);
-        
-        // Fade out after cycling through all words twice
-        setTimeout(function() {
-          clearInterval(wordInterval);
-          helloLoader.style.transition = 'opacity 0.8s cubic-bezier(0.76, 0, 0.24, 1)';
-          helloLoader.style.opacity = '0';
-          setTimeout(function() {
-            helloLoader.style.display = 'none';
-          }, 800);
-        }, words.length * 175 * 2);
-      })();
-    </script>
-    
     <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
