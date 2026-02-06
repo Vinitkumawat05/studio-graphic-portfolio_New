@@ -62,16 +62,18 @@ const Navbar: React.FC = () => {
           onClick={(e) => { window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           className={`transition-all duration-500 flex items-center gap-2 group ${isScrolled ? "scale-90" : "scale-100"}`}
         >
-          <div className="text-xl font-black tracking-tighter flex items-center">
-            S<span className="text-white/40 transition-colors group-hover:text-lime-400">.</span>
-          </div>
+          <img 
+            src="/images/logo.svg" 
+            alt="Studio Logo" 
+            className="h-[60px] w-auto"
+          />
           {isScrolled && (
             <div className="w-[1px] h-4 bg-white/10 ml-2 hidden md:block"></div>
           )}
         </Link>
         
         {/* Navigation Links */}
-        <div className={`hidden md:flex flex-1 justify-start items-center space-x-12 transition-all duration-500 ml-12`}>
+        <div className={`hidden md:flex flex-1 justify-start items-center space-x-12 transition-all duration-500 ml-8`}>
           {navItems.map((item) => (
             <Link 
               key={item.label}

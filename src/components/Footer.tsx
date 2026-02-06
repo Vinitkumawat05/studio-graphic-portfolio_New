@@ -92,9 +92,9 @@ const Footer: React.FC = () => {
             <h2 className="text-6xl md:text-[80px] font-normal tracking-tighter mb-12">Let's build<br/>something great.</h2>
             <a 
               href="mailto:hello@studio.design" 
-              className="text-2xl md:text-4xl font-light hover:underline underline-offset-8"
+              className="text-2xl md:text-4xl font-light "
             >
-              hello@studio.design
+              vinitkumawat05@gmail.com
             </a>
           </div>
           
