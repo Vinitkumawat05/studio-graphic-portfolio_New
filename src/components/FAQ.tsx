@@ -56,7 +56,7 @@ const FAQRow: React.FC<{
         {/* Content Section (Number + Text Column) */}
         <div className="flex items-start gap-8 md:gap-16 flex-1">
           {/* Column 1: Number */}
-        <span className={`text-3xl font-black, normal tracking-[0px] mt-2 md:mt-3.5 flex-shrink-0 transition-colors duration-500 ${isOpen ? 'text-lime-400' : 'text-white/20 group-hover:text-white/50'}`}>
+        <span className={`text-3xl font-black, normal tracking-[0px] mt-2 md:mt-3.5 flex-shrink-0 transition-colors duration-500 ${isOpen ? 'text-[#a3e635]' : 'text-white/20 group-hover:text-white/50'}`}>
             0{index + 1}
           </span>
           
@@ -88,7 +88,7 @@ const FAQRow: React.FC<{
 
         {/* Column 3: Action Icon */}
         <div className={`transition-all duration-500 rounded-full p-2.5 flex-shrink-0 mt-1 md:mt-2 ${
-          isOpen ? 'rotate-180 bg-lime-400 text-black shadow-[0_0_20px_rgba(163,230,53,0.3)]' : 'text-white/20 group-hover:text-white bg-white/5'
+          isOpen ? 'rotate-180 bg-[#a3e635] text-black shadow-[0_0_20px_rgba(163,230,53,0.3)]' : 'text-white/20 group-hover:text-white bg-white/5'
         }`}>
           {isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
         </div>

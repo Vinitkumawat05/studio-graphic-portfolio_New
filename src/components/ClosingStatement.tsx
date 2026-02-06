@@ -60,11 +60,11 @@ const ClosingStatement: React.FC = () => {
           </h2>
           
           <div className="mt-12 flex items-center justify-center gap-6">
-             <div className="h-px w-12 bg-lime-400/50"></div>
+             <div className="h-px w-12 bg-[#a3e635]/50"></div>
              <p className="text-[10px] font-black tracking-[0.6em] text-white/30 uppercase">
                Final_Highlight // 2025
              </p>
-             <div className="h-px w-12 bg-lime-400/50"></div>
+             <div className="h-px w-12 bg-[#a3e635]/50"></div>
           </div>
         </div>
       </div>

@@ -80,7 +80,7 @@ const Navbar: React.FC = () => {
               to={item.href}
               className={`text-[17px] font-normal tracking-[0px] transition-all duration-300 ${
                 isActive(item.href) 
-                  ? 'text-lime-400' 
+                  ? 'text-[#a3e635]' 
                   : 'text-white/40 hover:text-white'
               }`}
             >

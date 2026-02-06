@@ -120,7 +120,7 @@ const WorkDetailPage: React.FC = () => {
           <h1 className="text-4xl font-black mb-4">Project Not Found</h1>
           <button
             onClick={() => navigate('/work')}
-            className="text-lime-400 hover:underline"
+            className="text-[#a3e635] hover:underline"
           >
             Back to Works
           </button>
@@ -159,9 +159,9 @@ const WorkDetailPage: React.FC = () => {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="mb-12 flex items-center gap-4">
-              <div className="h-12 w-1 bg-lime-400 rounded-full"></div>
+              <div className="h-12 w-1 bg-[#a3e635] rounded-full"></div>
               <div>
-                <p className="text-lime-400 text-[17px] font-black, normal tracking-[0px] sentancecase">001</p>
+                <p className="text-[#a3e635] text-[17px] font-black, normal tracking-[0px] sentancecase">001</p>
                 <p className="text-white/40 text-[17px] font-black, normal tracking-widest sentancecase">Introduction</p>
               </div>
             </div>
@@ -199,7 +199,7 @@ const WorkDetailPage: React.FC = () => {
 
         {/* Related Works Section */}
         <motion.section {...sectionReveal} className="mb-32">
-          <p className="text-lime-400 text-[17px] font-black, normal tracking-[0px] sentancecase mb-8">Other Works</p>
+          <p className="text-[#a3e635] text-[17px] font-black, normal tracking-[0px] sentancecase mb-8">Other Works</p>
           <h2 className="text-5xl md:text-6xl font-black, normal tracking-[0px] mb-16">More Projects</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -216,7 +216,7 @@ const WorkDetailPage: React.FC = () => {
                 }}
                 className="group cursor-pointer"
               >
-                <div className="relative aspect-[4/5] rounded-[30px] overflow-hidden mb-6 bg-white/5 border border-white/10 hover:border-lime-400 transition-all">
+                <div className="relative aspect-[4/5] rounded-[30px] overflow-hidden mb-6 bg-white/5 border border-white/10 hover:border-[#a3e635] transition-all">
                   <img
                     src={project.imageUrl}
                     alt={project.title}

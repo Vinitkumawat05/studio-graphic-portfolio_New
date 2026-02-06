@@ -93,7 +93,7 @@ const Showreel: React.FC = () => {
           {/* Metadata UI */}
           <div className="absolute top-10 left-10 flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></div>
+              <div className="w-2 h-2 rounded-full bg-[#a3e635] animate-pulse"></div>
               <span className="text-[10px] font-black tracking-[0.4em] uppercase text-white/60">Live_Visual_Stream</span>
             </div>
             <div className="space-y-1">
@@ -146,7 +146,7 @@ const Showreel: React.FC = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={handleGenerateVideo}
                 disabled={isGenerating}
-                className="px-8 py-4 rounded-full bg-lime-400 text-black font-black text-[10px] tracking-[0.2em] uppercase flex items-center gap-3 shadow-[0_20px_40px_rgba(163,230,53,0.3)] disabled:opacity-50 disabled:cursor-not-allowed group"
+                className="px-8 py-4 rounded-full bg-[#a3e635] text-black font-black text-[10px] tracking-[0.2em] uppercase flex items-center gap-3 shadow-[0_20px_40px_rgba(163,230,53,0.3)] disabled:opacity-50 disabled:cursor-not-allowed group"
               >
                 {isGenerating ? (
                   <>
@@ -168,7 +168,7 @@ const Showreel: React.FC = () => {
                 </div>
                 <div className="flex flex-col items-end">
                   <span>Latency</span>
-                  <span className="text-lime-400">0.02 MS</span>
+                  <span className="text-[#a3e635]">0.02 MS</span>
                 </div>
               </div>
             </div>
@@ -181,7 +181,7 @@ const Showreel: React.FC = () => {
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 30, ease: "linear" }}
-                className="h-full bg-lime-400 shadow-[0_0_20px_#a3e635]"
+                className="h-full bg-[#a3e635] shadow-[0_0_20px_#a3e635]"
               />
             </div>
           )}

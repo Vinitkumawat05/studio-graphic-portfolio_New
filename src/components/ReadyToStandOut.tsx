@@ -103,7 +103,7 @@ const ReadyToStandOut: React.FC = () => {
         
         <div ref={textLine2Ref} className="overflow-hidden">
           <h2 className="text-[10vw] font-black tracking-tighter leading-none italic">
-            To <span className="text-lime-400 not-italic">Stand Out?</span>
+            To <span className="text-[#a3e635] not-italic">Stand Out?</span>
           </h2>
         </div>
 
@@ -111,7 +111,7 @@ const ReadyToStandOut: React.FC = () => {
         <div className="mt-24 flex items-center justify-center gap-12 opacity-30">
           <div className="flex flex-col items-center gap-4">
             <span className="text-[9px] font-black tracking-[0.5em] uppercase">Mumbai</span>
-            <div className="w-1.5 h-1.5 rounded-full bg-lime-400"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-[#a3e635]"></div>
           </div>
           <div className="flex flex-col items-center gap-4">
             <span className="text-[9px] font-black tracking-[0.5em] uppercase">India, Asia</span>

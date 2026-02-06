@@ -41,7 +41,7 @@ const WorkPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* <p className="text-lime-400 text-[10px] font-black, normal tracking-[0.6em] sentancecase mb-8">Master_Collection</p> */}
+            {/* <p className="text-[#a3e635] text-[10px] font-black, normal tracking-[0.6em] sentancecase mb-8">Master_Collection</p> */}
             <h1 className="text-[80px] font-black, normal tracking-[-1px] leading-[91px] sentancecase ">
              Work that<span className="text-white">,</span><br />
               <span className="text-white">Changed things.</span>
@@ -61,7 +61,7 @@ const WorkPage: React.FC = () => {
                   onClick={() => setFilter(tag)}
                   className={`px-6 py-2.5 rounded-full text-[17px] font-black, normal tracking-[0px] sentancecase transition-all ${
                     filter === tag 
-                      ? 'bg-lime-400 text-black border-lime-400 shadow-[0_10px_30px_rgba(163,230,53,0.3)]' 
+                      ? 'bg-[#a3e635] text-black border-[#a3e635] shadow-[0_10px_30px_rgba(163,230,53,0.3)]' 
                       : 'border border-white/10 text-white/40 hover:text-white hover:border-white'
                   }`}
                 >
@@ -115,7 +115,7 @@ const WorkPage: React.FC = () => {
                   </div>
 
                   <div className="space-y-4">
-                    <span className="text-[17px] font-black, normal tracking-[0px] text-lime-400 sentancecase opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100 tracking-[0px]">
+                    <span className="text-[17px] font-black, normal tracking-[0px] text-[#a3e635] sentancecase opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100 tracking-[0px]">
                       Project No. 00{project.id}
                     </span>
                     <h3 className="text-2xl md:text-4xl font-black, normal tracking-[-1px] leading-[4px]">

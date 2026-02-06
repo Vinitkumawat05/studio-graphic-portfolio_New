@@ -79,7 +79,7 @@ const Hero: React.FC = () => {
         >
           <h1 className="text-[80px] font-normal tracking-[-1px] leading-[91px] max-w-4xl">
             Design,<br />
-            <span className="text-lime-400">Reimagined.</span>
+            <span className="text-[#a3e635]">Reimagined.</span>
           </h1>
         </motion.div>
 

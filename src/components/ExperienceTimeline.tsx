@@ -51,7 +51,7 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
           {isInView && (
             <motion.div 
               layoutId="pulse"
-              className="absolute inset-[-8px] rounded-full border border-lime-400/30 animate-pulse"
+              className="absolute inset-[-8px] rounded-full border border-[#a3e635]/30 animate-pulse"
             />
           )}
         </motion.div>
@@ -69,7 +69,7 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
           className={`w-full md:w-[45%] pl-20 md:pl-0 ${isEven ? 'md:text-right md:pr-20' : 'md:text-left md:pl-20'}`}
         >
           <div className={`flex flex-col ${isEven ? 'md:items-end' : 'md:items-start'}`}>
-            <span className={`text-[17px] font-black, normal tracking-[0px] mb-4 transition-colors duration-500 ${isInView ? 'text-lime-400' : 'text-white/20'}`}>
+            <span className={`text-[17px] font-black, normal tracking-[0px] mb-4 transition-colors duration-500 ${isInView ? 'text-[#a3e635]' : 'text-white/20'}`}>
               Chapter // 00{index + 1}
             </span>
             
@@ -130,13 +130,13 @@ const ExperienceTimeline: React.FC = () => {
           {/* Active Filling Line */}
           <motion.div 
             style={{ scaleY, originY: 0 }}
-            className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-lime-400/50 via-lime-400 to-lime-400/50 shadow-[0_0_15px_rgba(163,230,53,0.3)]"
+            className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#a3e635]/50 via-[#a3e635] to-[#a3e635]/50 shadow-[0_0_15px_rgba(163,230,53,0.3)]"
           />
           
           {/* Dynamic Scroll Indicator */}
           <motion.div 
             style={{ top: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) }}
-            className="absolute left-1/2 -translate-x-1/2 w-[1px] h-32 bg-lime-400 blur-sm shadow-[0_0_20px_#a3e635]"
+            className="absolute left-1/2 -translate-x-1/2 w-[1px] h-32 bg-[#a3e635] blur-sm shadow-[0_0_20px_#a3e635]"
           />
         </motion.div>
 

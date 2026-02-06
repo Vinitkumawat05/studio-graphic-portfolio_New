@@ -224,7 +224,7 @@ const DesignerAI: React.FC = () => {
               <div>
                 <h4 className="text-[10px] font-black tracking-widest uppercase text-white/80">Vinit Kumawat</h4>
                 <div className="flex items-center gap-1.5 mt-0.5">
-                  <div className="w-1 h-1 rounded-full bg-lime-400 animate-pulse"></div>
+                  <div className="w-1 h-1 rounded-full bg-[#a3e635] animate-pulse"></div>
                   <p className="text-[8px] text-white/30 font-bold uppercase tracking-widest">Available Now</p>
                 </div>
               </div>
@@ -250,8 +250,8 @@ const DesignerAI: React.FC = () => {
                   className={`flex flex-col gap-2 ${msg.role === MessageRole.USER ? 'items-end' : 'items-start'}`}
                 >
                   <div className={`flex items-center gap-2 px-1 ${msg.role === MessageRole.USER ? 'flex-row-reverse' : 'flex-row'}`}>
-                    <div className={`w-5 h-5 rounded-full flex items-center justify-center border ${msg.role === MessageRole.USER ? 'border-white/20 bg-white/5' : 'border-lime-400/30 bg-lime-400/5'}`}>
-                      {msg.role === MessageRole.USER ? <User className="w-3 h-3 text-white/40" /> : <Bot className="w-3 h-3 text-lime-400" />}
+                    <div className={`w-5 h-5 rounded-full flex items-center justify-center border ${msg.role === MessageRole.USER ? 'border-white/20 bg-white/5' : 'border-[#a3e635]/30 bg-[#a3e635]/5'}`}>
+                      {msg.role === MessageRole.USER ? <User className="w-3 h-3 text-white/40" /> : <Bot className="w-3 h-3 text-[#a3e635]" />}
                     </div>
                     <span className="text-[8px] font-black tracking-widest uppercase text-white/20">
                       {msg.role === MessageRole.USER ? 'User' : 'Vinit Kumawat'}
@@ -260,7 +260,7 @@ const DesignerAI: React.FC = () => {
                       onClick={() => handleCopy(msg.text, i)}
                       className="p-1 hover:text-white text-white/10 transition-colors"
                     >
-                      {copiedId === i ? <Check className="w-3 h-3 text-lime-400" /> : <Copy className="w-3 h-3" />}
+                      {copiedId === i ? <Check className="w-3 h-3 text-[#a3e635]" /> : <Copy className="w-3 h-3" />}
                     </button>
                   </div>
 
@@ -297,12 +297,12 @@ const DesignerAI: React.FC = () => {
                 className="flex flex-col gap-2 items-start"
               >
                 <div className="flex items-center gap-2 px-1">
-                  <div className="w-5 h-5 rounded-full flex items-center justify-center border border-lime-400/30 bg-lime-400/5 relative">
-                    <Bot className="w-3 h-3 text-lime-400" />
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center border border-[#a3e635]/30 bg-[#a3e635]/5 relative">
+                    <Bot className="w-3 h-3 text-[#a3e635]" />
                     <motion.div 
                       animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
                       transition={{ repeat: Infinity, duration: 1.5 }}
-                      className="absolute inset-0 rounded-full bg-lime-400"
+                      className="absolute inset-0 rounded-full bg-[#a3e635]"
                     />
                   </div>
                   <span className="text-[8px] font-black tracking-widest uppercase text-white/20">Curator</span>
@@ -364,7 +364,7 @@ const DesignerAI: React.FC = () => {
               <button 
                 onClick={handleSend}
                 disabled={isLoading}
-                className={`p-2 transition-all mb-0.5 ${input || selectedImage ? 'text-lime-400 scale-110' : 'text-white/20'}`}
+                className={`p-2 transition-all mb-0.5 ${input || selectedImage ? 'text-[#a3e635] scale-110' : 'text-white/20'}`}
               >
                 <Send className="w-4 h-4" />
               </button>

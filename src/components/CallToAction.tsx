@@ -25,7 +25,7 @@ const CallToAction: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="text-lime-400 text-[11px] font-black tracking-[0.6em] uppercase mb-12">
+            <p className="text-[#a3e635] text-[11px] font-black tracking-[0.6em] uppercase mb-12">
               Next_Step // Collaboration
             </p>
           </motion.div>
@@ -38,7 +38,7 @@ const CallToAction: React.FC = () => {
             className="font-huge font-black tracking-tighter leading-[0.8] mb-20"
           >
             ARE YOU READY<br/>
-            TO <span className="text-lime-400">STAND OUT?</span>
+            TO <span className="text-[#a3e635]">STAND OUT?</span>
           </motion.h2>
 
           <motion.div

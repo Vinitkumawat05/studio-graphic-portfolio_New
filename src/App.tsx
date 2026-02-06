@@ -67,7 +67,7 @@ const App: React.FC = () => {
             className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-32"
           >
             <div className="max-w-xl">
-              {/* <p className="text-lime-400 text-[10px] font-black tracking-[0.6em] sentancecase mb-6">Curated Archive</p> */}
+              {/* <p className="text-[#a3e635] text-[10px] font-black tracking-[0.6em] sentancecase mb-6">Curated Archive</p> */}
               <h2 className="text-5xl md:text-[48px] font-black, normal tracking-[-1px] leading-[32px] sentancecase w-[590px]">
                 The Work Speaks,We Listen.<br />
                 <span className="text-white md:text-[17px] tracking-[0px] leading-[4px]">Real brands, Real impact, Every project here was built from obsession not templates.</span>

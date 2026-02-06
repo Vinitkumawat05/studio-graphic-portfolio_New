@@ -115,7 +115,7 @@ const Footer: React.FC = () => {
                 href="https://www.instagram.com/magicvibe.in/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex md:justify-end items-center gap-2 text-lg font-black, normal hover:text-lime-400 transition-colors"
+                className="flex md:justify-end items-center gap-2 text-lg font-black, normal hover:text-[#a3e635] transition-colors"
               >
                 <StaggeredText text="Instagram" />
                 <ExternalLink className="w-4 h-4 mb-[9px]" />
@@ -124,7 +124,7 @@ const Footer: React.FC = () => {
                 href="https://www.linkedin.com/in/vinitkumawat/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex md:justify-end items-center gap-2 text-lg font-black, normal hover:text-lime-400 transition-colors"
+                className="flex md:justify-end items-center gap-2 text-lg font-black, normal hover:text-[#a3e635] transition-colors"
               >
                 <StaggeredText text="LinkedIn" />
                 <ExternalLink className="w-4 h-4 mb-[9px]" />
@@ -133,14 +133,14 @@ const Footer: React.FC = () => {
                 href="https://www.behance.net/vinitkumawat2" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex md:justify-end items-center gap-2 text-lg font-black, normal hover:text-lime-400 transition-colors"
+                className="flex md:justify-end items-center gap-2 text-lg font-black, normal hover:text-[#a3e635] transition-colors"
               >
                 <StaggeredText text="Behance" />
                 <ExternalLink className="w-4 h-4 mb-[9px]" />
               </a>
               <a 
                 href="mailto:vinitkumawat05@gmail.com" 
-                className="flex md:justify-end items-center gap-2 text-lg font-black, normal hover:text-lime-400 transition-colors"
+                className="flex md:justify-end items-center gap-2 text-lg font-black, normal hover:text-[#a3e635] transition-colors"
               >
                 <StaggeredText text="Email" />
                 <ExternalLink className="w-4 h-4 mb-[9px]" />

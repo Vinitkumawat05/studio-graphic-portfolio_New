@@ -48,7 +48,7 @@ const SlideInButton: React.FC<SlideInButtonProps> = ({
       {/* Background fill that expands from bottom center */}
       {variant === 'primary' && (
         <motion.div
-          className="absolute rounded-full bg-lime-400"
+          className="absolute rounded-full bg-[#a3e635]"
           style={{
             left: '50%',
             bottom: '-8px',

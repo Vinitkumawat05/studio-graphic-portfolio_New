@@ -159,7 +159,7 @@ const TestimonialsSection: React.FC = () => {
           text-transform: sentencecase;
           letter-spacing: 0em;
           font-size: 1.08rem;
-          color: #A3E635;
+          color: #a3e635;
           margin-bottom: 0.75rem;
         }
 

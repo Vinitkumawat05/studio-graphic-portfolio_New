@@ -8,7 +8,7 @@ const MobileNotice: React.FC = () => {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobileOrTablet(window.innerWidth < 1024);
+      setIsMobileOrTablet(window.innerWidth < 1280);
     };
 
     checkScreenSize();
@@ -75,28 +75,28 @@ const MobileNotice: React.FC = () => {
           </div>
 
           {/* Logo */}
-          <img 
+          {/* <img 
             src="/images/logo.svg" 
             alt="Studio Logo" 
             className="h-6 w-auto mx-auto mb-8 opacity-60"
-          />
+          /> */}
 
           {/* Heading */}
           <h1 className="text-3xl font-bold tracking-tight mb-4">
-            Desktop Experience<br />
-            <span className="text-lime-400">Coming Soon</span>
+            Best Viewed on<br />
+            <span className="text-lime-400">Laptop or Desktop</span>
           </h1>
 
           {/* Message */}
           <p className="text-white/50 text-base leading-relaxed mb-8">
-            We're currently perfecting the mobile and tablet experience. 
-            For the best experience, please visit us on a desktop or laptop.
+            This website is optimized for larger screens. 
+            For the best experience, please visit us on a laptop or desktop with a minimum width of 1280px.
           </p>
 
           {/* Device info */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 text-sm text-white/40">
             <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
-            <span>Working on mobile optimization</span>
+            <span>Responsive version coming soon</span>
           </div>
 
           {/* Branch notice */}

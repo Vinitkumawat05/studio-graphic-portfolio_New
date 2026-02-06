@@ -53,7 +53,7 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ projects }) => {
                       {project.category}
                     </span>
                     {project.hasAccent && (
-                      <span className="w-fit px-4 py-1.5 rounded-full bg-lime-400 text-black text-[17px] font-black, normal tracking-[0px] sentancecase">
+                      <span className="w-fit px-4 py-1.5 rounded-full bg-[#a3e635] text-black text-[17px] font-black, normal tracking-[0px] sentancecase">
                         Spotlight
                       </span>
                     )}
@@ -65,7 +65,7 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ projects }) => {
                 </div>
 
                 <div className="space-y-3">
-                  <p className="text-[17px] font-black, normal tracking-[0px] text-lime-400 sentancecase opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100 tracking-[0px]">
+                  <p className="text-[17px] font-black, normal tracking-[0px] text-[#a3e635] sentancecase opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100 tracking-[0px]">
                     Project No. 00{project.id}
                   </p>
                   <h3 className="text-2xl md:text-4xl font-black, normal tracking-[-1px] leading-[4px] ">

@@ -279,7 +279,7 @@ const ContactPage: React.FC = () => {
                   disabled={isSubmitting || isSubmitted}
                   className={`w-full py-4 px-6 border font-medium text-sm uppercase tracking-widest rounded-lg transition-all duration-300 flex items-center justify-center gap-2 ${
                     isSubmitted 
-                      ? 'bg-lime-400 border-lime-400 text-black' 
+                      ? 'bg-[#a3e635] border-[#a3e635] text-black' 
                       : isSubmitting
                         ? 'bg-white/10 border-white/20 text-white/50 cursor-not-allowed'
                         : 'bg-black border-white/20 hover:bg-white hover:text-black text-white'

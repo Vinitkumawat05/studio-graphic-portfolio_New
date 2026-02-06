@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
             className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-24"
           >
             <div>
-              <p className="text-lime-400 text-[10px] font-black tracking-[0.5em] uppercase mb-4">Curated Selections</p>
+              <p className="text-[#a3e635] text-[10px] font-black tracking-[0.5em] uppercase mb-4">Curated Selections</p>
               <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-none">
                 SELECTED WORKS<span className="text-white/20">.</span>
               </h2>
@@ -92,11 +92,11 @@ const HomePage: React.FC = () => {
              {[...Array(6)].map((_, i) => (
                <div key={i} className="flex items-center gap-16">
                  <span className="text-3xl font-black tracking-tighter uppercase opacity-30">Brand Strategy</span>
-                 <div className="w-3 h-3 rounded-full bg-lime-400"></div>
+                 <div className="w-3 h-3 rounded-full bg-[#a3e635]"></div>
                  <span className="text-3xl font-black tracking-tighter uppercase opacity-30">Interface Design</span>
                  <div className="w-3 h-3 rounded-full bg-white/20"></div>
                  <span className="text-3xl font-black tracking-tighter uppercase opacity-30">Motion Systems</span>
-                 <div className="w-3 h-3 rounded-full bg-lime-400"></div>
+                 <div className="w-3 h-3 rounded-full bg-[#a3e635]"></div>
                </div>
              ))}
            </div>

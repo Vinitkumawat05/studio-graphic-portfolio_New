@@ -74,7 +74,7 @@ const ServicesSection: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-16">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-lime-400"></span>
+          <span className="w-2 h-2 rounded-full bg-[#a3e635]"></span>
           <span className=" font-[17px] Sentancecase tracking-[0px] text-white/60">Services</span>
         </div>
         <h2 className="text-5xl md:text-[80px] font-normal tracking-[-1px] ">

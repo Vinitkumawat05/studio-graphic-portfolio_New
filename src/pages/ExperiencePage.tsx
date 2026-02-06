@@ -20,7 +20,7 @@ const ExperiencePage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="text-lime-400 text-[10px] font-black tracking-[0.6em] uppercase mb-8">Career Journey</p>
+            <p className="text-[#a3e635] text-[10px] font-black tracking-[0.6em] uppercase mb-8">Career Journey</p>
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] uppercase mb-12">
               EXPERIENCE<span className="text-white/20">.</span>
             </h1>
