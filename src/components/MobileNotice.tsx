@@ -16,6 +16,28 @@ const MobileNotice: React.FC = () => {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
+  // Lock body scroll when mobile notice is visible
+  useEffect(() => {
+    if (isMobileOrTablet && !dismissed) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.height = '100%';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.height = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.height = '';
+    };
+  }, [isMobileOrTablet, dismissed]);
+
   if (!isMobileOrTablet || dismissed) return null;
 
   return (
@@ -24,7 +46,7 @@ const MobileNotice: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center px-8 text-center"
+        className="fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center px-8 text-center overflow-hidden"
       >
         {/* Background gradient effect */}
         <div className="absolute inset-0 overflow-hidden">
@@ -60,7 +82,7 @@ const MobileNotice: React.FC = () => {
           />
 
           {/* Heading */}
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+          <h1 className="text-3xl font-bold tracking-tight mb-4">
             Desktop Experience<br />
             <span className="text-lime-400">Coming Soon</span>
           </h1>
