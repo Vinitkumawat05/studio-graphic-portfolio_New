@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import DesignerAI from './components/DesignerAI';
+import MobileNotice from './components/MobileNotice';
 import App from './App';
 import HomePage from './pages/HomePage';
 import WorkPage from './pages/WorkPage';
@@ -31,6 +32,7 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <Router>
+      <MobileNotice />
       <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black overflow-x-hidden">
         <ScrollToTop />
         <Navbar />
