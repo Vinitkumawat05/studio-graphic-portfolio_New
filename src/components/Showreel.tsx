@@ -121,19 +121,19 @@ const Showreel: React.FC = () => {
           {/* Controls Bar */}
           <div className="absolute bottom-10 inset-x-10 flex items-end justify-between">
             <div className="flex flex-col gap-6">
-              <h3 className="text-4xl md:text-6xl font-black tracking-tighter max-w-xl leading-[0.9]">
+              <h3 className="text-[45px] md:text-6xl font-normal tracking-[-1px] leading-[45px] md:leading-[0.9] max-w-xl">
                 KINETIC <span className="text-white/20">SYSTEMS.</span>
               </h3>
               <div className="flex items-center gap-4">
                 <button 
                   onClick={togglePlay}
-                  className="w-12 h-12 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all"
+                  className="w-12 min-h-[48px] rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all"
                 >
                   {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
                 </button>
                 <button 
                   onClick={() => setIsMuted(!isMuted)}
-                  className="w-12 h-12 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all"
+                  className="w-12 min-h-[48px] rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all"
                 >
                   {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
                 </button>
@@ -176,7 +176,7 @@ const Showreel: React.FC = () => {
 
           {/* Loading Progress Bar for AI generation */}
           {isGenerating && (
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-white/10">
+            <div className="absolute bottom-0 left-0 w-full min-h-[4px] bg-white/10">
               <motion.div 
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
@@ -189,14 +189,14 @@ const Showreel: React.FC = () => {
       </div>
 
       {/* Narrative Overlay */}
-      <div className="absolute bottom-0 left-0 w-full h-1/2 flex items-center justify-center pointer-events-none px-6">
+      <div className="absolute bottom-0 left-0 w-full min-h-[50svh] flex items-center justify-center pointer-events-none px-6">
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="text-center space-y-4"
         >
           <p className="text-[11px] font-black tracking-[0.8em] uppercase text-white/40">The_Process</p>
-          <h4 className="text-2xl md:text-4xl font-black tracking-tight max-w-2xl mx-auto">
+          <h4 className="text-[45px] md:text-4xl font-normal tracking-[-1px] leading-[45px] md:leading-tight max-w-2xl mx-auto">
             Motion is the soul of digital architecture. Every frame is a calculated masterpiece.
           </h4>
         </motion.div>

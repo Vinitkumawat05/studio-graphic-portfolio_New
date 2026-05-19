@@ -1,11 +1,9 @@
-
 import React from 'react';
 import Hero from './components/Hero';
 import PortfolioGrid from './components/PortfolioGrid';
 import ExperienceTimeline from './components/ExperienceTimeline';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
-import DesignerAI from './components/DesignerAI';
 import HorizontalTextScroll from './components/HorizontalTextScroll';
 import SlideInButton from './components/SlideInButton';
 import ServicesSection from './components/ServicesSection';
@@ -56,33 +54,13 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black overflow-x-hidden">
-      <main className="px-6 md:px-12 lg:px-20 max-w-[2200px] mx-auto">
+    <div className="min-h-screen bg-[#1C1C1C] text-[#ECE8DF] selection:bg-[#ECE8DF] selection:text-[#1C1C1C]">
+      <main className="px-6 md:px-8 lg:px-20 max-w-[2200px] mx-auto">
         <Hero />
         
         {/* Work Section */}
-        <section id="work" className="py-40">
-          <motion.div 
-            {...sectionReveal}
-            className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-32"
-          >
-            <div className="max-w-xl">
-              {/* <p className="text-[#a3e635] text-[10px] font-black tracking-[0.6em] sentancecase mb-6">Curated Archive</p> */}
-              <h2 className="text-5xl md:text-[48px] font-black, normal tracking-[-1px] leading-[32px] sentancecase w-[590px]">
-                The Work Speaks,We Listen.<br />
-                <span className="text-white md:text-[17px] tracking-[0px] leading-[4px]">Real brands, Real impact, Every project here was built from obsession not templates.</span>
-              </h2>
-            </div>
-            <Link 
-              to="/work" 
-              className="group"
-            >
-              <SlideInButton
-                text="See Everything"
-                variant="secondary"
-              />
-            </Link>
-          </motion.div>
+        <section id="work" className="pt-[80px] pb-0 md:pb-40">
+          {/* Work section header and button removed as requested */}
           <PortfolioGrid projects={projects} />
         </section>
 
@@ -92,13 +70,12 @@ const App: React.FC = () => {
         <ServicesSection />
         <FAQ />
         <TestimonialsSection />
-        
-        {/* Horizontal Text Scroll Section */}
-        <HorizontalTextScroll />
       </main>
 
+      {/* Horizontal Text Scroll Section - outside main to avoid overflow/max-width clipping */}
+      <HorizontalTextScroll />
+
       <Footer />
-      <DesignerAI />
     </div>
   );
 };

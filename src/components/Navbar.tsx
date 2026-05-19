@@ -1,11 +1,23 @@
-
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'motion/react';
 import SlideInButton from './SlideInButton';
+
+const navItems = [
+  { label: 'Work', href: '/work' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const mobileMenuItems = [
+  { label: 'Home', href: '/', number: '(01)' },
+  { label: 'Works', href: '/work', number: '(02)' },
+  { label: 'Contact', href: '/contact', number: '(03)' },
+];
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
   const location = useLocation();
 
@@ -21,84 +33,146 @@ const Navbar: React.FC = () => {
       } else {
         setIsVisible(true);
       }
+
       lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { label: 'Work', href: '/work' },
-    { label: 'Contact', href: '/contact' },
-  ];
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
 
-  const isActive = (href: string) => location.pathname === href;
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
-  const isWorkDetailPage = /^\/work\/\d+$/.test(location.pathname);
+  const linkClass = 'text-[16px] font-medium leading-none text-[#ECE8DF] transition-opacity duration-300 hover:opacity-60';
 
   return (
-    <nav 
-      className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isScrolled 
-          ? "top-6 w-[92%] md:w-max" 
-          : "top-0 w-full"
-      } ${
-        isVisible ? "translate-y-0 opacity-100" : "-translate-y-[150%] opacity-0"
-      }`}
-    >
-      <div 
-        className={`flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] mx-auto ${
-          isScrolled 
-            ? "bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full px-4 md:px-5 py-3 gap-8 md:gap-14 shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-100" 
-            : isWorkDetailPage
-              ? "bg-transparent border-b border-transparent pt-[41.070px] pr-[100px] pb-[40px] pl-[100px] w-full max-w-[1800px] scale-100"
-              : "bg-transparent border-b border-transparent px-6 md:px-12 lg:px-20 py-10 w-full max-w-[1800px] scale-100"
+    <>
+      <nav
+        className={`fixed left-0 right-0 top-0 z-50 w-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isVisible ? 'translate-y-0 opacity-100' : '-translate-y-[150%] opacity-0'
         }`}
       >
-        {/* Branding */}
-        <Link 
-          to="/" 
-          onClick={(e) => { window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          className={`transition-all duration-500 flex items-center gap-2 group ${isScrolled ? "scale-90" : "scale-100"}`}
-        >
-          <img 
-            src="/images/logo.svg" 
-            alt="Studio Logo" 
-            className="h-[60px] w-auto"
-          />
-          {isScrolled && (
-            <div className="w-[1px] h-4 bg-white/10 ml-2 hidden md:block"></div>
-          )}
-        </Link>
-        
-        {/* Navigation Links */}
-        <div className={`hidden md:flex flex-1 justify-start items-center space-x-12 transition-all duration-500 ml-8`}>
-          {navItems.map((item) => (
-            <Link 
-              key={item.label}
-              to={item.href}
-              className={`text-[17px] font-normal tracking-[0px] transition-all duration-300 ${
-                isActive(item.href) 
-                  ? 'text-[#a3e635]' 
-                  : 'text-white/40 hover:text-white'
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
+        <div className={`mx-auto w-full max-w-[1800px] px-5 py-4 transition-colors duration-500 md:px-8 lg:px-20 ${isScrolled ? 'bg-[#1C1C1C]' : 'bg-transparent'}`}>
+          <div className="hidden items-center justify-between gap-8 md:flex">
+            <div className="flex min-w-0 flex-1 items-center">
+              {isScrolled ? (
+                <div className="flex items-center gap-8">
+                  {navItems.map((item) => (
+                    <Link key={item.label} to={item.href} className={linkClass}>
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <Link to="/" className="text-[20px] font-normal leading-[26px] tracking-tight text-[#ECE8DF] transition-opacity duration-300 hover:opacity-60">
+                  Magic Vibe
+                </Link>
+              )}
+            </div>
 
-        {/* Action Button */}
-        <div className={`flex items-center gap-4 ${!isScrolled ? 'flex-1 justify-end' : ''}`}>
-          <SlideInButton
-            text="Let's talk"
-            href="mailto:hello@studio.design"
-            variant="primary"
-          />
+            <div className="flex flex-1 items-center justify-center">
+              {isScrolled ? (
+                <Link to="/" aria-label="Magic Vibe home" className="transition-opacity duration-300 hover:opacity-70">
+                  <img src="/assets/hero.svg" alt="Magic Vibe" className="h-8 w-auto max-w-[230px]" />
+                </Link>
+              ) : (
+                <div className="flex items-center gap-8">
+                  {navItems.map((item) => (
+                    <Link key={item.label} to={item.href} className={linkClass}>
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="flex min-w-0 flex-1 justify-end">
+              <SlideInButton
+                text="Let's Talk"
+                href="mailto:hello@studio.design"
+                variant="secondary"
+                className="px-7 py-2 text-[16px] font-medium text-[#ECE8DF]"
+                showArrow={false}
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between md:hidden">
+            <Link to="/" aria-label="Magic Vibe home" className="text-[19px] font-normal tracking-tight text-[#ECE8DF]">
+              {isScrolled ? (
+                <img src="/assets/hero.svg" alt="Magic Vibe" className="h-6 w-auto max-w-[170px]" />
+              ) : (
+                'Magic Vibe'
+              )}
+            </Link>
+
+            <motion.button
+              type="button"
+              aria-label="Toggle menu"
+              onClick={() => setIsMobileMenuOpen((open) => !open)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#ECE8DF]/30 text-[#ECE8DF]"
+              animate={{ rotate: isMobileMenuOpen ? 45 : 0 }}
+              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v12m6-6H6" />
+              </svg>
+            </motion.button>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, y: -24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -24 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed left-4 right-4 top-20 z-50 rounded-lg border border-[#ECE8DF]/10 bg-[#1C1C1C]/95 px-5 py-6 shadow-2xl backdrop-blur-xl md:hidden"
+            >
+              <div className="space-y-5">
+                {mobileMenuItems.map((item, index) => (
+                  <Link key={item.label} to={item.href} className="group flex items-center justify-between border-b border-[#ECE8DF]/10 pb-4">
+                    <span className="text-[30px] font-normal leading-none text-[#ECE8DF] transition-opacity duration-300 group-hover:opacity-60">
+                      {item.label}
+                    </span>
+                    <span className="font-mono text-xs text-[#ECE8DF]/40">{item.number}</span>
+                  </Link>
+                ))}
+              </div>
+
+              <a
+                href="mailto:hello@studio.design"
+                className="mt-6 inline-flex h-11 w-full items-center justify-center rounded-full bg-[#ECE8DF] text-[16px] font-normal text-[#1C1C1C]"
+              >
+                Let's Talk
+              </a>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

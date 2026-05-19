@@ -37,27 +37,27 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
   const isEven = index % 2 === 0;
 
   return (
-    <div ref={ref} className="relative flex items-center justify-center min-h-[50vh] py-16">
+    <div ref={ref} className="relative flex min-h-[50vh] items-center justify-center py-16 md:min-h-[34vh] md:py-10 lg:min-h-[50vh] lg:py-16">
       {/* Center Node - Precisely Aligned to Line */}
-      <div className="absolute left-8 md:left-1/2 -translate-x-1/2 z-30 flex items-center justify-center">
+      <div className="absolute left-8 lg:left-1/2 -translate-x-1/2 z-30 flex items-center justify-center">
         <motion.div 
           animate={{ 
             scale: isInView ? 1.2 : 1,
-            backgroundColor: isInView ? "#a3e635" : "#000",
-            borderColor: isInView ? "#a3e635" : "rgba(255,255,255,0.2)"
+            backgroundColor: isInView ? "#ECE8DF" : "#000",
+            borderColor: isInView ? "#ECE8DF" : "rgba(255,255,255,0.2)"
           }}
           className="w-5 h-5 rounded-full border-2 transition-all duration-500 relative z-10"
         >
           {isInView && (
             <motion.div 
               layoutId="pulse"
-              className="absolute inset-[-8px] rounded-full border border-[#a3e635]/30 animate-pulse"
+              className="absolute inset-[-8px] rounded-full border border-lime-400/30 animate-pulse"
             />
           )}
         </motion.div>
       </div>
 
-      <div className={`flex flex-col md:flex-row items-center w-full z-10 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+      <div className={`flex flex-col lg:flex-row items-center w-full z-10 ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
         {/* Content Card */}
         <motion.div 
           animate={{ 
@@ -66,27 +66,27 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
             scale: isInView ? 1 : 0.98
           }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className={`w-full md:w-[45%] pl-20 md:pl-0 ${isEven ? 'md:text-right md:pr-20' : 'md:text-left md:pl-20'}`}
+          className={`w-full lg:w-[45%] pl-20 lg:pl-0 ${isEven ? 'lg:text-right lg:pr-20' : 'lg:text-left lg:pl-20'}`}
         >
           <div className={`flex flex-col ${isEven ? 'md:items-end' : 'md:items-start'}`}>
-            <span className={`text-[17px] font-black, normal tracking-[0px] mb-4 transition-colors duration-500 ${isInView ? 'text-[#a3e635]' : 'text-white/20'}`}>
+            <span className={`text-[17px] font-black, normal tracking-[0px] mb-4 transition-colors duration-500 ${isInView ? 'text-lime-400' : 'text-white/20'}`}>
               Chapter // 00{index + 1}
             </span>
             
-            <div className="relative mb-6">
-              <h3 className="text-3xl md:text-5xl font-black, normal tracking-[-1px] text-white mb-2 leading-none sentancecase">
+            <div className="relative mb-[10px] md:mb-4 lg:mb-6">
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-black, normal tracking-[-1px] text-white mb-2 leading-none sentancecase">
                 {item.role}
               </h3>
             </div>
 
-            <p className="text-white/30 font-[17px] md:text-lg leading-[0px] mb-8 max-w-md">
+            <p className="text-[16px] leading-[24px] font-normal text-white/80 md:text-lg md:leading-normal mb-8 max-w-md break-words">
               {item.description}
             </p>
           </div>
         </motion.div>
 
         {/* Spacer for desktop layout balance */}
-        <div className="hidden md:block w-[45%]" />
+        <div className="hidden lg:block w-[45%]" />
       </div>
     </div>
   );
@@ -109,47 +109,46 @@ const ExperienceTimeline: React.FC = () => {
   const lineOpacity = useTransform(scrollYProgress, [0, 0.05, 0.95, 1], [0, 1, 1, 0]);
 
   return (
-    <section id="experience" ref={containerRef} className="py-40 relative overflow-hidden">
-      <div className="mb-40 text-center relative z-10">
+    <section id="experience" ref={containerRef} className="!pt-20 lg:!pt-40 relative overflow-hidden">
+      <div className="relative z-10 mb-16 text-center lg:mb-40">
         {/*  */}
         <motion.h2 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="text-6xl md:text-[80px] font-black, normal tracking-[-1px] leading-[4px] sentancecase"
+          className="text-[45px] leading-[45px] lg:text-[80px] lg:leading-[4px] font-black, normal tracking-[-1px] sentancecase"
         >
           How great design happens<span className="text-white/10">.</span>
         </motion.h2>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4">
+      <div className="relative max-w-7xl mx-auto px-0 lg:px-4">
         {/* The Progress Line - Precisely Anchored */}
-        <motion.div 
+          <motion.div 
           style={{ opacity: lineOpacity }}
-          className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/5 -translate-x-1/2 z-20"
-        >
+          className="absolute left-8 lg:left-1/2 top-0 bottom-0 w-[2px] bg-white/5 z-20"
+          >
           {/* Active Filling Line */}
           <motion.div 
             style={{ scaleY, originY: 0 }}
-            className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#a3e635]/50 via-[#a3e635] to-[#a3e635]/50 shadow-[0_0_15px_rgba(163,230,53,0.3)]"
+            className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-lime-400/50 via-lime-400 to-lime-400/50 shadow-[0_0_15px_rgba(163,230,53,0.3)]"
           />
           
           {/* Dynamic Scroll Indicator */}
           <motion.div 
             style={{ top: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) }}
-            className="absolute left-1/2 -translate-x-1/2 w-[1px] h-32 bg-[#a3e635] blur-sm shadow-[0_0_20px_#a3e635]"
+            className="absolute left-1/2 -translate-x-1/2 w-[1px] h-32 bg-lime-400 blur-sm shadow-[0_0_20px_#a3e635]"
           />
         </motion.div>
 
         {/* Experience Cards */}
-        <div className="relative space-y-10 md:space-y-0">
+        <div className="relative space-y-10 lg:space-y-0">
           {experienceData.map((item, index) => (
             <ExperienceCard key={index} item={item} index={index} />
           ))}
         </div>
       </div>
       
-      {/* Bottom Fade Transition */}
-      <div className="h-40 bg-gradient-to-b from-transparent to-black pointer-events-none absolute bottom-0 left-0 w-full z-20"></div>
+      
     </section>
   );
 };

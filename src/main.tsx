@@ -3,8 +3,6 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import DesignerAI from './components/DesignerAI';
-import MobileNotice from './components/MobileNotice';
 import App from './App';
 import HomePage from './pages/HomePage';
 import WorkPage from './pages/WorkPage';
@@ -17,7 +15,7 @@ const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pathname]);
 
   return null;
@@ -32,8 +30,7 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <Router>
-      <MobileNotice />
-      <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black overflow-x-hidden">
+      <div className="min-h-screen bg-[#1C1C1C] text-[#ECE8DF] selection:bg-[#ECE8DF] selection:text-[#1C1C1C] overflow-x-hidden">
         <ScrollToTop />
         <Navbar />
         <Routes>

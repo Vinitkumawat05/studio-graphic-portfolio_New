@@ -18,6 +18,16 @@ interface HelloLoaderProps {
 const HelloLoader: React.FC<HelloLoaderProps> = ({ onLoadingComplete }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     // Cycle through words every 175ms
@@ -59,7 +69,7 @@ const HelloLoader: React.FC<HelloLoaderProps> = ({ onLoadingComplete }) => {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.1 }}
             className="text-white font-light tracking-tight"
-            style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", fontSize: '80px' }}
+            style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", fontSize: isMobile ? '55px' : '80px' }}
           >
             {words[currentIndex]}
           </motion.span>
@@ -73,7 +83,7 @@ const HelloLoader: React.FC<HelloLoaderProps> = ({ onLoadingComplete }) => {
         >
           <span
             className="text-white font-light tracking-tight"
-            style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", fontSize: '80px' }}
+            style={{ fontFamily: "'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", fontSize: isMobile ? '55px' : '80px' }}
           >
             {words[currentIndex]}
           </span>

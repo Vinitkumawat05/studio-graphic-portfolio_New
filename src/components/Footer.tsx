@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface StaggeredTextProps {
@@ -19,7 +18,7 @@ const StaggeredText: React.FC<StaggeredTextProps> = ({ text, className }) => {
       className={className}
     >
       {letters.map((letter, index) => (
-        <div
+        <span
           key={index}
           style={{
             position: 'relative',
@@ -38,7 +37,6 @@ const StaggeredText: React.FC<StaggeredTextProps> = ({ text, className }) => {
             {letter === ' ' ? '\xa0' : letter}
           </span>
 
-          {/* First letter sliding out upward */}
           <motion.span
             style={{
               display: 'inline-block',
@@ -58,7 +56,6 @@ const StaggeredText: React.FC<StaggeredTextProps> = ({ text, className }) => {
             {letter === ' ' ? '\xa0' : letter}
           </motion.span>
 
-          {/* Second letter sliding in from below */}
           <motion.span
             style={{
               display: 'inline-block',
@@ -77,7 +74,7 @@ const StaggeredText: React.FC<StaggeredTextProps> = ({ text, className }) => {
           >
             {letter === ' ' ? '\xa0' : letter}
           </motion.span>
-        </div>
+        </span>
       ))}
     </motion.span>
   );
@@ -85,82 +82,81 @@ const StaggeredText: React.FC<StaggeredTextProps> = ({ text, className }) => {
 
 const Footer: React.FC = () => {
   return (
-    <footer id="contact" className="px-6 md:px-12 lg:px-24 py-24 border-t border-white/10">
-      <div className="max-w-screen-2xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-16 md:gap-32 mb-24">
+    <footer id="footer" className="relative z-40 isolate border-t border-white/10 bg-[#191A19] px-6 py-12 text-[#ECE8DF] md:px-12 lg:px-20 scroll-mt-16 md:scroll-mt-20">
+      <div className="mx-auto max-w-[1800px]">
+        <div className="grid gap-12 border-b border-white/10 pb-12 lg:grid-cols-[1.4fr_0.8fr_1.05fr] lg:items-start">
           <div>
-            <h2 className="text-6xl md:text-[80px] font-normal tracking-tighter mb-12">Let's build<br/>something great.</h2>
-            <a 
-              href="mailto:hello@studio.design" 
-              className="text-2xl md:text-4xl font-light "
+            <h2 className="mb-7 max-w-[520px] text-[42px] font-normal leading-[0.98] tracking-[-1px] md:text-[56px]">
+              Let's build<br />something great.
+            </h2>
+            <a
+              href="mailto:vinitkumawat05@gmail.com"
+              className="text-base font-semibold text-white/45 transition-colors duration-300 hover:text-[#ECE8DF]"
             >
               vinitkumawat05@gmail.com
             </a>
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-6 w-[300px] md:ml-auto">
-            {/* Navigation Column */}
+
+          <div className="grid grid-cols-2 gap-10 text-[18px] leading-none">
             <div className="space-y-4">
-              <Link to="/work" className="block text-lg font-black, normal cursor-pointer">
+              <Link to="/work" className="block font-medium transition-colors duration-300 hover:text-white/55">
                 <StaggeredText text="Work" />
               </Link>
-              <Link to="/contact" className="block text-lg font-black, normal cursor-pointer">
+              <Link to="/contact" className="block font-medium transition-colors duration-300 hover:text-white/55">
                 <StaggeredText text="Contact" />
               </Link>
             </div>
 
-            {/* Social Column */}
-            <div className="space-y-4 md:text-right">
-              <a 
-                href="https://www.instagram.com/magicvibe.in/" 
-                target="_blank" 
+            <div className="space-y-4">
+              <a
+                href="https://www.instagram.com/magicvibe.design/"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="flex md:justify-end items-center gap-2 text-lg font-black, normal hover:text-[#a3e635] transition-colors"
+                className="block font-medium transition-colors duration-300 hover:text-white/55"
               >
                 <StaggeredText text="Instagram" />
-                <ExternalLink className="w-4 h-4 mb-[9px]" />
               </a>
-              <a 
-                href="https://www.linkedin.com/in/vinitkumawat/" 
-                target="_blank" 
+              <a
+                href="https://www.linkedin.com/in/vinitkumawat/"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="flex md:justify-end items-center gap-2 text-lg font-black, normal hover:text-[#a3e635] transition-colors"
+                className="block font-medium transition-colors duration-300 hover:text-white/55"
               >
                 <StaggeredText text="LinkedIn" />
-                <ExternalLink className="w-4 h-4 mb-[9px]" />
               </a>
-              <a 
-                href="https://www.behance.net/vinitkumawat2" 
-                target="_blank" 
+              <a
+                href="https://www.behance.net/vinitkumawat2"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="flex md:justify-end items-center gap-2 text-lg font-black, normal hover:text-[#a3e635] transition-colors"
+                className="block font-medium transition-colors duration-300 hover:text-white/55"
               >
                 <StaggeredText text="Behance" />
-                <ExternalLink className="w-4 h-4 mb-[9px]" />
               </a>
-              <a 
-                href="mailto:vinitkumawat05@gmail.com" 
-                className="flex md:justify-end items-center gap-2 text-lg font-black, normal hover:text-[#a3e635] transition-colors"
+              <a
+                href="mailto:vinitkumawat05@gmail.com"
+                className="block font-medium transition-colors duration-300 hover:text-white/55"
               >
                 <StaggeredText text="Email" />
-                <ExternalLink className="w-4 h-4 mb-[9px]" />
               </a>
             </div>
           </div>
-        </div>
-        
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-start gap-6">
-          <p className="text-xs text-white tracking-widest sentancecase">© 2024 STUDIO DESIGN GROUP. ALL RIGHTS RESERVED.</p>
-          <div className="flex flex-col md:flex-row gap-8 text-xs text-white/30 tracking-widest sentancecase">
-            <div className="text-sm text-white/40">
-              <p>Vadodara</p>
-              <p>India, Asia</p>
-            </div>
-            <div className="flex gap-8">
-              <a className="hover:text-white">Terms & Conditions</a>
-              <a className="hover:text-white">Privacy Policy</a>
-            </div>
+
+          <div className="flex flex-col gap-8 lg:items-end">
+            <Link to="/" aria-label="Magic Vibe home" className="block w-full transition-opacity duration-300 hover:opacity-70 lg:max-w-[350px]">
+              <img src="/assets/icon/hero.svg" alt="Magic Vibe" className="h-auto w-full" />
+            </Link>
+            <a
+              href="mailto:vinitkumawat05@gmail.com"
+              className="flex h-14 w-full items-center justify-center overflow-hidden bg-[#ECE8DF] px-8 text-[18px] font-medium text-[#191A19] lg:max-w-[350px]"
+            >
+              <StaggeredText text="Lets Talk" />
+            </a>
           </div>
+        </div>
+
+        <div className="flex flex-col gap-5 pt-11 text-[13px] font-semibold uppercase tracking-[0.18em] text-white/45 md:flex-row md:items-center md:justify-between">
+          <p>&copy; 2024 Studio Design Group. All Rights Reserved.</p>
+          <p>Vadodara, India | Asia</p>
         </div>
       </div>
     </footer>

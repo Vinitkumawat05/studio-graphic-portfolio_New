@@ -2,11 +2,13 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import Footer from '../components/Footer';
-import DesignerAI from '../components/DesignerAI';
-import { ArrowRight } from 'lucide-react';
 import { Project } from '../types';
 
 interface WorkDetail extends Project {
+  projectType?: string;
+  year?: string;
+  role?: string;
+  client?: string;
   description: string;
   challenges: string;
   solution: string;
@@ -20,7 +22,7 @@ const WorkDetailPage: React.FC = () => {
 
   // Scroll to top on component mount
   React.useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [id]);
 
   // Detailed project data
@@ -29,6 +31,10 @@ const WorkDetailPage: React.FC = () => {
       id: '1',
       title: 'Nova',
       category: 'Brand Indentity',
+      projectType: 'Brand Identity',
+      year: '2023',
+      role: 'Brand Designer',
+      client: 'Nova Labs',
       imageUrl: 'https://images.unsplash.com/photo-1635405074683-96d6921a2a2c?auto=format&fit=crop&q=80&w=1200',
       size: 'large',
       description: 'How Lightspeed transformed their online retail experience by launching a mobile-optimized website and simplifying checkout workflows, increasing conversion rates by 55% and boosting customer satisfaction across devices.',
@@ -50,6 +56,10 @@ const WorkDetailPage: React.FC = () => {
       id: '2',
       title: 'MOTION LAB',
       category: 'Digital',
+      projectType: 'Motion System',
+      year: '2024',
+      role: 'Motion Designer',
+      client: 'Motion Lab',
       imageUrl: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800',
       size: 'medium',
       description: 'A comprehensive motion design system for digital products that standardizes animations and interactions across platforms.',
@@ -70,6 +80,10 @@ const WorkDetailPage: React.FC = () => {
       id: '3',
       title: 'CYBERPUNK IDENTITY',
       category: 'Branding',
+      projectType: 'Brand Identity',
+      year: '2024',
+      role: 'Creative Director',
+      client: 'Cyberpunk Identity',
       imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200',
       size: 'medium',
       description: 'A bold brand identity system for a tech-forward company that challenged design conventions.',
@@ -90,6 +104,10 @@ const WorkDetailPage: React.FC = () => {
       id: '4',
       title: 'KINETIC TYPE',
       category: 'Motion',
+      projectType: 'Typography & Motion',
+      year: '2024',
+      role: 'Motion Designer',
+      client: 'Kinetic Type',
       imageUrl: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&q=80&w=800',
       size: 'medium',
       description: 'An innovative typography and motion design project that brings letterforms to life.',
@@ -115,12 +133,12 @@ const WorkDetailPage: React.FC = () => {
 
   if (!currentProject) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#1C1C1C] text-[#ECE8DF] flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-black mb-4">Project Not Found</h1>
+          <h1 className="text-[45px] md:text-4xl font-normal tracking-[-1px] leading-[45px] mb-4">Project Not Found</h1>
           <button
             onClick={() => navigate('/work')}
-            className="text-[#a3e635] hover:underline"
+            className="text-lime-400 hover:underline"
           >
             Back to Works
           </button>
@@ -133,76 +151,105 @@ const WorkDetailPage: React.FC = () => {
     initial: { opacity: 0, y: 40 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, amount: 0.15 },
-    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }
   };
 
+  const projectDetails = [
+    { label: 'Project Type', value: currentProject.projectType || currentProject.category },
+    { label: 'Year', value: currentProject.year || '2024' },
+    { label: 'My Role', value: currentProject.role || 'Brand Designer' },
+    { label: 'Client', value: currentProject.client || currentProject.title },
+  ];
+
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black overflow-x-hidden">
-      <main className="px-6 md:px-12 lg:px-20 max-w-[2200px] mx-auto pt-[30px]">
-        {/* Hero Image - Full Width */}
+    <div className="min-h-screen bg-[#1C1C1C] text-[#ECE8DF] selection:bg-[#ECE8DF] selection:text-[#1C1C1C] overflow-x-hidden">
+      <main className="px-6 md:px-8 lg:px-20 max-w-[1700px] mx-auto pt-[80px] md:pt-[70px] pb-0 md:pb-28">
         <motion.div
           {...sectionReveal}
-          className="rounded-[30px] overflow-hidden w-full h-[400px] md:h-[670px] mb-20"
+          className="w-full h-[320px] md:h-[440px] lg:h-[560px] overflow-hidden rounded-lg bg-[#515352] mb-9"
         >
           <img
             src={currentProject.imageUrl}
             alt={currentProject.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-80"
           />
         </motion.div>
 
-        {/* Introduction Section with 001 */}
-        <section className="mb-32 grid md:grid-cols-3 gap-12 md:gap-24 pt-20 md:pt-32">
+        <section className="mb-28">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="grid lg:grid-cols-[minmax(0,1fr)_300px] gap-8 lg:gap-16"
           >
-            <div className="mb-12 flex items-center gap-4">
-              <div className="h-12 w-1 bg-[#a3e635] rounded-full"></div>
-              <div>
-                <p className="text-[#a3e635] text-[17px] font-black, normal tracking-[0px] sentancecase">001</p>
-                <p className="text-white/40 text-[17px] font-black, normal tracking-widest sentancecase">Introduction</p>
-              </div>
+            <div>
+              <p className="mb-6 text-base text-[#A4A4A4]">Project Overview</p>
+              <p className="max-w-[1080px] text-[20px] md:text-[22px] leading-[1.25] tracking-[-0.01em] text-[#F2F2F2]">
+                {currentProject.description}
+              </p>
             </div>
-            
-            <div className="space-y-8">
-              <div className="border-b border-white/10 pb-6">
-                <p className="text-white/40 text-[17px] font-black, normal tracking-[0px] sentancecase mb-3">Client</p>
-                <p className="text-2xl md:text-3xl font-black, normal">{currentProject.title}</p>
-              </div>
-              
-              <div className="border-b border-white/10 pb-6">
-                <p className="text-white/40 text-[17px] font-black, normal tracking-[0px] sentancecase mb-3">Timeline</p>
-                <p className="text-2xl md:text-3xl font-black, normal">6 months</p>
-              </div>
-              
-              <div className="pb-6">
-                <p className="text-white/40 text-[17px] font-black, normal tracking-[0px] sentancecase mb-3">Year</p>
-                <p className="text-2xl md:text-3xl font-black, normal">2024</p>
-              </div>
-            </div>
+            <h1 className="self-start text-left lg:text-right text-[30px] md:text-[34px] leading-none font-black tracking-[-0.02em] uppercase text-white">
+              {currentProject.title}
+            </h1>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="md:col-span-2"
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            className="mt-8 grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-4"
           >
-            <p className="text-lg md:text-xl text-white/70 leading-relaxed">
-              {currentProject.description}
-            </p>
+            {projectDetails.map((detail) => (
+              <div key={detail.label}>
+                <p className="mb-3 text-base text-[#A4A4A4]">{detail.label}</p>
+                <p className="text-base md:text-lg leading-tight text-white">{detail.value}</p>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-14 space-y-3 md:space-y-4"
+          >
+            <div className="h-[300px] md:h-[520px] lg:h-[650px] overflow-hidden rounded-md bg-[#515352]">
+              <img
+                src={currentProject.images[0] || currentProject.imageUrl}
+                alt={`${currentProject.title} visual 1`}
+                className="h-full w-full object-cover opacity-80"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
+              {[1, 2].map((imageIndex) => (
+                <div key={imageIndex} className="h-[420px] md:h-[560px] lg:h-[680px] overflow-hidden rounded-md bg-[#515352]">
+                  <img
+                    src={currentProject.images[imageIndex] || currentProject.imageUrl}
+                    alt={`${currentProject.title} visual ${imageIndex + 1}`}
+                    className="h-full w-full object-cover opacity-80"
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="h-[300px] md:h-[520px] lg:h-[650px] overflow-hidden rounded-md bg-[#515352]">
+              <img
+                src={currentProject.images[3] || currentProject.images[1] || currentProject.imageUrl}
+                alt={`${currentProject.title} visual 4`}
+                className="h-full w-full object-cover opacity-80"
+              />
+            </div>
           </motion.div>
         </section>
 
-
         {/* Related Works Section */}
         <motion.section {...sectionReveal} className="mb-32">
-          <p className="text-[#a3e635] text-[17px] font-black, normal tracking-[0px] sentancecase mb-8">Other Works</p>
-          <h2 className="text-5xl md:text-6xl font-black, normal tracking-[0px] mb-16">More Projects</h2>
+          <p className="text-[#ECE8DF]/45 text-[17px] font-black tracking-[0px] mb-8">Other Works</p>
+          <h2 className="text-[45px] md:text-6xl font-normal tracking-[-1px] md:tracking-[0px] leading-[45px] md:leading-tight mb-16">More Projects</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="-mx-1 flex gap-4 overflow-x-auto no-scrollbar px-1 snap-x snap-mandatory md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:p-0">
             {relatedProjects.map((project, idx) => (
               <motion.div
                 key={project.id}
@@ -211,27 +258,17 @@ const WorkDetailPage: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
                 onClick={() => {
-                  window.scrollTo(0, 0);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                   navigate(`/work/${project.id}`);
                 }}
-                className="group cursor-pointer"
+                className="group min-w-[68vw] max-w-[260px] shrink-0 snap-start cursor-pointer md:min-w-0 md:max-w-none md:shrink"
               >
-                <div className="relative aspect-[4/5] rounded-[30px] overflow-hidden mb-6 bg-white/5 border border-white/10 hover:border-[#a3e635] transition-all">
+                <div className="relative mb-4 aspect-[4/5] overflow-hidden rounded-[20px] border border-white/10 bg-white/5 transition-all md:mb-6 md:rounded-[30px]">
                   <img
                     src={project.imageUrl}
                     alt={project.title}
-                    className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[1.2s]"
+                    className="h-full w-full object-cover opacity-100"
                   />
-                  <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
-                    <span className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[17px] font-black, normal tracking-[0px] sentancecase w-fit">
-                      {project.category}
-                    </span>
-                    <div>
-                      <h3 className="text-2xl font-black, normal tracking-[-1px] leading-[4px]">
-                        {project.title}
-                      </h3>
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             ))}
@@ -240,7 +277,6 @@ const WorkDetailPage: React.FC = () => {
       </main>
 
       <Footer />
-      <DesignerAI />
     </div>
   );
 };

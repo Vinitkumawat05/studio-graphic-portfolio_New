@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
 import SlideInButton from './SlideInButton';
 
 const services = [
@@ -12,170 +10,140 @@ const services = [
       'We craft bold, memorable brand identities that tell your story and leave a lasting impression. From logos to full brand guidelines, we ensure consistency and impact across all touchpoints.',
     timeline: '2 - 4 weeks',
     image:
-      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&q=80&w=800',
+      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&q=80&w=1000',
   },
   {
     id: 2,
     title: 'Web Design',
     description:
-      'We build stunning, high-performance websites that captivate users and drive results. Every pixel is crafted with purpose, blending aesthetics with seamless functionality.',
+      'We build high-performance websites that captivate users and drive results. Every pixel is crafted with purpose, blending aesthetics with seamless functionality.',
     timeline: '4 - 8 weeks',
     image:
-      'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=800',
+      'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1000',
   },
   {
     id: 3,
     title: 'UI/UX Design',
     description:
-      'We design intuitive, user-centered interfaces that delight and engage. Our process balances beauty with usability to create experiences people love.',
+      'We design intuitive, user-centered interfaces that feel polished and efficient. Our process balances beauty with usability to create experiences people love.',
     timeline: '3 - 6 weeks',
     image:
-      'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&q=80&w=800',
+      'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&q=80&w=1000',
   },
   {
     id: 4,
     title: 'Motion & Visual Design',
     description:
-      'We bring brands to life with captivating motion graphics and visual storytelling. From animations to video content, we create experiences that move people.',
+      'We bring brands to life with motion systems, campaign visuals, and storytelling that make the identity feel alive across every channel.',
     timeline: '2 - 5 weeks',
     image:
-      'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800',
+      'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1000',
   },
 ];
 
+const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
+
 const ServicesSection: React.FC = () => {
   const [activeService, setActiveService] = useState(0);
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const staggerItem = {
-    hidden: { opacity: 0, x: -20 },
-    show: { 
-      opacity: 1, 
-      x: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.25, 0.1, 0.25, 1],
-      }
-    },
-  };
+  const active = services[activeService];
 
   return (
-    <section className="py-32 relative min-h-screen">
-      {/* Header */}
-      <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-16">
+    <section id="services" className="pt-0 pb-20 md:py-24 lg:py-32 scroll-mt-16 md:scroll-mt-20">
+      <div className="mb-10 flex flex-col gap-6 md:mb-14 lg:flex-row lg:items-end lg:justify-between">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#a3e635]"></span>
-          <span className=" font-[17px] Sentancecase tracking-[0px] text-white/60">Services</span>
+          <span className="h-2 w-2 rounded-full bg-[#ECE8DF]" />
+          <span className="text-[15px] text-[#ECE8DF]/60">Services</span>
         </div>
-        <h2 className="text-5xl md:text-[80px] font-normal tracking-[-1px] ">
+
+        <h2 className="max-w-[760px] text-[45px] font-normal leading-[45px] tracking-[-1px] md:text-[72px] md:leading-[0.95]">
           What we offer.
         </h2>
-        <p className="text-white/50 max-w-xs text-right text-[17px] leading-[24px]">
+
+        <p className="max-w-sm text-[16px] leading-[22px] text-[#ECE8DF]/55 lg:text-right">
           We specialize in creating bold, high-impact digital experiences that set brands apart.
         </p>
       </div>
 
-      {/* Content Grid */}
-      <div className="grid lg:grid-cols-[1fr_494px_494px] gap-6 lg:gap-2 h-[500px]">
-        {/* Left - Service List with Staggered Animation */}
-        <div className="h-[500px] flex flex-col">
-          <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-5 flex-1">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-            >
-              {services.map((service, index) => (
-                <motion.div
-                  key={service.id}
-                  variants={staggerItem}
-                  onMouseEnter={() => setActiveService(index)}
-                  className={`py-6 cursor-pointer transition-colors ${
-                    index !== services.length - 1 ? 'border-b border-white/5' : ''
-                  } ${activeService === index ? 'text-white' : 'text-white/40 hover:text-white/70'}`}
-                >
-                  <span className="text-[24px]">{service.id}.</span>
-                  <span className="text-[24px] font-medium ml-4">{service.title}</span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+      <div className="grid gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-[minmax(280px,0.9fr)_minmax(320px,1fr)_minmax(320px,1fr)] lg:items-stretch">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease }}
+          className="rounded-lg border border-[#ECE8DF]/10 bg-[#ECE8DF]/[0.03] p-4 md:p-5"
+        >
+          {services.map((service, index) => {
+            const isActive = activeService === index;
 
-          {/* Start the Project Button */}
-          <div className="mt-4">
-            <SlideInButton
-              text="Start the Project"
-              href="/contact"
-              variant="primary"
-              className="w-full justify-center rounded-2xl px-6 py-5 text-xl font-medium"
-            />
-          </div>
-        </div>
-
-        {/* Middle - 4 Description Cards stacked vertically, scrolls TOP to BOTTOM */}
-        <div className="bg-white/[0.03] border border-white/10 rounded-3xl p-10 overflow-hidden relative h-[500px]">
-          <div className="relative h-full w-full">
-            {/* Container with all 4 cards stacked vertically */}
-            <motion.div 
-              className="flex flex-col absolute w-full"
-              style={{ height: `${services.length * 100}%` }}
-              animate={{ y: `-${activeService * (100 / services.length)}%` }}
-              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-            >
-              {services.map((service, index) => (
-                <div 
-                  key={service.id} 
-                  className="flex flex-col justify-between"
-                  style={{ height: `${100 / services.length}%`, padding: '33px 0 33px 0' }}
-                >
-                  <p className="text-white/70 text-[17px] leading-relaxed">
-                    {service.description}
-                  </p>
-                  <div className="flex items-center justify-between border-t border-white/10 pt-8 mt-auto">
-                    <span className="text-white/40 text-base uppercase tracking-widest">Timeline</span>
-                    <span className="text-white/70 text-lg">{service.timeline}</span>
+            return (
+              <button
+                key={service.id}
+                type="button"
+                onClick={() => setActiveService(index)}
+                onMouseEnter={() => setActiveService(index)}
+                className={`group w-full border-b border-[#ECE8DF]/10 py-5 text-left transition-colors last:border-b-0 md:py-6 ${
+                  isActive ? 'text-[#ECE8DF]' : 'text-[#ECE8DF]/42 hover:text-[#ECE8DF]/75'
+                }`}
+              >
+                <div className="flex items-start gap-4">
+                  <span className="min-w-[34px] text-[20px] font-normal leading-none md:text-[25px]">{service.id}.</span>
+                  <div>
+                    <span className="block text-[23px] font-normal leading-[1.05] md:text-[25px]">{service.title}</span>
+                    <p className={`mt-3 text-[15px] leading-[22px] transition-all md:hidden ${isActive ? 'block text-[#ECE8DF]/65' : 'hidden'}`}>
+                      {service.description}
+                    </p>
                   </div>
                 </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
+              </button>
+            );
+          })}
+        </motion.div>
 
-        {/* Right - 4 Image Cards stacked vertically, scrolls BOTTOM to TOP */}
-        <div className="relative overflow-hidden rounded-3xl h-[500px]">
-          {/* Container with all 4 cards stacked vertically */}
-          <motion.div 
-            className="flex flex-col absolute w-full"
-            style={{ height: `${services.length * 100}%` }}
-            animate={{ y: `-${(services.length - 1 - activeService) * (100 / services.length)}%` }}
-            transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            {services.map((service, index) => (
-              <div 
-                key={service.id} 
-                className="relative w-full"
-                style={{ height: `${100 / services.length}%` }}
-              >
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
-            ))}
-          </motion.div>
-        </div>
+        <motion.div
+          key={active.id}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease, delay: 0.08 }}
+          className="hidden min-h-[260px] flex-col justify-between rounded-lg border border-[#ECE8DF]/10 bg-[#ECE8DF]/[0.03] p-6 md:flex md:min-h-[360px] md:p-8 lg:min-h-[500px]"
+        >
+          <p className="text-[17px] leading-relaxed text-[#ECE8DF]/70 md:text-[20px] md:leading-[1.45]">
+            {active.description}
+          </p>
+          <div className="mt-10 flex items-center justify-between border-t border-[#ECE8DF]/10 pt-6">
+            <span className="text-xs uppercase tracking-[0.18em] text-[#ECE8DF]/38">Timeline</span>
+            <span className="text-base text-[#ECE8DF]/75 md:text-lg">{active.timeline}</span>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease, delay: 0.16 }}
+          className="relative min-h-[320px] overflow-hidden rounded-lg bg-[#515352] md:col-span-2 md:min-h-[420px] lg:col-span-1 lg:min-h-[500px]"
+        >
+          {services.map((service, index) => (
+            <motion.img
+              key={service.id}
+              src={service.image}
+              alt={service.title}
+              initial={false}
+              animate={{ opacity: activeService === index ? 1 : 0, scale: activeService === index ? 1 : 1.04 }}
+              transition={{ duration: 0.55, ease }}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          ))}
+        </motion.div>
+      </div>
+
+      <div className="mt-5 md:mt-6 lg:max-w-[calc((100%-2rem)/3)]">
+        <SlideInButton
+          text="Start the Project"
+          href="/contact"
+          variant="primary"
+          className="w-full justify-center rounded-lg px-6 py-5 text-lg font-medium"
+        />
       </div>
     </section>
   );

@@ -17,8 +17,8 @@ const ReadyToStandOut: React.FC = () => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       if (!containerRef.current) return;
+      if (!watermarkRef.current || !textLine1Ref.current || !textLine2Ref.current) return;
 
-      // Parallax for the background watermark
       gsap.fromTo(
         watermarkRef.current,
         { y: -100 },
@@ -64,6 +64,8 @@ const ReadyToStandOut: React.FC = () => {
           }
         }
       );
+
+      requestAnimationFrame(() => ScrollTrigger.refresh());
     }, containerRef);
 
     return () => ctx.revert();
@@ -72,7 +74,7 @@ const ReadyToStandOut: React.FC = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen bg-black flex flex-col justify-center items-center overflow-hidden py-32 md:py-64"
+      className="relative min-h-screen w-full bg-black flex flex-col justify-center items-center overflow-hidden py-32 md:py-64"
     >
       {/* Background Watermark (Similar to "DZINR" in video) */}
       <div 
@@ -96,14 +98,14 @@ const ReadyToStandOut: React.FC = () => {
       {/* Main Content Area */}
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div ref={textLine1Ref} className="overflow-hidden">
-          <h2 className="text-[8vw] font-black tracking-tighter leading-none mb-4">
+          <h2 className="text-[45px] md:text-[8vw] font-normal md:font-black tracking-[-1px] md:tracking-tighter leading-[45px] md:leading-none mb-4">
             So, Are You Ready
           </h2>
         </div>
         
         <div ref={textLine2Ref} className="overflow-hidden">
-          <h2 className="text-[10vw] font-black tracking-tighter leading-none italic">
-            To <span className="text-[#a3e635] not-italic">Stand Out?</span>
+          <h2 className="text-[45px] md:text-[10vw] font-normal md:font-black tracking-[-1px] md:tracking-tighter leading-[45px] md:leading-none italic">
+            To <span className="text-lime-400 not-italic">Stand Out?</span>
           </h2>
         </div>
 
@@ -111,11 +113,11 @@ const ReadyToStandOut: React.FC = () => {
         <div className="mt-24 flex items-center justify-center gap-12 opacity-30">
           <div className="flex flex-col items-center gap-4">
             <span className="text-[9px] font-black tracking-[0.5em] uppercase">Mumbai</span>
-            <div className="w-1.5 h-1.5 rounded-full bg-[#a3e635]"></div>
+            <div className="w-1.5 min-h-[6px] rounded-full bg-lime-400"></div>
           </div>
           <div className="flex flex-col items-center gap-4">
             <span className="text-[9px] font-black tracking-[0.5em] uppercase">India, Asia</span>
-            <div className="w-1.5 h-1.5 rounded-full bg-white"></div>
+            <div className="w-1.5 min-h-[6px] rounded-full bg-white"></div>
           </div>
         </div>
       </div>

@@ -26,14 +26,22 @@ const SlideInButton: React.FC<SlideInButtonProps> = ({
   const baseClasses = `relative inline-flex items-center gap-3 overflow-hidden rounded-full transition-all duration-300 active:scale-95`;
 
   const variantClasses = {
-    primary: 'px-7 py-2.5 bg-white text-black',
+    primary: 'px-7 py-2.5 transition-colors duration-300 border-none outline-none ring-0 shadow-none',
     secondary:
-      'px-6 md:px-8 py-3 border border-white/40 text-white hover:bg-white/5',
+      'px-6 md:px-8 py-3 border border-white/40 text-white',
   };
+
+  const primaryStyle =
+    variant === 'primary'
+      ? {
+          backgroundColor: '#FFFFFF',
+          color: '#000000',
+        }
+      : undefined;
 
   // Spring animation config matching Framer
   const springTransition = {
-    type: 'spring',
+    type: 'spring' as const,
     bounce: 0.1,
     duration: 0.5,
   };
@@ -43,25 +51,10 @@ const SlideInButton: React.FC<SlideInButtonProps> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+      style={primaryStyle}
       onClick={onClick}
     >
-      {/* Background fill that expands from bottom center */}
-      {variant === 'primary' && (
-        <motion.div
-          className="absolute rounded-full bg-[#a3e635]"
-          style={{
-            left: '50%',
-            bottom: '-8px',
-            x: '-50%',
-          }}
-          initial={{ width: 8, height: 8 }}
-          animate={{
-            width: isHovered ? '200%' : 8,
-            height: isHovered ? '200%' : 8,
-          }}
-          transition={springTransition}
-        />
-      )}
+      {/* No animated background fill, just solid hover effect */}
 
       {/* Text container with slide effect */}
       <div className="relative flex items-center gap-3 z-10">

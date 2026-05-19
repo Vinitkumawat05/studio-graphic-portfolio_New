@@ -1,9 +1,8 @@
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+// Removed motion/AnimatePresence for static grid
 import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
-import DesignerAI from '../components/DesignerAI';
 import { Project } from '../types';
 import { ArrowUpRight, Search, Filter } from 'lucide-react';
 
@@ -13,7 +12,7 @@ const WorkPage: React.FC = () => {
 
   // Scroll to top on component mount
   React.useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   const allProjects: Project[] = [
@@ -27,111 +26,69 @@ const WorkPage: React.FC = () => {
     { id: '8', title: 'MONO ARCHIVE', category: 'Branding', imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200', size: 'medium', subtitle: 'Minimalist excellence' },
   ];
 
-  const filteredProjects = filter === 'All' 
-    ? allProjects 
+
+  // Unique categories for filter bar
+  const categories = ['All', ...Array.from(new Set(allProjects.map(p => p.category)))];
+
+  const filteredProjects = filter === 'All'
+    ? allProjects
     : allProjects.filter(p => p.category === filter);
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black overflow-x-hidden">
-      <main className="min-h-screen pt-40 pb-32 px-6 md:px-12 lg:px-20 max-w-[2000px] mx-auto">
-        {/* Header Section */}
-        <section className="mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {/* <p className="text-[#a3e635] text-[10px] font-black, normal tracking-[0.6em] sentancecase mb-8">Master_Collection</p> */}
-            <h1 className="text-[80px] font-black, normal tracking-[-1px] leading-[91px] sentancecase ">
-             Work that<span className="text-white">,</span><br />
-              <span className="text-white">Changed things.</span>
-            </h1>
-             <div className="mt-4 max-w-2xl space-y-12 mb-12">
-                      
-                        <span className="text-[17px] font-white, normal tracking-[0px] leading-[24px]">Every project started with a spark and ended with something that stuck.</span> 
-                    </div>
-          </motion.div>
+    <div className="min-h-[100svh] bg-[#1C1C1C] text-[#ECE8DF] selection:bg-[#ECE8DF] selection:text-[#1C1C1C] overflow-x-hidden">
+      <main className="min-h-[100svh] pt-[80px] md:pt-[116px] pb-32 px-6 md:px-8 lg:px-20 max-w-[2000px] mx-auto">
+        {/* Large Heading SVG */}
+        <div className="w-full flex justify-start items-center mb-8 mt-2">
+          <img
+            src="/assets/icon/Selected Work.svg"
+            alt="Selected Work"
+            className="w-full h-auto"
+            style={{ display: 'block' }}
+          />
+        </div>
 
-          {/* Filters */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 border-y border-white/5 py-10">
-            <div className="flex flex-wrap gap-3">
-              {['All', 'Branding', 'Digital', 'Motion','Web Design','UI/UX','Strategy'].map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => setFilter(tag)}
-                  className={`px-6 py-2.5 rounded-full text-[17px] font-black, normal tracking-[0px] sentancecase transition-all ${
-                    filter === tag 
-                      ? 'bg-[#a3e635] text-black border-[#a3e635] shadow-[0_10px_30px_rgba(163,230,53,0.3)]' 
-                      : 'border border-white/10 text-white/40 hover:text-white hover:border-white'
-                  }`}
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
-            
-            <div className="flex items-center gap-12">
-              <div className="flex flex-col items-end">
-                <span className="text-[17px] font-black, normal tracking-[0px] text-white/20 sentancecase mb-1">Total Assets</span>
-                <span className="text-xl font-black, normal">{allProjects.length}</span>
-              </div>
-              <div className="w-px h-10 bg-white/5"></div>
-              
-            </div>
-          </div>
-        </section>
+        {/* Filter Bar */}
+        <div className="mb-6 flex flex-wrap gap-2 md:mb-10 md:gap-4">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              className={`rounded-full border border-[#ECE8DF] px-3 py-[6px] text-xs font-medium transition-all duration-200 md:px-5 md:py-1 md:text-sm ${filter === cat ? 'bg-[#ECE8DF] text-[#1C1C1C]' : 'bg-transparent text-[#ECE8DF] hover:bg-[#ECE8DF] hover:text-[#1C1C1C]'}`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
 
         {/* Grid Archive */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode='popLayout'>
-            {filteredProjects.map((project, idx) => (
-              <motion.div
-                layout
-                key={project.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.6, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                onClick={() => {
-                  window.scrollTo(0, 0);
-                  navigate(`/work/${project.id}`);
-                }}
-                className="group relative aspect-[4/5] rounded-[40px] overflow-hidden bg-[#070707] border border-white/5 cursor-pointer  transition-colors"
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {filteredProjects.map((project) => (
+            <div key={project.id} className="flex flex-col">
+              <div
+                className="block relative w-full aspect-[4/3] rounded-[12px] bg-white overflow-hidden cursor-pointer"
+                onClick={() => navigate(`/work/${project.id}`)}
+                title={project.title}
+                tabIndex={0}
+                role="button"
+                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') navigate(`/work/${project.id}`); }}
               >
-                <img 
-                  src={project.imageUrl} 
-                  className="w-full h-full object-cover grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                <img
+                  src={project.imageUrl}
                   alt={project.title}
+                  className="w-full h-full object-cover"
                 />
-                
-                <div className="absolute inset-0 p-10 flex flex-col justify-between z-10">
-                  <div className="flex justify-between items-start">
-                    <span className="w-fit px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[17px] font-black, normal tracking-[0px] sentancecase">
-                      {project.category}
-                    </span>
-                    <div className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                      <ArrowUpRight className="w-5 h-5" />
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <span className="text-[17px] font-black, normal tracking-[0px] text-[#a3e635] sentancecase opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100 tracking-[0px]">
-                      Project No. 00{project.id}
-                    </span>
-                    <h3 className="text-2xl md:text-4xl font-black, normal tracking-[-1px] leading-[4px]">
-                      {project.title}
-                    </h3>
-                    <p className="text-[17px] text-white/40 font-normal tracking-[0px] leading-[24px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                      {project.subtitle}
-                    </p>
-                  </div>
+              </div>
+              <div className="mt-3 px-1">
+                <h3 className="font-sfpro text-white text-lg md:text-xl font-bold leading-tight tracking-tight uppercase">
+                  {project.title}
+                </h3>
+                <div className="text-[#bdbdbd] text-xs md:text-sm font-normal mt-1">
+                  {project.category}
+                  {project.subtitle ? ` • ${project.subtitle}` : ''}
                 </div>
-
-                {/* Hover Grain Effect Overlay */}
-                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-5 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay transition-opacity duration-700"></div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Empty State */}
@@ -142,7 +99,6 @@ const WorkPage: React.FC = () => {
         )}
       </main>
       <Footer />
-      <DesignerAI />
     </div>
   );
 };
