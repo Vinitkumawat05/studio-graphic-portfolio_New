@@ -52,17 +52,17 @@ const FAQRow: React.FC<{
       }`}
       onClick={onToggle}
     >
-      <div className="flex items-start justify-between py-10 px-8 transition-all gap-6">
+      <div className="flex items-start justify-between py-10 px-0 md:px-8 transition-all gap-6">
         {/* Content Section (Number + Text Column) */}
         <div className="flex items-start gap-8 md:gap-16 flex-1">
           {/* Column 1: Number */}
-        <span className={`text-3xl font-black, normal tracking-[0px] mt-2 md:mt-3.5 flex-shrink-0 transition-colors duration-500 ${isOpen ? 'text-lime-400' : 'text-white/20 group-hover:text-white/50'}`}>
+        <span className={`text-3xl font-black, normal tracking-[0px] mt-2 md:mt-3.5 flex-shrink-0 transition-colors duration-500 ${isOpen ? 'text-[#ECE8DF]' : 'text-white/20 group-hover:text-white/50'}`}>
             0{index + 1}
           </span>
           
           {/* Column 2: Stacked Question & Answer */}
           <div className="flex-1">
-            <h3 className={`text-lg md:text-3xl font-normal tracking-[0px] mt-2 md:mt-3.5 transition-all duration-500 ${
+            <h3 className={`text-[25px] md:text-3xl font-normal tracking-[-1px] md:tracking-[0px] leading-[30px] md:leading-normal mt-2 md:mt-3.5 transition-all duration-500 ${
               isOpen ? 'text-white' : 'text-white/30 group-hover:text-white'
             }`}>
               {item.question}
@@ -77,8 +77,8 @@ const FAQRow: React.FC<{
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <div className="pt-8 md:pt-10 pr-12 pb-2">
-                <p className="text-white/40 text-base md:text-xl leading-relaxed max-w-2xl font-medium tracking-tight">
+              <div className="pt-[20px] md:pt-10 pr-0 md:pr-12 pb-0 md:pb-2">
+                <p className="max-w-2xl text-[16px] leading-[24px] font-normal tracking-[0px] text-white/70 md:text-xl md:leading-relaxed md:font-medium md:tracking-tight md:text-white/40">
                   {item.answer}
                 </p>
               </div>
@@ -88,7 +88,7 @@ const FAQRow: React.FC<{
 
         {/* Column 3: Action Icon */}
         <div className={`transition-all duration-500 rounded-full p-2.5 flex-shrink-0 mt-1 md:mt-2 ${
-          isOpen ? 'rotate-180 bg-lime-400 text-black shadow-[0_0_20px_rgba(163,230,53,0.3)]' : 'text-white/20 group-hover:text-white bg-white/5'
+          isOpen ? 'rotate-180 bg-[#ECE8DF] text-black shadow-[0_0_20px_rgba(236,232,223,0.3)]' : 'text-white/20 group-hover:text-white bg-white/5'
         }`}>
           {isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
         </div>
@@ -101,7 +101,7 @@ const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-40  relative">
+    <section id="faq" className="pt-0 pb-40 md:py-40 relative scroll-mt-16 md:scroll-mt-20">
       <div className="grid lg:grid-cols-12 gap-12 mb-24">
         <div className="lg:col-span-12">
           <motion.div 
@@ -112,14 +112,14 @@ const FAQ: React.FC = () => {
             className="text-center"
           >
             <p className="text-[17px] font-black,normal tracking-[0px] text-white/40 sentancecase mb-2">Questions?</p>
-            <h2 className="text-6xl md:text-[80px] font-black, normal tracking-[-1px] leading-none">
+            <h2 className="mb-[50px] md:mb-0 text-[45px] md:text-[80px] font-normal tracking-[-1px] leading-[45px] md:leading-none">
               We've got answers<span className="text-white/20">.</span>
             </h2>
           </motion.div>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 md:px-0">
+      <div className="max-w-6xl mx-auto px-0 md:px-0">
         {faqData.map((item, index) => (
           <FAQRow 
             key={index}

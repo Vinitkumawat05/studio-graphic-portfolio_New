@@ -9,7 +9,7 @@ const testimonials = [
     rating: '4.9/5',
   },
   {
-    quote: 'The team elevated every interaction—clean, cinematic, and built for performance. We saw conversion spikes within days.',
+    quote: 'The team elevated every interaction: clean, cinematic, and built for performance. We saw conversion spikes within days.',
     name: 'Daniel W.',
     title: 'SaaS Founder',
     rating: '4.9/5',
@@ -36,13 +36,10 @@ const TestimonialsSection: React.FC = () => {
 
   const handleHover = (index: number, slow: boolean) => {
     const tween = tweens.current[index];
-    if (tween) {
-      tween.timeScale(slow ? 0.4 : 1);
-    }
+    if (tween) tween.timeScale(slow ? 0.4 : 1);
   };
 
   useEffect(() => {
-    // Small delay to ensure DOM is ready
     const timer = setTimeout(() => {
       tweens.current.forEach((tween) => tween?.kill());
       tweens.current = [];
@@ -50,18 +47,15 @@ const TestimonialsSection: React.FC = () => {
       marqueeRefs.current.forEach((track, index) => {
         if (!track) return;
         const direction = index === 0 ? -1 : 1;
-        const duration = index === 0 ? 25 : 30;
 
         gsap.set(track, { xPercent: direction === -1 ? 0 : -50 });
-        
-        const tween = gsap.to(track, {
+
+        tweens.current[index] = gsap.to(track, {
           xPercent: direction === -1 ? -50 : 0,
-          duration,
+          duration: index === 0 ? 25 : 30,
           ease: 'none',
           repeat: -1,
         });
-
-        tweens.current[index] = tween;
       });
     }, 100);
 
@@ -70,6 +64,7 @@ const TestimonialsSection: React.FC = () => {
       tweens.current.forEach((tween) => tween?.kill());
     };
   }, []);
+
   const renderCards = () =>
     marqueeContent.map((item, index) => (
       <article key={`${item.name}-${index}`} className="testimonial-card">
@@ -83,7 +78,7 @@ const TestimonialsSection: React.FC = () => {
     ));
 
   return (
-    <section className="testimonials">
+    <section id="testimonials" className="testimonials scroll-mt-16 md:scroll-mt-20">
       <div className="testimonials__heading">
         <p className="eyebrow">Testimonials</p>
         <h2>
@@ -92,7 +87,7 @@ const TestimonialsSection: React.FC = () => {
           Real Transformations.
         </h2>
         <p className="subline">
-          Here’s what our clients have to say about working with STUDIO.
+          Here's what our clients have to say about working with STUDIO.
         </p>
       </div>
 
@@ -112,30 +107,14 @@ const TestimonialsSection: React.FC = () => {
         </div>
       </div>
 
-      <div
-        className="marquee"
-        data-direction="ltr"
-        onMouseEnter={() => handleHover(1, true)}
-        onMouseLeave={() => handleHover(1, false)}
-      >
-        <div
-          className="marquee__track"
-          ref={(el) => {
-            if (el) marqueeRefs.current[1] = el;
-          }}
-        >
-          {renderCards()}
-        </div>
-      </div>
-
       <style>{`
         .testimonials {
           width: 100vw;
           margin-left: calc(50% - 50vw);
           margin-right: calc(50% - 50vw);
-          padding: 4rem 0 3rem;
-          background: #050505;
-          color: #ffffff;
+          padding: clamp(4rem, 8vw, 7rem) 0 clamp(3rem, 6vw, 5rem);
+          background: #1C1C1C;
+          color: #ECE8DF;
           display: flex;
           flex-direction: column;
           gap: 1.5rem;
@@ -150,16 +129,16 @@ const TestimonialsSection: React.FC = () => {
         }
 
         .testimonials__heading h2 {
-          font-size: clamp(2.5rem, 5vw, 4.5rem);
+          font-size: clamp(2.75rem, 7vw, 5.5rem);
           font-weight: 500;
-          line-height: 1.1;
+          line-height: 0.98;
+          letter-spacing: -0.03em;
         }
 
         .testimonials__heading .eyebrow {
-          text-transform: sentencecase;
-          letter-spacing: 0em;
+          letter-spacing: 0;
           font-size: 1.08rem;
-          color: #A3E635;
+          color: #ECE8DF;
           margin-bottom: 0.75rem;
         }
 
@@ -170,25 +149,25 @@ const TestimonialsSection: React.FC = () => {
 
         .marquee {
           position: relative;
-          overflow: visible;
+          overflow: hidden;
           width: 100vw;
         }
 
         .marquee__track {
           display: flex;
-          gap: 1.5rem;
+          gap: clamp(0.75rem, 2vw, 1.5rem);
           will-change: transform;
           width: max-content;
         }
 
         .testimonial-card {
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 24px;
-          padding: 2rem;
-          min-width: 421px;
-          max-width: 421px;
-          height: 315px;
-          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(236, 232, 223, 0.1);
+          border-radius: 8px;
+          padding: clamp(1.25rem, 3vw, 2rem);
+          min-width: clamp(280px, 70vw, 421px);
+          max-width: clamp(280px, 70vw, 421px);
+          min-height: clamp(260px, 34vw, 315px);
+          background: rgba(236, 232, 223, 0.03);
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
           display: flex;
           flex-direction: column;
@@ -198,7 +177,7 @@ const TestimonialsSection: React.FC = () => {
         .testimonial-card p {
           font-size: 1rem;
           line-height: 1.5;
-          color: #e5e5e5;
+          color: rgba(236, 232, 223, 0.78);
         }
 
         .testimonial-meta {
@@ -208,19 +187,45 @@ const TestimonialsSection: React.FC = () => {
           gap: 0.5rem;
           justify-content: space-between;
           align-items: center;
-          color: #9ca3af;
+          color: rgba(236, 232, 223, 0.45);
           font-size: 0.85rem;
         }
 
         .testimonial-meta .name {
           font-weight: 600;
-          color: #ffffff;
+          color: #ECE8DF;
         }
 
         .testimonial-meta .rating {
-          color: #f87171;
+          color: #a3e635;
         }
 
+        @media (max-width: 640px) {
+          .testimonials {
+            gap: 1.25rem;
+          }
+
+          .testimonials__heading {
+            text-align: left;
+            padding: 0 1.5rem;
+          }
+
+          .testimonials__heading h2 {
+            font-size: 45px;
+            line-height: 45px;
+            letter-spacing: -1px;
+          }
+
+          .testimonials__heading .subline {
+            max-width: 320px;
+          }
+
+          .testimonial-card {
+            min-width: 84vw;
+            max-width: 84vw;
+            min-height: 260px;
+          }
+        }
       `}</style>
     </section>
   );

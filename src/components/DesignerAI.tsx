@@ -203,17 +203,17 @@ const DesignerAI: React.FC = () => {
       <div className="fixed bottom-8 right-8 z-[70] flex items-center gap-4">
         <button 
           onClick={handleToggle}
-          className={`w-12 h-12 bg-white text-black rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 group ${isOpen ? 'rotate-[135deg] bg-white/10 text-white backdrop-blur-md' : 'animate-in slide-in-from-bottom-4 duration-700 delay-100'}`}
+          className={`w-14 h-14 md:w-12 md:h-12 bg-white text-black rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 group ${isOpen ? 'rotate-[135deg] bg-white/10 text-white backdrop-blur-md' : 'animate-in slide-in-from-bottom-4 duration-700 delay-100'}`}
           aria-label="Toggle AI Curator"
         >
-          <Command className="w-5 h-5" />
+          <Command className="w-7 h-7 md:w-5 md:h-5" />
         </button>
       </div>
 
       {isOpen && (
         <div 
           ref={chatWindowRef}
-          className="fixed bottom-24 right-8 z-[65] w-[calc(100%-4rem)] max-w-[340px] h-[520px] bg-[#050505] border border-white/10 rounded-[32px] shadow-[0_30px_100px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col"
+          className="fixed bottom-20 right-4 md:bottom-24 md:right-8 z-[65] w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] max-w-[280px] md:max-w-[340px] h-[400px] md:h-[520px] bg-[#050505] border border-white/10 rounded-[32px] shadow-[0_30px_100px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col"
         >
           {/* Header */}
           <div ref={headerRef} className="p-6 border-b border-white/5 flex items-center justify-between bg-white/[0.02]">
@@ -224,7 +224,7 @@ const DesignerAI: React.FC = () => {
               <div>
                 <h4 className="text-[10px] font-black tracking-widest uppercase text-white/80">Vinit Kumawat</h4>
                 <div className="flex items-center gap-1.5 mt-0.5">
-                  <div className="w-1 h-1 rounded-full bg-lime-400 animate-pulse"></div>
+                  <div className="w-1 min-h-[4px] rounded-full bg-lime-400 animate-pulse"></div>
                   <p className="text-[8px] text-white/30 font-bold uppercase tracking-widest">Available Now</p>
                 </div>
               </div>
