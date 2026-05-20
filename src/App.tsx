@@ -16,33 +16,26 @@ const App: React.FC = () => {
   const projects: Project[] = [
     {
       id: '1',
-      title: 'Vantage archive',
-      category: 'Branding',
-      imageUrl: 'https://images.unsplash.com/photo-1635405074683-96d6921a2a2c?auto=format&fit=crop&q=80&w=1200',
+      title: 'Vision to momentum',
+      category: 'Brand Identity',
+      imageUrl: '/images/vision-to-momentu-01.jpg',
       size: 'large',
       hasAccent: true,
     },
     {
       id: '2',
-      title: 'Motion lab',
+      title: 'Lumea',
       category: 'UI/UX',
-      imageUrl: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800',
+      imageUrl: '/images/LUM%C3%89A_Logo-01.jpg',
       size: 'tall',
     },
     {
       id: '3',
-      title: 'Cyberpunk identity',
+      title: 'Oceanic',
       category: 'Experimental',
-      imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200',
+      imageUrl: '/images/Oceanic%20Contra-01.jpg',
       size: 'medium',
       hasAccent: true,
-    },
-    {
-      id: '4',
-      title: 'Kinetic type',
-      category: 'Motion',
-      imageUrl: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&q=80&w=800',
-      size: 'medium',
     }
   ];
 
@@ -59,7 +52,7 @@ const App: React.FC = () => {
         <Hero />
         
         {/* Work Section */}
-        <section id="work" className="pt-[80px] pb-0 md:pb-40">
+        <section id="work" className="pt-[40px] pb-0 md:pb-40">
           {/* Work section header and button removed as requested */}
           <PortfolioGrid projects={projects} />
         </section>
@@ -81,3 +74,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+

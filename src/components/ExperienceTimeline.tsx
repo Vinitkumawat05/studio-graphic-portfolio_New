@@ -69,7 +69,7 @@ const ExperienceCard: React.FC<{ item: ExperienceItem; index: number }> = ({ ite
           className={`w-full lg:w-[45%] pl-20 lg:pl-0 ${isEven ? 'lg:text-right lg:pr-20' : 'lg:text-left lg:pl-20'}`}
         >
           <div className={`flex flex-col ${isEven ? 'md:items-end' : 'md:items-start'}`}>
-            <span className={`text-[17px] font-black, normal tracking-[0px] mb-4 transition-colors duration-500 ${isInView ? 'text-lime-400' : 'text-white/20'}`}>
+            <span className="text-[17px] font-black, normal tracking-[0px] mb-4 text-[#ECE8DF]">
               Chapter // 00{index + 1}
             </span>
             
@@ -125,18 +125,18 @@ const ExperienceTimeline: React.FC = () => {
         {/* The Progress Line - Precisely Anchored */}
           <motion.div 
           style={{ opacity: lineOpacity }}
-          className="absolute left-8 lg:left-1/2 top-0 bottom-0 w-[2px] bg-white/5 z-20"
+          className="absolute left-8 lg:left-1/2 top-0 bottom-0 w-[2px] bg-[#ECE8DF]/25 z-20"
           >
           {/* Active Filling Line */}
           <motion.div 
             style={{ scaleY, originY: 0 }}
-            className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-lime-400/50 via-lime-400 to-lime-400/50 shadow-[0_0_15px_rgba(163,230,53,0.3)]"
+            className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#ECE8DF]/60 via-[#ECE8DF] to-[#ECE8DF]/60 shadow-[0_0_15px_rgba(236,232,223,0.35)]"
           />
           
           {/* Dynamic Scroll Indicator */}
           <motion.div 
             style={{ top: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) }}
-            className="absolute left-1/2 -translate-x-1/2 w-[1px] h-32 bg-lime-400 blur-sm shadow-[0_0_20px_#a3e635]"
+            className="absolute left-1/2 -translate-x-1/2 w-[1px] h-32 bg-[#ECE8DF] blur-sm shadow-[0_0_20px_rgba(236,232,223,0.6)]"
           />
         </motion.div>
 

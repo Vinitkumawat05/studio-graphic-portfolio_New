@@ -14,39 +14,32 @@ import { ArrowRight } from 'lucide-react';
 const HomePage: React.FC = () => {
   // Scroll to top on component mount
   React.useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, []);
 
   const projects: Project[] = [
     {
       id: '1',
-      title: 'VANTAGE ARCHIVE',
-      category: 'Branding',
-      imageUrl: 'https://images.unsplash.com/photo-1635405074683-96d6921a2a2c?auto=format&fit=crop&q=80&w=1200',
+      title: 'VISION TO MOMENTU',
+      category: 'Brand Identity',
+      imageUrl: '/images/vision-to-momentu-01.jpg',
       size: 'large',
       hasAccent: true,
     },
     {
       id: '2',
-      title: 'MOTION LAB',
-      category: 'UI/UX',
-      imageUrl: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800',
-      size: 'tall',
+      title: 'LUMEA',
+      category: 'Web Design',
+      imageUrl: '/images/LUM%C3%89A_Logo-01.jpg',
+      size: 'medium',
     },
     {
       id: '3',
-      title: 'CYBERPUNK IDENTITY',
-      category: 'Experimental',
-      imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200',
+      title: 'OCEANIC CONTRA',
+      category: 'UI/UX',
+      imageUrl: '/images/Oceanic%20Contra-01.jpg',
       size: 'medium',
       hasAccent: true,
-    },
-    {
-      id: '4',
-      title: 'KINETIC TYPE',
-      category: 'Motion',
-      imageUrl: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&q=80&w=800',
-      size: 'medium',
     }
   ];
 
@@ -64,7 +57,7 @@ const HomePage: React.FC = () => {
           <Hero />
         
           {/* Work Section */}
-          <section id="work" className="pt-[3px] pb-0 md:py-32">
+          <section id="work" className="pt-[40px] pb-0 md:py-32">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-24">
               <div>
                 <p className="text-[#a3e635] text-[10px] font-black tracking-[0.5em] uppercase mb-4">Curated Selections</p>
@@ -111,3 +104,4 @@ const HomePage: React.FC = () => {
 };
 
 export default HomePage;
+

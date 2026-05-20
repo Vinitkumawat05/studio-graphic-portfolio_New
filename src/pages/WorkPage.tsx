@@ -1,10 +1,7 @@
-
 import React, { useState } from 'react';
-// Removed motion/AnimatePresence for static grid
 import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { Project } from '../types';
-import { ArrowUpRight, Search, Filter } from 'lucide-react';
 
 const WorkPage: React.FC = () => {
   const [filter, setFilter] = useState('All');
@@ -12,22 +9,15 @@ const WorkPage: React.FC = () => {
 
   // Scroll to top on component mount
   React.useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, []);
 
   const allProjects: Project[] = [
-    { id: '1', title: 'Nova', category: 'Brand Identity', imageUrl: 'https://images.unsplash.com/photo-1635405074683-96d6921a2a2c?auto=format&fit=crop&q=80&w=1200', size: 'large', subtitle: 'A fintech startup needed an identity that screamed trust without screaming boring. We gave them one.' },
-    { id: '2', title: 'Drift', category: 'Web Design', imageUrl: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800', size: 'medium', subtitle: 'A streetwear brands online presence was invisible. Now it converts 40% more.' },
-    { id: '3', title: 'Layer', category: 'UI/UX', imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200', size: 'medium', subtitle: 'A creative app was losing users at onboarding. We redesigned the flow. Drop-off went down 60%.' },
-    { id: '4', title: 'Phantom', category: 'Motion', imageUrl: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&q=80&w=800', size: 'small', subtitle: 'An audio-visual collective needed a brand that moved. So we made one that does.' },
-    { id: '5', title: 'STUDIO GEAR', category: 'Branding', imageUrl: 'https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&q=80&w=1200', size: 'large', subtitle: 'Tools for creation' },
-    { id: '6', title: 'SYSTEM 0.1', category: 'Digital', imageUrl: 'https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&q=80&w=800', size: 'small', subtitle: 'Design systems' },
-    { id: '7', title: 'NEON GENESIS', category: 'Motion', imageUrl: 'https://images.unsplash.com/photo-1547891269-05520fe3f208?auto=format&fit=crop&q=80&w=800', size: 'medium', subtitle: 'Future aesthetics' },
-    { id: '8', title: 'MONO ARCHIVE', category: 'Branding', imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200', size: 'medium', subtitle: 'Minimalist excellence' },
+    { id: '1', title: 'Vision to momentum', category: 'Brand Identity', imageUrl: '/images/vision-to-momentu-01.jpg', size: 'large', subtitle: 'Brand identity case study' },
+    { id: '2', title: 'Lumea', category: 'Web Design', imageUrl: '/images/LUM%C3%89A_Logo-01.jpg', size: 'medium', subtitle: 'A streetwear brands online presence was invisible. Now it converts 40% more.' },
+    { id: '3', title: 'Oceanic', category: 'UI/UX', imageUrl: '/images/Oceanic%20Contra-01.jpg', size: 'medium', subtitle: 'A creative app was losing users at onboarding. We redesigned the flow. Drop-off went down 60%.' },
   ];
 
-
-  // Unique categories for filter bar
   const categories = ['All', ...Array.from(new Set(allProjects.map(p => p.category)))];
 
   const filteredProjects = filter === 'All'
@@ -65,7 +55,7 @@ const WorkPage: React.FC = () => {
           {filteredProjects.map((project) => (
             <div key={project.id} className="flex flex-col">
               <div
-                className="block relative w-full aspect-[4/3] rounded-[12px] bg-white overflow-hidden cursor-pointer"
+                className="block relative w-full rounded-[12px] bg-white overflow-hidden cursor-pointer"
                 onClick={() => navigate(`/work/${project.id}`)}
                 title={project.title}
                 tabIndex={0}
@@ -75,16 +65,16 @@ const WorkPage: React.FC = () => {
                 <img
                   src={project.imageUrl}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  className="block w-full h-auto"
                 />
               </div>
               <div className="mt-3 px-1">
-                <h3 className="font-sfpro text-white text-lg md:text-xl font-bold leading-tight tracking-tight uppercase">
+                <h3 className="font-sfpro text-white text-lg md:text-xl font-medium leading-tight tracking-tight uppercase">
                   {project.title}
                 </h3>
                 <div className="text-[#bdbdbd] text-xs md:text-sm font-normal mt-1">
                   {project.category}
-                  {project.subtitle ? ` • ${project.subtitle}` : ''}
+                  {project.subtitle ? ` - ${project.subtitle}` : ''}
                 </div>
               </div>
             </div>
@@ -104,3 +94,4 @@ const WorkPage: React.FC = () => {
 };
 
 export default WorkPage;
+

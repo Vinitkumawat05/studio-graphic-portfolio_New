@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <div className="relative overflow-hidden pt-24 text-left select-none md:pt-24 lg:pt-20">
+    <div className="relative overflow-hidden pt-[70px] text-left select-none md:pt-24 lg:pt-20">
       {/* Vertical marquee columns removed as requested */}
 
       <div className="relative z-10 w-full px-0">

@@ -6,7 +6,7 @@ import { motion } from 'motion/react';
 const ExperiencePage: React.FC = () => {
   // Scroll to top on component mount
   React.useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, []);
 
   return (
@@ -38,3 +38,4 @@ const ExperiencePage: React.FC = () => {
 };
 
 export default ExperiencePage;
+

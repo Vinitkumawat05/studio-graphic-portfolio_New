@@ -12,11 +12,11 @@ import ContactPage from './pages/ContactPage';
 
 // ScrollToTop component - scrolls to top on route change
 const ScrollToTop: React.FC = () => {
-  const { pathname } = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [pathname]);
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [location.key, location.pathname, location.search, location.hash]);
 
   return null;
 };
@@ -45,3 +45,4 @@ root.render(
     </Router>
   </React.StrictMode>
 );
+

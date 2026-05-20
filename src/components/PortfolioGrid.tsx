@@ -44,7 +44,7 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ projects }) => {
       {projects.map((project) => (
         <div key={project.id} className="flex flex-col">
           <div
-            className="block relative w-full aspect-[4/3] rounded-[16px] bg-white overflow-hidden cursor-pointer"
+            className="block relative w-full rounded-[16px] bg-white overflow-hidden cursor-pointer"
             onClick={() => navigate(`/work/${project.id}`)}
             title={project.title}
             tabIndex={0}
@@ -54,10 +54,10 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ projects }) => {
             <img
               src={project.imageUrl}
               alt={project.title}
-              className="w-full h-full object-cover"
+              className="block w-full h-auto"
             />
           </div>
-          <h3 className="font-sfpro text-white text-lg md:text-xl font-bold leading-tight tracking-tight uppercase mt-2 px-1">
+          <h3 className="font-sfpro text-white text-lg md:text-xl font-medium leading-tight tracking-tight uppercase mt-2 px-1">
             {project.title}
           </h3>
         </div>

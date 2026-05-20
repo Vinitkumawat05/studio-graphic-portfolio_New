@@ -101,8 +101,8 @@ const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="pt-0 pb-40 md:py-40 relative scroll-mt-16 md:scroll-mt-20">
-      <div className="grid lg:grid-cols-12 gap-12 mb-24">
+    <section id="faq" className="pt-0 pb-0 md:py-40 relative scroll-mt-16 md:scroll-mt-20">
+      <div className="grid lg:grid-cols-12 gap-0 mb-0 md:gap-12 md:mb-24">
         <div className="lg:col-span-12">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -112,7 +112,7 @@ const FAQ: React.FC = () => {
             className="text-center"
           >
             <p className="text-[17px] font-black,normal tracking-[0px] text-white/40 sentancecase mb-2">Questions?</p>
-            <h2 className="mb-[50px] md:mb-0 text-[45px] md:text-[80px] font-normal tracking-[-1px] leading-[45px] md:leading-none">
+            <h2 className="mb-0 text-[45px] md:text-[80px] font-normal tracking-[-1px] leading-[45px] md:leading-none">
               We've got answers<span className="text-white/20">.</span>
             </h2>
           </motion.div>
