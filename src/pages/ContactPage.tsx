@@ -112,7 +112,7 @@ const ContactPage: React.FC = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-14"
+          className="mb-5 md:mb-14"
         >
           <img
             src="/assets/icon/Lets Connect.svg"
@@ -129,11 +129,11 @@ const ContactPage: React.FC = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
-            className="space-y-12"
+            className="space-y-12 "
           >
             <div className="h-[320px] overflow-hidden rounded-md bg-[#515352] md:h-[420px]">
               <img
-                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1000"
+                src="/images/connect.jpeg"
                 alt="Studio workspace"
                 className="h-full w-full object-cover opacity-70 grayscale"
               />

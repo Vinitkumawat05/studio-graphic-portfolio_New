@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface SlideInButtonProps {
   text: string;
@@ -98,7 +99,7 @@ const SlideInButton: React.FC<SlideInButtonProps> = ({
   );
 
   if (href) {
-    return <a href={href}>{content}</a>;
+    return <Link to={href}>{content}</Link>;
   }
 
   return content;

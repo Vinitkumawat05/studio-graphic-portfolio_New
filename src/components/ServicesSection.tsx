@@ -70,33 +70,44 @@ const ServicesSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, ease }}
-          className="rounded-lg border border-[#ECE8DF]/10 bg-[#ECE8DF]/[0.03] p-4 md:p-5"
+          className="flex flex-col justify-between rounded-lg border border-[#ECE8DF]/10 bg-[#ECE8DF]/[0.03] p-4 md:p-5"
         >
-          {services.map((service, index) => {
-            const isActive = activeService === index;
+          <div>
+            {services.map((service, index) => {
+              const isActive = activeService === index;
 
-            return (
-              <button
-                key={service.id}
-                type="button"
-                onClick={() => setActiveService(index)}
-                onMouseEnter={() => setActiveService(index)}
-                className={`group w-full border-b border-[#ECE8DF]/10 py-5 text-left transition-colors last:border-b-0 md:py-6 ${
-                  isActive ? 'text-[#ECE8DF]' : 'text-[#ECE8DF]/42 hover:text-[#ECE8DF]/75'
-                }`}
-              >
-                <div className="flex items-start gap-4">
-                  <span className="min-w-[34px] text-[20px] font-normal leading-none md:text-[25px]">{service.id}.</span>
-                  <div>
-                    <span className="block text-[23px] font-normal leading-[1.05] md:text-[25px]">{service.title}</span>
-                    <p className={`mt-3 text-[15px] leading-[22px] transition-all md:hidden ${isActive ? 'block text-[#ECE8DF]/65' : 'hidden'}`}>
-                      {service.description}
-                    </p>
+              return (
+                <button
+                  key={service.id}
+                  type="button"
+                  onClick={() => setActiveService(index)}
+                  onMouseEnter={() => setActiveService(index)}
+                  className={`group w-full border-b border-[#ECE8DF]/10 py-5 text-left transition-colors last:border-b-0 md:py-6 ${
+                    isActive ? 'text-[#ECE8DF]' : 'text-[#ECE8DF]/42 hover:text-[#ECE8DF]/75'
+                  }`}
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="min-w-[34px] text-[20px] font-normal leading-none md:text-[25px]">{service.id}.</span>
+                    <div>
+                      <span className="block text-[23px] font-normal leading-[1.05] md:text-[25px]">{service.title}</span>
+                      <p className={`mt-3 text-[15px] leading-[22px] transition-all md:hidden ${isActive ? 'block text-[#ECE8DF]/65' : 'hidden'}`}>
+                        {service.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </button>
-            );
-          })}
+                </button>
+              );
+            })}
+          </div>
+          
+          <div className="hidden border-t border-[#ECE8DF]/10 pt-4 md:block">
+            <SlideInButton
+              text="Start the Project"
+              href="/contact"
+              variant="primary"
+              className="w-full justify-center rounded-lg px-6 py-5 text-lg font-medium"
+            />
+          </div>
         </motion.div>
 
         <motion.div
@@ -137,7 +148,7 @@ const ServicesSection: React.FC = () => {
         </motion.div>
       </div>
 
-      <div className="mt-5 md:mt-6 lg:max-w-[calc((100%-2rem)/3)]">
+      <div className="mt-5 md:hidden">
         <SlideInButton
           text="Start the Project"
           href="/contact"

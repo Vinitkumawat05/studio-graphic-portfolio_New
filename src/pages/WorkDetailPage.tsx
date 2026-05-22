@@ -153,7 +153,7 @@ const WorkDetailPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#1C1C1C] text-[#ECE8DF] selection:bg-[#ECE8DF] selection:text-[#1C1C1C] overflow-x-hidden">
-      <main className="px-6 md:px-8 lg:px-20 max-w-[1700px] mx-auto pt-[80px] md:pt-[70px] pb-0 md:pb-28">
+      <main className="px-6 md:px-8 lg:px-20 max-w-[1700px] mx-auto pt-[80px] md:pt-[70px] pb-0 md:pb-0">
         <motion.div
           {...sectionReveal}
           className="mb-9 w-full overflow-hidden rounded-lg bg-[#515352]"
@@ -166,7 +166,7 @@ const WorkDetailPage: React.FC = () => {
           />
         </motion.div>
 
-        <section className="mb-28">
+        <section className="mb-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -310,11 +310,10 @@ const WorkDetailPage: React.FC = () => {
         </section>
 
         {/* Related Works Section */}
-        <motion.section {...sectionReveal} className="mb-32">
-          <p className="text-[#ECE8DF]/45 text-[17px] font-black tracking-[0px] mb-8">Other Works</p>
-          <h2 className="text-[45px] md:text-6xl font-normal tracking-[-1px] md:tracking-[0px] leading-[45px] md:leading-tight mb-16">More Projects</h2>
+        <motion.section {...sectionReveal} className="mb-0">
+          <h2 className="text-[45px] md:text-6xl font-normal tracking-[-1px] md:tracking-[0px] leading-[45px] md:leading-tight mb-8 mt-8">More Projects</h2>
           
-          <div className="-mx-1 flex gap-4 overflow-x-auto no-scrollbar px-1 snap-x snap-mandatory md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:p-0">
+          <div className="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:p-0">
             {relatedProjects.map((project, idx) => (
               <motion.div
                 key={project.id}
