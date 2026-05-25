@@ -36,6 +36,10 @@ const WorkDetailPage: React.FC = () => {
     const imageNumber = String(index + 1).padStart(2, '0');
     return `/images/Truefram-${imageNumber}.jpg`;
   });
+  const arvinoSpacesImages = Array.from({ length: 13 }, (_, index) => {
+    const imageNumber = String(index + 1).padStart(2, '0');
+    return `/images/Arvino_spaces-${imageNumber}.jpg`;
+  });
   const handleImageError = (event: React.SyntheticEvent<HTMLImageElement>) => {
     const target = event.currentTarget;
     // Collapse broken image slot instead of leaving an empty-looking area.
@@ -127,6 +131,22 @@ const WorkDetailPage: React.FC = () => {
       solution: '',
       results: [],
       images: trueframImages
+    },
+    '5': {
+      id: '5',
+      title: 'Arvino Spaces',
+      category: 'Brand Identity',
+      projectType: 'Brand Identity',
+      year: '2025',
+      role: 'Brand Designer',
+      client: 'Arvino Spaces',
+      imageUrl: arvinoSpacesImages[0],
+      size: 'medium',
+      description: 'The Arvino Spaces logo is a modern and sophisticated identity created to reflect creativity, structure, and contemporary interior design aesthetics. Built with bold typography and a clean geometric composition, the logo represents a perfect balance between functionality and artistic expression. The minimal approach gives the brand a premium and professional presence while maintaining a timeless visual appeal.',
+      challenges: '',
+      solution: '',
+      results: [],
+      images: arvinoSpacesImages
     }
   };
 
@@ -166,11 +186,15 @@ const WorkDetailPage: React.FC = () => {
   const isVisionProject = currentProject.id === '1';
   const isLumeaProject = currentProject.id === '2';
   const isTrueframProject = currentProject.id === '4';
+  const isArvinoSpacesProject = currentProject.id === '5';
   const image02 = currentProject.images[1];
   const image03 = currentProject.images[2];
   const image04 = currentProject.images[3];
+  const image05 = currentProject.images[4];
+  const image06 = currentProject.images[5];
   const visionRemainingImages = currentProject.images.slice(4);
   const lumeaRemainingImages = currentProject.images.slice(3);
+  const arvinoRemainingImages = currentProject.images.slice(6);
   const image07 = currentProject.images[6];
   const image08 = currentProject.images[7];
   const trueframBeforeGrid = currentProject.images.slice(1, 6);
@@ -366,6 +390,77 @@ const WorkDetailPage: React.FC = () => {
                   </div>
                 ))}
               </>
+            ) : isArvinoSpacesProject ? (
+              <>
+                {image02 && (
+                  <div className="overflow-hidden rounded-md bg-[#515352]">
+                    <img
+                      src={image02}
+                      alt={`${currentProject.title} visual 2`}
+                      onError={handleImageError}
+                      className="block h-auto w-full opacity-80"
+                    />
+                  </div>
+                )}
+                {(image03 || image04) && (
+                  <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
+                    {image03 && (
+                      <div className="overflow-hidden rounded-md bg-[#515352]">
+                        <img
+                          src={image03}
+                          alt={`${currentProject.title} visual 3`}
+                          onError={handleImageError}
+                          className="block h-auto w-full opacity-80"
+                        />
+                      </div>
+                    )}
+                    {image04 && (
+                      <div className="overflow-hidden rounded-md bg-[#515352]">
+                        <img
+                          src={image04}
+                          alt={`${currentProject.title} visual 4`}
+                          onError={handleImageError}
+                          className="block h-auto w-full opacity-80"
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
+                {(image05 || image06) && (
+                  <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
+                    {image05 && (
+                      <div className="overflow-hidden rounded-md bg-[#515352]">
+                        <img
+                          src={image05}
+                          alt={`${currentProject.title} visual 5`}
+                          onError={handleImageError}
+                          className="block h-auto w-full opacity-80"
+                        />
+                      </div>
+                    )}
+                    {image06 && (
+                      <div className="overflow-hidden rounded-md bg-[#515352]">
+                        <img
+                          src={image06}
+                          alt={`${currentProject.title} visual 6`}
+                          onError={handleImageError}
+                          className="block h-auto w-full opacity-80"
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
+                {arvinoRemainingImages.map((image, index) => (
+                  <div key={`${currentProject.id}-tail-${index}`} className="overflow-hidden rounded-md bg-[#515352]">
+                    <img
+                      src={image || currentProject.imageUrl}
+                      alt={`${currentProject.title} visual ${index + 7}`}
+                      onError={handleImageError}
+                      className="block h-auto w-full opacity-80"
+                    />
+                  </div>
+                ))}
+              </>
             ) : (
               currentProject.images.slice(1).map((image, imageIndex) => (
                 <div key={`${currentProject.id}-${imageIndex}`} className="overflow-hidden rounded-md bg-[#515352]">
@@ -383,7 +478,7 @@ const WorkDetailPage: React.FC = () => {
 
         {/* Related Works Section */}
         <motion.section {...sectionReveal} className="mb-0">
-          <h2 className="text-[45px] md:text-6xl font-normal tracking-[-1px] md:tracking-[0px] leading-[45px] md:leading-tight mb-8 mt-8">More Projects</h2>
+          <h2 className="text-[30px] md:text-6xl font-normal tracking-[-1px] md:tracking-[0px] leading-[45px] md:leading-tight md:mb-8 md:mt-8 mb-4 mt-3">More Projects</h2>
           
           <div className="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:p-0">
             {relatedProjects.map((project, idx) => (

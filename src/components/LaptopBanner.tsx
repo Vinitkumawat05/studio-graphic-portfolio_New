@@ -7,11 +7,11 @@ const LaptopBanner: React.FC = () => {
     <section id="laptop" aria-label="Laptop" className="relative left-1/2 w-screen -translate-x-1/2">
       <div className="absolute inset-0 z-10 flex items-start">
         <div className="ml-[8%] mt-[8%] max-w-[84%] text-white md:ml-[7%] md:mt-[5.5%] md:max-w-[55%] lg:mt-[4.8%]">
-          <h2 className="text-[55px] font-medium leading-[56.08px] tracking-[-0.02em] md:text-[59px] md:leading-[85px] md:tracking-[-0.03em]">
+          <h2 className="text-[44px] font-medium leading-[56.08px] tracking-[-0.02em] md:text-[59px] md:leading-[85px] md:tracking-[-0.03em]">
             The Brand You've Been Imagining
             <br />
             Let's{' '}
-            <span className="inline-block bg-[#ffad4f] px-1.5 leading-[56.08px] text-[#1C1C1C] md:px-2 md:leading-[59px]">
+            <span className="mt-[10px] inline-block bg-[#ffad4f] px-1.5 leading-[56.08px] text-[#1C1C1C] md:px-2 md:leading-[59px]">
               Build it.
             </span>
           </h2>
@@ -41,7 +41,7 @@ const LaptopBanner: React.FC = () => {
         <img
           src="/images/Banner-for-mobile.jpg"
           alt="Laptop banner"
-          className="block w-full h-auto"
+          className="block h-[145vw] min-h-[520px] max-h-[620px] w-full object-cover object-bottom md:h-auto md:min-h-0 md:max-h-none md:object-contain md:object-center"
         />
       </picture>
     </section>

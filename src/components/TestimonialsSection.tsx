@@ -211,8 +211,8 @@ const TestimonialsSection: React.FC = () => {
           }
 
           .testimonials__heading h2 {
-            font-size: 45px;
-            line-height: 45px;
+            font-size: 38px;
+            line-height: 40px;
             letter-spacing: -1px;
           }
 

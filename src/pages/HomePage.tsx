@@ -48,6 +48,13 @@ const HomePage: React.FC = () => {
       category: 'Brand Identity',
       imageUrl: '/images/Truefram-01.jpg',
       size: 'medium',
+    },
+    {
+      id: '5',
+      title: 'Arvino Spaces',
+      category: 'Brand Identity',
+      imageUrl: '/images/Arvino_spaces-01.jpg',
+      size: 'medium',
     }
   ];
 
