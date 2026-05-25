@@ -41,7 +41,7 @@ const LaptopBanner: React.FC = () => {
         <img
           src="/images/Banner-for-mobile.jpg"
           alt="Laptop banner"
-          className="block h-[145vw] min-h-[520px] max-h-[620px] w-full object-cover object-bottom md:h-auto md:min-h-0 md:max-h-none md:object-contain md:object-center"
+          className="block h-auto w-full"
         />
       </picture>
     </section>

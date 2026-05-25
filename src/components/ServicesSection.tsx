@@ -7,7 +7,7 @@ const services = [
     id: 1,
     title: 'Branding & Identity',
     description:
-      'We craft bold, memorable brand identities that tell your story and leave a lasting impression. From logos to full brand guidelines, we ensure consistency and impact across all touchpoints.',
+      'We craft bold, memorable brand identities that tell your story and leave a lasting impression.',
     timeline: '2 - 4 weeks',
     image:
       'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&q=80&w=1000',
@@ -16,19 +16,17 @@ const services = [
     id: 2,
     title: 'Web Design',
     description:
-      'We build high-performance websites that captivate users and drive results. Every pixel is crafted with purpose, blending aesthetics with seamless functionality.',
+      'We build high-performance websites that captivate users and drive results.',
     timeline: '4 - 8 weeks',
-    image:
-      'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1000',
+    image: '/images/web%20design.jpeg',
   },
   {
     id: 3,
     title: 'UI/UX Design',
     description:
-      'We design intuitive, user-centered interfaces that feel polished and efficient. Our process balances beauty with usability to create experiences people love.',
+      'We design intuitive, user-centered interfaces that feel polished and efficient.',
     timeline: '3 - 6 weeks',
-    image:
-      'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&q=80&w=1000',
+    image: '/images/UI%20UX.jpeg',
   },
   {
     id: 4,
@@ -36,8 +34,7 @@ const services = [
     description:
       'We bring brands to life with motion systems, campaign visuals, and storytelling that make the identity feel alive across every channel.',
     timeline: '2 - 5 weeks',
-    image:
-      'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1000',
+    image: '/images/motion%20design.jpeg',
   },
 ];
 
