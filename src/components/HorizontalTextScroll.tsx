@@ -99,7 +99,18 @@ const HorizontalTextScroll: React.FC = () => {
           width: 100%;
           display: flex;
           align-items: center;
+          justify-content: flex-start;
           background-color: #1C1C1C;
+          position: relative;
+        }
+
+        .horizontal-container {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          overflow: hidden;
         }
 
         .Horizontal__text {
@@ -113,6 +124,9 @@ const HorizontalTextScroll: React.FC = () => {
           will-change: transform;
           transform: translateZ(0);
           backface-visibility: hidden;
+          margin: 0;
+          padding: 0;
+          flex-shrink: 0;
         }
 
         .Horizontal__text .letter {
@@ -128,10 +142,8 @@ const HorizontalTextScroll: React.FC = () => {
           font-size: clamp(2rem, 10vw, 12rem);
           font-weight: 600;
           line-height: 1.1;
-        }
-
-        .horizontal-container {
-          width: 100%;
+          margin: 0;
+          padding: 0;
         }
 
         @media (min-width: 768px) and (max-width: 1023px) {
@@ -142,7 +154,7 @@ const HorizontalTextScroll: React.FC = () => {
             letter-spacing: -0.04em;
           }
           .Horizontal__text { gap: 0.25vw; }
-          .horizontal-space { width: 2.2rem; height: 1rem; }
+          .horizontal-space { width: 2.2rem; }
         }
 
         @media (max-width: 767px) {
@@ -153,7 +165,7 @@ const HorizontalTextScroll: React.FC = () => {
             letter-spacing: -0.05em;
           }
           .Horizontal__text { gap: 0; }
-          .horizontal-space { width: 3.5rem; height: 1rem; }
+          .horizontal-space { width: 3.5rem; }
         }
       `}</style>
     </section>

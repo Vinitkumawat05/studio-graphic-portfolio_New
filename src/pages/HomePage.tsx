@@ -5,6 +5,7 @@ import ExperienceTimeline from '../components/ExperienceTimeline';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
 import HorizontalTextScroll from '../components/HorizontalTextScroll';
+import LaptopBanner from '../components/LaptopBanner';
 import TestimonialsSection from '../components/TestimonialsSection';
 import { Project } from '../types';
 import { motion } from 'motion/react';
@@ -40,6 +41,13 @@ const HomePage: React.FC = () => {
       imageUrl: '/images/Oceanic%20Contra-01.jpg',
       size: 'medium',
       hasAccent: true,
+    },
+    {
+      id: '4',
+      title: 'True Farm',
+      category: 'Brand Identity',
+      imageUrl: '/images/Truefram-01.jpg',
+      size: 'medium',
     }
   ];
 
@@ -94,6 +102,7 @@ const HomePage: React.FC = () => {
 
           <ExperienceTimeline />
           <FAQ />
+          <LaptopBanner />
           <TestimonialsSection />
         </div> {/* <-- Close pt-32 wrapper */}
       </main>

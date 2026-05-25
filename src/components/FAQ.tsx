@@ -101,7 +101,7 @@ const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="pt-0 pb-0 md:py-40 relative scroll-mt-16 md:scroll-mt-20">
+    <section id="faq" className="pt-0 pb-0 md:pt-40 md:pb-28 relative scroll-mt-16 md:scroll-mt-20">
       <div className="grid lg:grid-cols-12 gap-0 mb-0 md:gap-12 md:mb-24">
         <div className="lg:col-span-12">
           <motion.div 

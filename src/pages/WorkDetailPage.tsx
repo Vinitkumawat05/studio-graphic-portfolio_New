@@ -32,6 +32,10 @@ const WorkDetailPage: React.FC = () => {
     const imageNumber = String(index + 1).padStart(2, '0');
     return localImage(`Oceanic Contra-${imageNumber}.jpg`);
   });
+  const trueframImages = Array.from({ length: 11 }, (_, index) => {
+    const imageNumber = String(index + 1).padStart(2, '0');
+    return `/images/Truefram-${imageNumber}.jpg`;
+  });
   const handleImageError = (event: React.SyntheticEvent<HTMLImageElement>) => {
     const target = event.currentTarget;
     // Collapse broken image slot instead of leaving an empty-looking area.
@@ -107,6 +111,22 @@ const WorkDetailPage: React.FC = () => {
         'Scalable brand assets'
       ],
       images: oceanicContraImages
+    },
+    '4': {
+      id: '4',
+      title: 'True Farm',
+      category: 'Brand Identity',
+      projectType: 'Brand Identity',
+      year: '2025',
+      role: 'Brand Designer',
+      client: 'True Farm',
+      imageUrl: trueframImages[0],
+      size: 'medium',
+      description: 'The True Farm logo is a vibrant and friendly brand identity designed to represent freshness, nature, and organic farming. Created with soft rounded typography and natural visual elements, the logo reflects a brand that values purity, healthy living, and trust. The leaf-inspired symbol integrated into the design strengthens the connection between agriculture and natural growth, giving the identity a warm and approachable personality.',
+      challenges: '',
+      solution: '',
+      results: [],
+      images: trueframImages
     }
   };
 
@@ -145,11 +165,16 @@ const WorkDetailPage: React.FC = () => {
   ];
   const isVisionProject = currentProject.id === '1';
   const isLumeaProject = currentProject.id === '2';
+  const isTrueframProject = currentProject.id === '4';
   const image02 = currentProject.images[1];
   const image03 = currentProject.images[2];
   const image04 = currentProject.images[3];
   const visionRemainingImages = currentProject.images.slice(4);
   const lumeaRemainingImages = currentProject.images.slice(3);
+  const image07 = currentProject.images[6];
+  const image08 = currentProject.images[7];
+  const trueframBeforeGrid = currentProject.images.slice(1, 6);
+  const trueframAfterGrid = currentProject.images.slice(8);
 
   return (
     <div className="min-h-screen bg-[#1C1C1C] text-[#ECE8DF] selection:bg-[#ECE8DF] selection:text-[#1C1C1C] overflow-x-hidden">
@@ -288,6 +313,53 @@ const WorkDetailPage: React.FC = () => {
                     <img
                       src={image || currentProject.imageUrl}
                       alt={`${currentProject.title} visual ${index + 4}`}
+                      onError={handleImageError}
+                      className="block h-auto w-full opacity-80"
+                    />
+                  </div>
+                ))}
+              </>
+            ) : isTrueframProject ? (
+              <>
+                {trueframBeforeGrid.map((image, index) => (
+                  <div key={`${currentProject.id}-before-${index}`} className="overflow-hidden rounded-md bg-[#515352]">
+                    <img
+                      src={image || currentProject.imageUrl}
+                      alt={`${currentProject.title} visual ${index + 2}`}
+                      onError={handleImageError}
+                      className="block h-auto w-full opacity-80"
+                    />
+                  </div>
+                ))}
+                {(image07 || image08) && (
+                  <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
+                    {image07 && (
+                      <div className="overflow-hidden rounded-md bg-[#515352]">
+                        <img
+                          src={image07}
+                          alt={`${currentProject.title} visual 7`}
+                          onError={handleImageError}
+                          className="block h-auto w-full opacity-80"
+                        />
+                      </div>
+                    )}
+                    {image08 && (
+                      <div className="overflow-hidden rounded-md bg-[#515352]">
+                        <img
+                          src={image08}
+                          alt={`${currentProject.title} visual 8`}
+                          onError={handleImageError}
+                          className="block h-auto w-full opacity-80"
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
+                {trueframAfterGrid.map((image, index) => (
+                  <div key={`${currentProject.id}-after-${index}`} className="overflow-hidden rounded-md bg-[#515352]">
+                    <img
+                      src={image || currentProject.imageUrl}
+                      alt={`${currentProject.title} visual ${index + 9}`}
                       onError={handleImageError}
                       className="block h-auto w-full opacity-80"
                     />

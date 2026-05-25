@@ -16,6 +16,7 @@ const WorkPage: React.FC = () => {
     { id: '1', title: 'Vision to momentum', category: 'Brand Identity', imageUrl: '/images/vision-to-momentu-01.jpg', size: 'large', subtitle: 'Brand identity case study' },
     { id: '2', title: 'Lumea', category: 'Web Design', imageUrl: '/images/LUM%C3%89A_Logo-01.jpg', size: 'medium', subtitle: 'A streetwear brands online presence was invisible. Now it converts 40% more.' },
     { id: '3', title: 'Oceanic', category: 'UI/UX', imageUrl: '/images/Oceanic%20Contra-01.jpg', size: 'medium', subtitle: 'A creative app was losing users at onboarding. We redesigned the flow. Drop-off went down 60%.' },
+    { id: '4', title: 'True Farm', category: 'Brand Identity', imageUrl: '/images/Truefram-01.jpg', size: 'medium', subtitle: 'A vibrant and friendly brand identity representing freshness and organic farming.' },
   ];
 
   const categories = ['All', ...Array.from(new Set(allProjects.map(p => p.category)))];

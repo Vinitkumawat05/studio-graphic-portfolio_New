@@ -5,11 +5,11 @@ import ExperienceTimeline from './components/ExperienceTimeline';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import HorizontalTextScroll from './components/HorizontalTextScroll';
+import LaptopBanner from './components/LaptopBanner';
 import SlideInButton from './components/SlideInButton';
 import ServicesSection from './components/ServicesSection';
 import { Project } from './types';
 import { motion } from 'motion/react';
-import { Link } from 'react-router-dom';
 import TestimonialsSection from './components/TestimonialsSection';
 
 const App: React.FC = () => {
@@ -36,6 +36,13 @@ const App: React.FC = () => {
       imageUrl: '/images/Oceanic%20Contra-01.jpg',
       size: 'medium',
       hasAccent: true,
+    },
+    {
+      id: '4',
+      title: 'True Farm',
+      category: 'Brand Identity',
+      imageUrl: '/images/Truefram-01.jpg',
+      size: 'medium',
     }
   ];
 
@@ -62,6 +69,7 @@ const App: React.FC = () => {
         <ExperienceTimeline />
         <ServicesSection />
         <FAQ />
+        <LaptopBanner />
         <TestimonialsSection />
       </main>
 
