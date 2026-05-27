@@ -9,8 +9,6 @@ if (typeof window !== 'undefined') {
 const HorizontalTextScroll: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
-  const phrase = 'So, are you ready to Stand out?';
-  const characters = phrase.split('');
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -26,51 +24,18 @@ const HorizontalTextScroll: React.FC = () => {
     }
 
     const ctx = gsap.context(() => {
-      const chars = gsap.utils.toArray<HTMLElement>('.section-scroll-text .char.letter');
-      const isMobile = window.matchMedia('(max-width: 767px)').matches;
-      const getScrollDistance = () => window.innerWidth + text.scrollWidth;
+      const getScrollDistance = () => Math.max(0, text.offsetWidth - window.innerWidth);
 
-      gsap.set(text, { force3D: true });
-
-      const scrollTween = gsap.fromTo(
-        text,
-        { x: () => window.innerWidth },
-        {
-          x: () => -text.scrollWidth,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: section,
-            pin: true,
-            scrub: 0.8,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            end: () => `+=${getScrollDistance()}`,
-          },
+      gsap.to(text, {
+        x: () => -getScrollDistance(),
+        ease: 'linear',
+        scrollTrigger: {
+          trigger: section,
+          pin: true,
+          scrub: true,
+          invalidateOnRefresh: true,
+          end: () => `+=${getScrollDistance()}`,
         },
-      );
-
-      chars.forEach((char, index) => {
-        const fromTop = index % 2 === 0;
-
-        gsap.fromTo(
-          char,
-          {
-            yPercent: fromTop ? -120 : 120,
-            rotation: fromTop ? -14 : 14,
-          },
-          {
-            yPercent: 0,
-            rotation: 0,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: char,
-              containerAnimation: scrollTween,
-              start: 'left 90%',
-              end: isMobile ? 'left 45%' : 'left 35%',
-              scrub: 0.5,
-            },
-          },
-        );
       });
 
       requestAnimationFrame(() => ScrollTrigger.refresh());
@@ -90,12 +55,8 @@ const HorizontalTextScroll: React.FC = () => {
 
   return (
     <section ref={sectionRef} className="section-scroll-text">
-      <h1 ref={textRef} aria-label={phrase}>
-        {characters.map((char, index) => (
-          <span key={`${char}-${index}`} className={`char ${char === ' ' ? 'space' : 'letter'}`} aria-hidden="true">
-            {char === ' ' ? '\u00A0' : char}
-          </span>
-        ))}
+      <h1 ref={textRef}>
+        So, are you ready to Stand out?
       </h1>
 
       <style>{`
@@ -109,40 +70,19 @@ const HorizontalTextScroll: React.FC = () => {
         }
 
         .section-scroll-text h1 {
-          display: flex;
-          width: max-content;
-          flex-shrink: 0;
           font-family: system-ui, sans-serif;
-          font-size: clamp(4rem, 10vw, 12rem);
+          font-size: 100px;
           font-weight: 600;
-          line-height: 0.95;
+          line-height: 1.1;
           color: #fff;
           margin: 0;
           white-space: nowrap;
           will-change: transform;
-          transform: translateZ(0);
-          backface-visibility: hidden;
-        }
-
-        .section-scroll-text .char {
-          display: inline-block;
-          will-change: transform;
-          transform-origin: center;
-        }
-
-        .section-scroll-text .space {
-          width: 0.35em;
-          flex-shrink: 0;
         }
 
         @media (max-width: 767px) {
           .section-scroll-text h1 {
-            font-size: 25vw;
-            line-height: 0.9;
-          }
-
-          .section-scroll-text .space {
-            width: 0.42em;
+            font-size: 64px;
           }
         }
       `}</style>
