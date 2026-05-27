@@ -3,28 +3,34 @@ import { gsap } from 'gsap';
 
 const testimonials = [
   {
-    quote: 'Working with Studio felt like unlocking an entirely new level of possibility. They built a visual language that felt as bold as our ambition.',
-    name: 'Sophia L.',
-    title: 'Marketing Director',
-    rating: '4.9/5',
+    quote: 'Working with Vinit was smooth from start to finish. He understood the vision for our agency logo quickly and delivered a clean, professional design that matched our brand identity perfectly.',
+    name: 'Vaibhav',
+    title: 'Marketing Agency Owner',
+    service: 'Logo Design',
   },
   {
-    quote: 'The team elevated every interaction: clean, cinematic, and built for performance. We saw conversion spikes within days.',
-    name: 'Daniel W.',
-    title: 'SaaS Founder',
-    rating: '4.9/5',
+    quote: 'Vinit helped us with marketing creatives and promotional content for our cafe. The designs were eye-catching, modern, and matched our cafe’s vibe really well. We noticed better customer response on social media after using the creatives. Delivery was on time and the overall experience was professional.',
+    name: 'Nikita',
+    title: 'Cafe Owner',
+    service: 'Marketing Work',
   },
   {
-    quote: 'We asked for a daring, differentiated identity and they delivered with relentless polish and thoughtfulness.',
-    name: 'Emma R.',
-    title: 'Startup Founder',
-    rating: '4.8/5',
+    quote: 'Had a great experience working with Vinit for our cafe’s marketing work. The promotional designs and content were clean, creative, and helped us present our brand more professionally online.',
+    name: 'Amit',
+    title: 'Cafe Owner',
+    service: 'Marketing Work',
   },
   {
-    quote: 'Studio became an extension of our team. They translate complex tech into emotional design with zero fluff.',
-    name: 'Miles T.',
-    title: 'Product Lead',
-    rating: '5/5',
+    quote: 'Vinit designed a professional and trustworthy logo for our clinic that perfectly reflected the identity we wanted to build. The design process was smooth, and he was patient with revisions and suggestions. The final logo looks clean, modern, and works well across all our branding materials.',
+    name: 'Dr.Santosh',
+    title: 'Clinic Owner',
+    service: 'Logo Design',
+  },
+  {
+    quote: 'Vinit designed a modern and elegant logo for Arvino Spaces that aligned perfectly with our interior design brand. He understood the aesthetic and direction we wanted from the beginning and delivered a clean, premium-looking identity. The overall process was professional, smooth, and detail-oriented.',
+    name: 'Aman Sharma',
+    title: 'Owner of Arvino Spaces',
+    service: 'Logo Design',
   },
 ];
 
@@ -72,7 +78,7 @@ const TestimonialsSection: React.FC = () => {
         <div className="testimonial-meta">
           <span className="name">{item.name}</span>
           <span className="title">{item.title}</span>
-          <span className="rating">{item.rating}</span>
+          <span className="service">{item.service}</span>
         </div>
       </article>
     ));
@@ -196,8 +202,8 @@ const TestimonialsSection: React.FC = () => {
           color: #ECE8DF;
         }
 
-        .testimonial-meta .rating {
-          color: #a3e635;
+        .testimonial-meta .service {
+          color: #ECE8DF;
         }
 
         @media (max-width: 640px) {
