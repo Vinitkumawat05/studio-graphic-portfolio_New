@@ -155,7 +155,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="flex flex-col gap-5 pt-11 text-[13px] font-semibold uppercase tracking-[0.18em] text-white/45 md:flex-row md:items-center md:justify-between">
-          <p>&copy; 2024 Studio Design Group. All Rights Reserved.</p>
+          <p>&copy; 2026 Magic Vibe. All Rights Reserved.</p>
           <p>Vadodara, India | Asia</p>
         </div>
       </div>

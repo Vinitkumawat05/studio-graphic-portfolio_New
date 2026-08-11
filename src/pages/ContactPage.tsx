@@ -133,7 +133,7 @@ const ContactPage: React.FC = () => {
           >
             <div className="h-[320px] overflow-hidden rounded-md bg-[#515352] md:h-[420px]">
               <img
-                src="/images/connect.jpeg"
+                src="/images/vinit.jpg"
                 alt="Studio workspace"
                 className="h-full w-full object-cover opacity-70 grayscale"
               />
